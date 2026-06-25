@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smarter by 1 Degree — A Degree Ahead (New Direction)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@900&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:oklch(0.965 0.012 95);
+    --bone-2:oklch(0.945 0.018 120);
+    --pine:oklch(0.375 0.062 160);
+    --pine-deep:oklch(0.28 0.05 162);
+    --sage:oklch(0.88 0.03 150);
+    --gold:oklch(0.755 0.115 78);
+    --gold-deep:oklch(0.62 0.10 72);
+    --ink:oklch(0.27 0.022 140);
+    --ink-soft:oklch(0.42 0.025 140);
+    --line:oklch(0.86 0.02 140);
+    --mute:oklch(0.52 0.02 140);
+    --maxw:1080px; --r:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--bone); color:var(--ink); font-family:"Figtree",system-ui,sans-serif; font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Newsreader",serif; margin:0; line-height:1.06; letter-spacing:-0.01em; font-weight:500; color:var(--pine-deep)}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 36px}
+  section{padding:100px 0; border-top:1px solid var(--line)}
+  .eyebrow{font-family:"Figtree"; font-weight:700; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-deep)}
+  .lead{font-size:21px; color:var(--ink-soft); max-width:60ch; line-height:1.55}
+  a{color:var(--pine)}
+
+  .cover{border-top:none; padding:96px 0 80px; background:radial-gradient(120% 90% at 80% 0%, var(--bone-2), var(--bone) 60%)}
+  .cover-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center}
+  .cover .eyebrow{color:var(--gold-deep)}
+  .cover h1{font-size:clamp(48px,7.5vw,92px); font-weight:500; margin-top:18px; color:var(--pine-deep)}
+  .cover h1 em{font-style:italic; color:var(--gold-deep)}
+  .cover .lead{margin-top:24px}
+  .cover-logo{width:min(70%,300px)}
+
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:36px}
+  .three{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  .card{background:var(--bone); border:1px solid var(--line); border-radius:var(--r); padding:28px}
+  .card.tint{background:var(--bone-2)}
+  .logocard{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:16px}
+
+  .swatches{display:grid; grid-template-columns:repeat(5,1fr); gap:18px; margin-top:30px}
+  .sw{border-radius:var(--r); overflow:hidden; border:1px solid var(--line); background:var(--bone)}
+  .sw .chip{height:140px}
+  .sw .meta{padding:15px 16px}
+  .sw .nm{font-family:"Newsreader"; font-weight:600; font-size:18px; color:var(--pine-deep)}
+  .sw .hx{font-size:13px; color:var(--mute); font-variant-numeric:tabular-nums}
+  .sw .role{font-size:12px; color:var(--mute); margin-top:8px; line-height:1.4}
+
+  .scale > div{display:grid; grid-template-columns:130px 1fr; gap:24px; align-items:baseline; padding:18px 0; border-bottom:1px solid var(--line)}
+  .scale .tag{font-size:12px; color:var(--mute)}
+  .specimen{font-family:"Newsreader"; color:var(--pine-deep); line-height:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+  .dd{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:26px}
+  .dd .box{border-radius:var(--r); padding:24px; border:1px solid var(--line)}
+  .dd .do{background:oklch(0.93 0.04 155)} .dd .dont{background:oklch(0.94 0.03 60)}
+  .dd h4{font-family:"Newsreader"; font-weight:600; font-size:19px; margin:0 0 12px; color:var(--pine-deep)}
+  .dd .dont h4{color:var(--gold-deep)}
+  .dd ul{margin:0; padding-left:18px} .dd li{margin:8px 0}
+
+  .voicequote{font-family:"Newsreader"; font-weight:500; font-size:clamp(26px,3.8vw,44px); line-height:1.2; color:var(--pine-deep); max-width:22ch}
+  .voicequote em{color:var(--gold-deep)}
+  .pill{display:inline-block; font-weight:600; font-size:14px; padding:8px 15px; border-radius:999px; margin:6px 7px 0 0; background:var(--sage); color:var(--pine-deep)}
+
+  .btn{display:inline-flex; align-items:center; gap:9px; font-family:"Figtree"; font-weight:700; font-size:15px; padding:14px 26px; border-radius:999px; border:none; cursor:pointer; text-decoration:none}
+  .btn-pine{background:var(--pine); color:var(--bone)}
+  .btn-gold{background:var(--gold); color:var(--pine-deep)}
+  .btn-out{background:transparent; color:var(--pine); border:1.5px solid var(--pine)}
+
+  .mock{background:var(--pine-deep); color:var(--bone); border-radius:22px; padding:42px; position:relative; overflow:hidden}
+  .mock .laurel{position:absolute; right:24px; bottom:10px; width:200px; opacity:.5}
+  .mock .eyebrow{color:var(--gold)}
+  .mock h3{color:var(--bone); font-size:clamp(30px,4vw,46px); margin-top:14px; position:relative}
+  .mock h3 em{font-style:italic; color:var(--gold)}
+  .mock .btn{margin-top:26px; position:relative}
+
+  .nav{position:sticky; top:0; z-index:20; backdrop-filter:blur(8px); background:oklch(0.965 0.012 95 / .85); border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:60px}
+  .nav a{font-family:"Figtree"; font-weight:600; font-size:13px; text-decoration:none; color:var(--mute); margin-left:22px}
+  .nav a:hover{color:var(--pine)} .nav .home{color:var(--pine-deep); margin:0; font-weight:700}
+  .foot{padding:54px 0; color:var(--mute); font-size:14px; border-top:1px solid var(--line)}
+
+  @media(max-width:860px){.cover-grid,.two,.dd{grid-template-columns:1fr}.three{grid-template-columns:1fr}.swatches{grid-template-columns:repeat(2,1fr)}.nav .links{display:none}}
+</style>
+</head>
+<body>
+
+<!-- Smarter by 1 Degree mark (recreation; swap in official export). Recolored per instance via custom properties. -->
+<svg width="0" height="0" style="position:absolute"><symbol id="logo" viewBox="0 0 380 410">
+  <text x="186" y="374" font-family="'Archivo',sans-serif" font-weight="900" font-size="430" text-anchor="middle" style="fill:var(--c-s,#1f497d)">S</text>
+  <path d="M205,118 L238,118 L238,324 L266,324 L266,354 L128,354 L128,324 L205,324 L205,172 L166,198 L148,170 Z" style="fill:var(--c-one,#ffffff)"/>
+  <path d="M190,14 L370,92 L190,170 L10,92 Z" style="fill:var(--c-cap,#0c0c0c)"/>
+  <path d="M361,92 L361,150" style="fill:none;stroke:var(--c-cap,#0c0c0c);stroke-width:7"/>
+  <circle cx="361" cy="159" r="17" style="fill:var(--c-cap,#0c0c0c)"/>
+  <circle cx="361" cy="159" r="7.5" style="fill:var(--c-dot,#1f497d)"/>
+  <path d="M347,177 L375,177 L383,212 L339,212 Z" style="fill:var(--c-cap,#0c0c0c)"/>
+  <g style="fill:none;stroke:var(--c-leaf,#ffffff);stroke-width:2.4;stroke-linecap:round">
+    <path d="M118,208 Q162,150 250,150"/>
+    <path d="M150,180 q20,-11 30,-3"/><path d="M176,166 q21,-10 31,-2"/>
+    <path d="M204,156 q21,-9 31,-1"/><path d="M230,151 q20,-8 29,0"/>
+    <path d="M250,302 Q300,332 332,374"/>
+    <path d="M276,316 q24,-12 30,-3"/><path d="M298,332 q24,-10 30,-1"/>
+    <path d="M318,351 q23,-9 29,1"/>
+  </g>
+</symbol></svg>
+
+<nav class="nav"><div class="wrap">
+  <a class="home" href="index.html">← Brand Guides</a>
+  <div class="links"><a href="#idea">Idea</a><a href="#logo">Logo</a><a href="#color">Color</a><a href="#type">Type</a><a href="#voice">Voice</a><a href="#apply">In use</a></div>
+</div></nav>
+
+<header class="cover"><div class="wrap cover-grid">
+  <div>
+    <div class="eyebrow">New Direction 04 · Premium / Academic</div>
+    <h1>A Degree <em>Ahead</em></h1>
+    <p class="lead">A calm, premium identity for the school's real promise: students finish years ahead with an accredited bachelor's degree already earned, and no debt behind it. The look of a trusted advisor, not an online-school ad.</p>
+  </div>
+  <div style="display:grid; place-items:center"><img class="cover-logo" src="assets/sb1d-icon.png" alt="Smarter by 1 Degree icon"></div>
+</div></header>
+
+<section id="idea"><div class="wrap">
+  <div class="eyebrow">The big idea</div>
+  <h2 style="font-size:clamp(32px,5vw,58px); margin-top:16px; max-width:20ch">Don't just graduate. Graduate a whole degree ahead.</h2>
+  <div class="two" style="margin-top:42px">
+    <p class="lead">Most students finish high school and then start college. Smarter by 1 Degree students finish high school already holding college credit, or a full bachelor's, debt-free and years sooner. This direction treats that head start as something earned and honored: the laurel, the gold, the quiet confidence of a real credential.</p>
+    <div class="card tint">
+      <div class="eyebrow" style="color:var(--mute)">The feeling</div>
+      <p style="margin-top:12px; font-size:18px; color:var(--ink)">Considered. Optimistic. Grown-up. This is the trusted advisor your family already wishes they had, not a sales pitch.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="logo"><div class="wrap">
+  <div class="eyebrow">The logo</div>
+  <h2 style="font-size:42px; margin-top:14px">Your mark, kept whole</h2>
+  <p class="lead" style="margin-top:14px">The logo is yours and it doesn't change. In this system it sits on bone or a clean white field, never redrawn or recolored. Pine and gold are the world around it, the colors of growth and of a real degree earned.</p>
+  <div class="three" style="margin-top:34px">
+    <div class="card logocard"><img src="assets/sb1d-icon.png" style="width:108px" alt="Smarter by 1 Degree icon"><div class="eyebrow" style="color:var(--mute)">On bone</div></div>
+    <div class="card logocard" style="background:#fff"><img src="assets/sb1d-icon.png" style="width:108px" alt="Smarter by 1 Degree icon"><div class="eyebrow" style="color:var(--mute)">On white</div></div>
+    <div class="card logocard" style="background:var(--pine-deep); border-color:var(--pine-deep)"><span style="display:inline-block; background:#fff; border-radius:14px; padding:16px"><img src="assets/sb1d-icon.png" style="width:88px; display:block" alt="Smarter by 1 Degree icon"></span><div class="eyebrow" style="color:var(--gold)">On pine (white field)</div></div>
+  </div>
+  <div class="dd">
+    <div class="box do"><h4>Do</h4><ul><li>Keep the logo full-color on bone or a clean white field.</li><li>Let gold mark achievement: a key word, a rule, a button.</li><li>Surround the mark with generous, quiet space.</li></ul></div>
+    <div class="box dont"><h4>Don't</h4><ul><li>Redraw, recolor, or flatten the artwork to one tone.</li><li>Set the full-color mark straight onto pine; use a white field.</li><li>Crowd the mark with texture or photography.</li></ul></div>
+  </div>
+</div></section>
+
+<section id="color"><div class="wrap">
+  <div class="eyebrow">Color</div>
+  <h2 style="font-size:42px; margin-top:14px">Pine, gold, and bone</h2>
+  <p class="lead" style="margin-top:14px">Strategy: <b>committed</b>. Deep pine signals growth and seriousness; warm gold marks the achievement of a real degree; bone keeps everything breathing.</p>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:oklch(0.375 0.062 160)"></div><div class="meta"><div class="nm">Pine</div><div class="hx">#2E5546</div><div class="role">Primary, growth, trust.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.28 0.05 162)"></div><div class="meta"><div class="nm">Deep Pine</div><div class="hx">#1F3A30</div><div class="role">Backgrounds, depth.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.755 0.115 78)"></div><div class="meta"><div class="nm">Honor Gold</div><div class="hx">#D9A441</div><div class="role">Achievement accent.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.88 0.03 150)"></div><div class="meta"><div class="nm">Sage</div><div class="hx">#CBDDC9</div><div class="role">Tints, soft panels.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.965 0.012 95); border-bottom:1px solid var(--line)"></div><div class="meta"><div class="nm">Bone</div><div class="hx">#F6F3E9</div><div class="role">Background, space.</div></div></div>
+  </div>
+  <p style="margin-top:20px; color:var(--mute); font-size:15px; max-width:60ch">Your brand navy lives on the full-color master logo, keeping the identity connected. Pine and gold are this direction's voice, used across the system around that mark.</p>
+</div></section>
+
+<section id="type"><div class="wrap">
+  <div class="eyebrow">Typography</div>
+  <h2 style="font-size:42px; margin-top:14px">Newsreader + Figtree</h2>
+  <p class="lead" style="margin-top:14px"><b>Newsreader</b>, a literary serif with a touch of warmth, carries the considered, advisory voice. <b>Figtree</b>, a clean humanist sans, keeps everything legible and modern.</p>
+  <div class="scale" style="margin-top:30px">
+    <div><span class="tag">Display / serif</span><span class="specimen" style="font-size:54px; font-weight:500">Finish a degree ahead.</span></div>
+    <div><span class="tag">Display italic</span><span class="specimen" style="font-size:48px; font-weight:400; font-style:italic; color:var(--gold-deep)">earned, not waited for</span></div>
+    <div><span class="tag">H3 / 600</span><span class="specimen" style="font-size:27px; font-weight:600">Advised from day one.</span></div>
+    <div><span class="tag">Body / Figtree</span><span class="specimen" style="font-family:'Figtree'; font-size:18px; font-weight:400; color:var(--ink-soft)">A diploma and an accredited bachelor's, earned together.</span></div>
+  </div>
+</div></section>
+
+<section id="voice"><div class="wrap">
+  <div class="eyebrow">Voice &amp; tone</div>
+  <h2 style="font-size:42px; margin-top:14px; margin-bottom:32px">Wise, warm, and reassuring</h2>
+  <div class="two">
+    <p class="voicequote">Every student deserves more than a diploma. They deserve <em>direction.</em></p>
+    <div>
+      <div class="eyebrow" style="color:var(--mute)">Say things like</div>
+      <div style="margin-top:12px">
+        <span class="pill">A degree ahead</span><span class="pill">Earned, not waited for</span><span class="pill">A real, accredited degree</span><span class="pill">Planned, not pressured</span><span class="pill">Debt-free, years sooner</span>
+      </div>
+      <div class="eyebrow" style="color:var(--mute); margin-top:26px">Tone</div>
+      <p style="color:var(--ink); margin-top:8px">Speaks to parents as partners and to students as capable adults-in-progress. Calm confidence over urgency.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="apply"><div class="wrap">
+  <div class="eyebrow">In use</div>
+  <h2 style="font-size:42px; margin-top:14px; margin-bottom:32px">The system, applied</h2>
+  <div class="two">
+    <div class="mock">
+      <span style="display:inline-block; background:#fff; border-radius:12px; padding:10px; position:relative"><img src="assets/sb1d-icon.png" style="width:36px; display:block" alt="Smarter by 1 Degree icon"></span>
+      <div class="eyebrow" style="margin-top:16px">Smarter by 1 Degree</div>
+      <h3>Graduate with a <em>degree</em>,<br>not just a diploma.</h3>
+      <a class="btn btn-gold" href="#">Plan your path →</a>
+    </div>
+    <div class="card" style="display:flex; flex-direction:column; gap:20px; justify-content:center">
+      <div><div class="eyebrow" style="color:var(--mute)">Buttons</div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px"><a class="btn btn-pine" href="#">Enroll</a><a class="btn btn-gold" href="#">Book advising</a><a class="btn btn-out" href="#">Learn more</a></div>
+      </div>
+      <div><div class="eyebrow" style="color:var(--mute)">Outcome stat</div>
+        <div style="display:flex; gap:38px; margin-top:10px">
+          <div><div style="font-family:Newsreader; font-weight:600; font-size:48px; color:var(--pine-deep)">4+</div><div style="color:var(--mute); font-size:14px">years saved</div></div>
+          <div><div style="font-family:Newsreader; font-weight:600; font-size:48px; color:var(--gold-deep)">$0</div><div style="color:var(--mute); font-size:14px">student debt</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap">Smarter by 1 Degree — A Degree Ahead. New premium direction, built around your existing logo. · <a href="index.html">All four directions →</a></div></footer>
+</body>
+</html>

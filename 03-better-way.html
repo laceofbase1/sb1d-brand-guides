@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smarter by 1 Degree — The Better Way (New Direction)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@900&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:oklch(0.962 0.018 88);
+    --paper-2:oklch(0.935 0.024 86);
+    --ink:oklch(0.235 0.022 55);
+    --ink-soft:oklch(0.40 0.03 55);
+    --coral:oklch(0.645 0.185 34);
+    --coral-deep:oklch(0.52 0.17 32);
+    --line:oklch(0.84 0.03 80);
+    --mute:oklch(0.50 0.03 65);
+    --maxw:1100px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:"Space Grotesk",system-ui,sans-serif; font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Fraunces",serif; margin:0; line-height:0.98; letter-spacing:-0.015em; font-weight:900; color:var(--ink)}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 36px}
+  section{padding:90px 0; border-top:2px solid var(--ink)}
+  .eyebrow{font-family:"Space Grotesk"; font-weight:700; font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--coral-deep)}
+  .num{font-family:"Fraunces"; font-weight:900; font-size:13px; color:var(--coral); letter-spacing:0.1em}
+  .lead{font-size:21px; color:var(--ink-soft); max-width:58ch; line-height:1.45}
+  a{color:var(--coral-deep)}
+
+  /* Cover */
+  .cover{border-top:none; padding:64px 0 40px; position:relative; overflow:hidden}
+  .cover .kicker{display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--ink); padding-bottom:16px; font-family:"Space Grotesk"; font-weight:600; font-size:13px; letter-spacing:0.12em; text-transform:uppercase}
+  .cover h1{font-size:clamp(56px,14vw,170px); margin-top:30px; line-height:0.84; letter-spacing:-0.03em}
+  .cover h1 .it{font-style:italic; font-weight:400; color:var(--coral)}
+  .cover-foot{display:grid; grid-template-columns:1fr auto; gap:30px; align-items:end; margin-top:34px}
+  .cover .lead{font-family:"Fraunces"; font-weight:500; font-size:clamp(20px,2.6vw,30px); line-height:1.3; color:var(--ink); max-width:30ch}
+  .cover-logo{width:128px; flex:none}
+
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:40px}
+  .three{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--ink); border:2px solid var(--ink)}
+  .three > div{background:var(--paper); padding:28px}
+
+  /* Color */
+  .swatches{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:2px solid var(--ink); margin-top:30px}
+  .sw{padding:0; border-right:2px solid var(--ink)} .sw:last-child{border-right:none}
+  .sw .chip{height:150px}
+  .sw .meta{padding:16px; border-top:2px solid var(--ink)}
+  .sw .nm{font-family:"Fraunces"; font-weight:900; font-size:18px}
+  .sw .hx{font-size:13px; color:var(--mute); font-variant-numeric:tabular-nums; margin-top:2px}
+  .sw .role{font-size:13px; color:var(--ink-soft); margin-top:8px; line-height:1.4}
+
+  .scale > div{display:grid; grid-template-columns:130px 1fr; gap:24px; align-items:baseline; padding:18px 0; border-bottom:1px solid var(--line)}
+  .scale .tag{font-size:12px; color:var(--mute); letter-spacing:0.04em}
+  .specimen{font-family:"Fraunces"; color:var(--ink); line-height:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+  .dd{display:grid; grid-template-columns:1fr 1fr; gap:0; border:2px solid var(--ink); margin-top:26px}
+  .dd .box{padding:24px} .dd .do{border-right:2px solid var(--ink)}
+  .dd h4{font-family:"Fraunces"; font-weight:900; font-size:18px; margin:0 0 12px}
+  .dd .dont h4{color:var(--coral-deep)}
+  .dd ul{margin:0; padding-left:18px} .dd li{margin:8px 0}
+
+  .pull{font-family:"Fraunces"; font-weight:900; font-size:clamp(34px,6vw,72px); line-height:0.98; letter-spacing:-0.02em; max-width:16ch}
+  .pull .it{font-style:italic; font-weight:400; color:var(--coral)}
+  .pill{display:inline-block; font-family:"Space Grotesk"; font-weight:600; font-size:14px; padding:8px 15px; border:2px solid var(--ink); border-radius:999px; margin:6px 7px 0 0}
+  .pill.fill{background:var(--ink); color:var(--paper)}
+
+  .btn{display:inline-flex; align-items:center; gap:9px; font-family:"Space Grotesk"; font-weight:700; font-size:16px; padding:15px 26px; border:2px solid var(--ink); cursor:pointer; text-decoration:none; border-radius:999px}
+  .btn-fill{background:var(--coral); color:var(--paper); border-color:var(--coral)}
+  .btn-ink{background:var(--ink); color:var(--paper)}
+  .btn-out{background:transparent; color:var(--ink)}
+
+  .mock{background:var(--ink); color:var(--paper); padding:44px 40px; position:relative; overflow:hidden}
+  .mock .tag{font-family:"Space Grotesk"; font-weight:700; letter-spacing:0.2em; font-size:12px; text-transform:uppercase; color:var(--coral)}
+  .mock h3{color:var(--paper); font-size:clamp(34px,5vw,60px); margin-top:14px; line-height:0.95}
+  .mock h3 .it{font-style:italic; font-weight:400; color:var(--coral)}
+  .mock .btn{margin-top:26px; border-color:var(--paper); color:var(--ink); background:var(--paper)}
+
+  .logocard{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:16px}
+  .nav{position:sticky; top:0; z-index:20; background:var(--paper); border-bottom:2px solid var(--ink)}
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:58px}
+  .nav a{font-family:"Space Grotesk"; font-weight:600; font-size:13px; text-decoration:none; color:var(--ink); margin-left:22px}
+  .nav a:hover{color:var(--coral-deep)} .nav .home{margin:0; font-weight:700}
+  .foot{padding:50px 0; color:var(--mute); font-size:14px; border-top:2px solid var(--ink)}
+
+  @media(max-width:860px){.two,.dd{grid-template-columns:1fr}.three,.swatches{grid-template-columns:1fr}.three>div{border-bottom:1px solid var(--line)} .dd .do{border-right:none;border-bottom:2px solid var(--ink)} .sw{border-right:none;border-bottom:2px solid var(--ink)} .nav .links{display:none}}
+</style>
+</head>
+<body>
+
+<!-- Smarter by 1 Degree mark (recreation; swap in official export). Recolored per instance via custom properties. -->
+<svg width="0" height="0" style="position:absolute"><symbol id="logo" viewBox="0 0 380 410">
+  <text x="186" y="374" font-family="'Archivo',sans-serif" font-weight="900" font-size="430" text-anchor="middle" style="fill:var(--c-s,#1f497d)">S</text>
+  <path d="M205,118 L238,118 L238,324 L266,324 L266,354 L128,354 L128,324 L205,324 L205,172 L166,198 L148,170 Z" style="fill:var(--c-one,#ffffff)"/>
+  <path d="M190,14 L370,92 L190,170 L10,92 Z" style="fill:var(--c-cap,#0c0c0c)"/>
+  <path d="M361,92 L361,150" style="fill:none;stroke:var(--c-cap,#0c0c0c);stroke-width:7"/>
+  <circle cx="361" cy="159" r="17" style="fill:var(--c-cap,#0c0c0c)"/>
+  <circle cx="361" cy="159" r="7.5" style="fill:var(--c-dot,#1f497d)"/>
+  <path d="M347,177 L375,177 L383,212 L339,212 Z" style="fill:var(--c-cap,#0c0c0c)"/>
+  <g style="fill:none;stroke:var(--c-leaf,#ffffff);stroke-width:2.4;stroke-linecap:round">
+    <path d="M118,208 Q162,150 250,150"/>
+    <path d="M150,180 q20,-11 30,-3"/><path d="M176,166 q21,-10 31,-2"/>
+    <path d="M204,156 q21,-9 31,-1"/><path d="M230,151 q20,-8 29,0"/>
+    <path d="M250,302 Q300,332 332,374"/>
+    <path d="M276,316 q24,-12 30,-3"/><path d="M298,332 q24,-10 30,-1"/>
+    <path d="M318,351 q23,-9 29,1"/>
+  </g>
+</symbol></svg>
+
+<nav class="nav"><div class="wrap">
+  <a class="home" href="index.html">← Brand Guides</a>
+  <div class="links"><a href="#idea">Idea</a><a href="#logo">Logo</a><a href="#color">Color</a><a href="#type">Type</a><a href="#voice">Voice</a><a href="#apply">In use</a></div>
+</div></nav>
+
+<header class="cover"><div class="wrap">
+  <div class="kicker"><span>New Direction 03</span><span>Smarter by 1 Degree</span><span>Editorial / Challenger</span></div>
+  <h1>The<br>Better<br><span class="it">Way.</span></h1>
+  <div class="cover-foot">
+    <p class="lead">A challenger look and voice for students who skip the wait and walk away with a real, accredited bachelor's degree already in hand. Warm paper, hard ink, one electric accent.</p>
+    <img class="cover-logo" src="assets/sb1d-icon.png" alt="Smarter by 1 Degree icon">
+  </div>
+</div></header>
+
+<section id="idea"><div class="wrap">
+  <div class="num">01 — The big idea</div>
+  <h2 style="font-size:clamp(34px,6vw,76px); margin-top:18px; max-width:14ch">Better to walk alone than follow the crowd the wrong way.</h2>
+  <div class="two" style="margin-top:40px">
+    <p class="lead">This direction takes the brand's most quotable belief and makes it the whole identity. The default path takes four years of high school and four more for a degree. Smarter by 1 Degree collapses that: students earn the diploma and the bachelor's together, debt-free, and graduate years ahead of everyone who waited. The look should feel as decisive as that choice.</p>
+    <div>
+      <div class="eyebrow">Who it's for</div>
+      <p style="margin-top:10px; font-size:18px; color:var(--ink)">Independent-minded teens and the parents who trust them. ADHD and dyslexic learners who never fit the factory model. Families done overpaying for a path that doesn't fit.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="logo"><div class="wrap">
+  <div class="num">02 — The logo</div>
+  <h2 style="font-size:42px; margin-top:16px">Your mark, kept whole</h2>
+  <p class="lead" style="margin-top:14px">The logo stays exactly as it is, in full color, never redrawn or recolored. In this editorial system it sits on warm paper or a clean white field, with plenty of room. Coral belongs to the type and accents around it, not to the mark.</p>
+  <div class="three" style="margin-top:34px">
+    <div class="logocard"><img src="assets/sb1d-icon.png" style="width:104px" alt="Smarter by 1 Degree icon"><div class="eyebrow" style="color:var(--mute)">On paper</div></div>
+    <div class="logocard" style="background:#fff"><img src="assets/sb1d-icon.png" style="width:104px" alt="Smarter by 1 Degree icon"><div class="eyebrow" style="color:var(--mute)">On white</div></div>
+    <div class="logocard" style="background:var(--ink)"><span style="display:inline-block; background:#fff; border-radius:14px; padding:16px"><img src="assets/sb1d-icon.png" style="width:84px; display:block" alt="Smarter by 1 Degree icon"></span><div class="eyebrow" style="color:var(--paper)">On ink (white field)</div></div>
+  </div>
+  <div class="dd">
+    <div class="box do"><h4>Do</h4><ul><li>Keep the logo full-color on paper or a clean white field.</li><li>Give the mark room; let it sit large and alone.</li><li>Reserve coral for the type and accents around it.</li></ul></div>
+    <div class="box dont"><h4>Don't</h4><ul><li>Redraw, recolor, or flatten the artwork to one tone.</li><li>Set the full-color mark straight onto ink or a photo; use a white field.</li><li>Crowd the mark or shrink it below legibility.</li></ul></div>
+  </div>
+</div></section>
+
+<section id="color"><div class="wrap">
+  <div class="num">03 — Color</div>
+  <h2 style="font-size:42px; margin-top:16px">Paper, ink, one electric accent</h2>
+  <p class="lead" style="margin-top:14px">Strategy: <b>committed</b>. Warm paper and hard ink do almost all the work. Coral is used like a highlighter: rarely, and only on the thing that matters most.</p>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:oklch(0.962 0.018 88)"></div><div class="meta"><div class="nm">Paper</div><div class="hx">#F3ECDC</div><div class="role">Default background.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.235 0.022 55)"></div><div class="meta"><div class="nm">Ink</div><div class="hx">#2A2118</div><div class="role">Text, rules, structure.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.645 0.185 34)"></div><div class="meta"><div class="nm">Accent Coral</div><div class="hx">#E0623B</div><div class="role">One thing per view. &lt;10%.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.935 0.024 86)"></div><div class="meta"><div class="nm">Sand</div><div class="hx">#E9DFC9</div><div class="role">Panels, alt sections.</div></div></div>
+  </div>
+  <p style="margin-top:20px; color:var(--mute); font-size:15px; max-width:60ch">Your brand navy still lives on the full-color logo, so the identity stays connected. Coral is this direction's energy, not a replacement for navy across the board.</p>
+</div></section>
+
+<section id="type"><div class="wrap">
+  <div class="num">04 — Type</div>
+  <h2 style="font-size:42px; margin-top:16px">Fraunces × Space Grotesk</h2>
+  <p class="lead" style="margin-top:14px"><b>Fraunces</b>, a high-contrast display serif, makes statements feel literary and confident, the opposite of a corporate brochure. <b>Space Grotesk</b> keeps the supporting copy modern and a little unconventional.</p>
+  <div class="scale" style="margin-top:30px">
+    <div><span class="tag">Display / 900</span><span class="specimen" style="font-size:60px; font-weight:900">Skip the wait.</span></div>
+    <div><span class="tag">Display italic</span><span class="specimen" style="font-size:54px; font-weight:400; font-style:italic; color:var(--coral)">a degree ahead</span></div>
+    <div><span class="tag">H3 / 600</span><span class="specimen" style="font-size:28px; font-weight:600">Mastery over busywork.</span></div>
+    <div><span class="tag">Body / Grotesk</span><span class="specimen" style="font-family:'Space Grotesk'; font-size:18px; font-weight:400; color:var(--ink-soft)">A real, accredited bachelor's. Half the time, none of the debt.</span></div>
+  </div>
+</div></section>
+
+<section id="voice"><div class="wrap">
+  <div class="num">05 — Voice</div>
+  <h2 style="font-size:42px; margin-top:16px; margin-bottom:34px">Direct. A little defiant. Always on the student's side.</h2>
+  <div class="two">
+    <p class="pull">Work <span class="it">smarter.</span> Not harder.</p>
+    <div>
+      <div class="eyebrow">Say things like</div>
+      <div style="margin-top:14px">
+        <span class="pill fill">Skip the wait</span><span class="pill">A degree ahead</span><span class="pill fill">Graduate early, debt-free</span><span class="pill">A real, accredited degree</span><span class="pill">The default is optional</span>
+      </div>
+      <div class="eyebrow" style="margin-top:26px">Never</div>
+      <p style="margin-top:8px; color:var(--ink)">Corporate, fearful, or condescending. This brand respects that a teenager can make a big decision.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="apply"><div class="wrap">
+  <div class="num">06 — In use</div>
+  <h2 style="font-size:42px; margin-top:16px; margin-bottom:32px">The system, applied</h2>
+  <div class="two">
+    <div class="mock">
+      <div class="tag">Smarter by 1 Degree</div>
+      <h3>Two years in,<br>you'll be a <span class="it">sophomore</span> in college.</h3>
+      <a class="btn" href="#">See the path →</a>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:22px; justify-content:center">
+      <div><div class="eyebrow">Buttons</div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px"><a class="btn btn-fill" href="#">Apply now</a><a class="btn btn-ink" href="#">How it works</a><a class="btn btn-out" href="#">Talk to us</a></div>
+      </div>
+      <div><div class="eyebrow">Stat, editorial style</div>
+        <div style="display:flex; align-items:baseline; gap:8px; margin-top:8px"><span style="font-family:Fraunces; font-weight:900; font-size:78px; line-height:0.8">80</span><span style="font-family:Fraunces; font-weight:900; font-size:40px; color:var(--coral)">%</span></div>
+        <p style="margin:6px 0 0; color:var(--ink-soft)">less than a traditional four-year degree.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap">Smarter by 1 Degree — The Better Way. New challenger direction, built around your existing logo. · <a href="index.html">All four directions →</a></div></footer>
+</body>
+</html>
