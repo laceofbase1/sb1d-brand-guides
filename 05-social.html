@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smarter by 1 Degree — Momentum Social Templates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F497D; --navy-deep:oklch(0.33 0.078 256); --midnight:oklch(0.22 0.055 256);
+    --azure:oklch(0.64 0.155 244); --azure-bright:oklch(0.70 0.16 244);
+    --azure-200:oklch(0.86 0.08 244); --azure-soft:oklch(0.93 0.045 244);
+    --graphite:oklch(0.31 0.014 256); --ink:oklch(0.24 0.018 256);
+    --paper:oklch(0.992 0.003 250); --cloud:oklch(0.965 0.007 250);
+    --mist:oklch(0.92 0.012 250); --line:oklch(0.90 0.012 250); --mute:oklch(0.50 0.02 250);
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--paper); color:var(--graphite); font-family:"Hanken Grotesk",system-ui,sans-serif; font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Archivo"; margin:0; letter-spacing:-0.025em; line-height:1.03; color:var(--navy-deep)}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 36px}
+  a{color:var(--navy)}
+  .kicker{display:inline-flex; align-items:center; gap:10px; font-family:"Archivo"; font-weight:800; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--azure)}
+  .kicker::before{content:""; width:26px; height:2px; background:var(--azure); border-radius:2px}
+
+  .nav{position:sticky; top:0; z-index:40; backdrop-filter:blur(10px); background:oklch(0.992 0.003 250 / .82); border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:62px}
+  .nav .home{display:flex; align-items:center; gap:10px; font-family:"Archivo"; font-weight:800; font-size:14px; color:var(--navy-deep); text-decoration:none}
+  .nav .home img{height:26px}
+  .nav .links a{font-family:"Archivo"; font-weight:700; font-size:12.5px; text-decoration:none; color:var(--mute); margin-left:20px}
+
+  header.hero{padding:74px 0 18px; background:linear-gradient(168deg,var(--paper) 30%,var(--azure-soft))}
+  header h1{font-size:clamp(40px,6.5vw,76px); font-weight:900; color:var(--navy-deep); margin-top:14px}
+  header h1 .mv{color:var(--azure)}
+  header p{font-size:21px; color:var(--mute); max-width:60ch; margin-top:18px; line-height:1.5}
+
+  section{padding:54px 0 10px}
+  .secthead{display:flex; align-items:baseline; gap:14px; margin-bottom:24px}
+  .secthead h2{font-size:26px; font-weight:900}
+  .secthead .dim{font-family:"Archivo"; font-weight:700; font-size:13px; color:var(--mute)}
+
+  .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  .grid.stories{grid-template-columns:repeat(4,1fr); max-width:760px}
+  figure{margin:0}
+  figcaption{font-family:"Hanken Grotesk"; font-size:13px; color:var(--mute); margin-top:9px}
+  figcaption b{font-family:"Archivo"; font-weight:700; color:var(--navy-deep); display:block; font-size:13px}
+
+  /* ---- template canvas ---- */
+  .post{container-type:inline-size; position:relative; border-radius:14px; overflow:hidden; box-shadow:0 18px 40px -24px oklch(0.33 0.078 256 / .5); border:1px solid var(--line)}
+  .sq{aspect-ratio:1/1}
+  .story{aspect-ratio:9/16}
+  .pad{position:absolute; inset:0; padding:7cqw; display:flex; flex-direction:column}
+  .chip{display:inline-flex; background:#fff; border-radius:3cqw; padding:2.4cqw}
+  .chip img{display:block; width:9cqw}
+  .toprow{display:flex; align-items:flex-start; justify-content:space-between}
+  .ttag{font-family:"Archivo"; font-weight:800; font-size:3.1cqw; letter-spacing:0.12em; color:var(--azure-bright)}
+  .url{font-family:"Archivo"; font-weight:700; font-size:3.1cqw; letter-spacing:0.04em}
+  .arrow{display:inline-block}
+  /* themes */
+  .t-navy{background:var(--navy-deep)} .t-navy *{color:#fff}
+  .t-navy .glow{position:absolute; right:-15cqw; top:-15cqw; width:55cqw; height:55cqw; background:radial-gradient(circle,var(--azure),transparent 68%); opacity:.5}
+  .t-navy .bottombar{position:absolute; left:0; right:0; bottom:0; height:1.6cqw; background:linear-gradient(90deg,var(--navy),var(--azure))}
+  .t-white{background:#fff}
+  .t-azure{background:var(--azure)} .t-azure *{color:#fff}
+
+  .hl{color:var(--azure-bright)}
+  .post h3.big{font-family:"Archivo"; font-weight:900; letter-spacing:-0.02em; line-height:1.0}
+
+  /* stat split */
+  .statwrap{display:flex; flex-direction:column; gap:3cqw; flex:1; justify-content:center}
+  .statbig{font-family:"Archivo"; font-weight:900; line-height:.86}
+
+  /* testimonial w/ photo */
+  .photohalf{position:absolute; inset:0 38% 0 0; overflow:hidden}
+  .photohalf img{width:100%; height:100%; object-fit:cover}
+  .quotehalf{position:absolute; inset:0 0 0 62%; background:var(--navy-deep); padding:6cqw; display:flex; flex-direction:column; justify-content:center}
+  .quotehalf *{color:#fff}
+
+  .note{background:var(--cloud); border:1px solid var(--line); border-radius:14px; padding:20px 24px; margin:34px 0 0; font-size:15px; color:var(--graphite)}
+  .note b{font-family:"Archivo"; color:var(--navy-deep)}
+  .foot{padding:46px 0; color:var(--mute); font-size:14px; border-top:1px solid var(--line); margin-top:40px}
+  .foot a{color:var(--navy); font-weight:600}
+
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)} .grid.stories{grid-template-columns:repeat(2,1fr)} .nav .links{display:none}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="home" href="index.html"><img src="assets/sb1d-logo-horizontal.png" alt="Smarter by 1 Degree"></a>
+  <div class="links"><a href="02-momentum.html">← Momentum guide</a><a href="index.html">All directions</a></div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Momentum · Social templates</div>
+  <h1>Ready to post, <span class="mv">on brand.</span></h1>
+  <p>A starter set of social templates in the Momentum system: square posts for Instagram and Facebook, plus Stories. Same navy, same logo, the azure signal and forward motion throughout. Swap the words and ship.</p>
+</div></header>
+
+<!-- ============ FEED POSTS (1:1) ============ -->
+<section><div class="wrap">
+  <div class="secthead"><h2>Feed posts</h2><span class="dim">1080 × 1080 · Instagram / Facebook</span></div>
+  <div class="grid">
+
+    <!-- 1. Hook headline -->
+    <figure>
+      <div class="post sq t-navy">
+        <div class="glow"></div>
+        <div class="pad">
+          <div class="toprow"><span class="chip"><img src="assets/sb1d-icon.png" alt="icon"></span><span class="ttag">WORK SMARTER →</span></div>
+          <div style="flex:1; display:flex; align-items:center">
+            <h3 class="big" style="font-size:10.2cqw">Two years in,<br>you'll be a <span class="hl">sophomore</span><br>in college.</h3>
+          </div>
+          <span class="url">smarterby1degree.com</span>
+        </div>
+        <div class="bottombar"></div>
+      </div>
+      <figcaption><b>Hook headline</b>Stop-the-scroll claim. Swap the line, keep the highlight.</figcaption>
+    </figure>
+
+    <!-- 2. Stat -->
+    <figure>
+      <div class="post sq t-white">
+        <div class="pad">
+          <div class="toprow"><span class="chip" style="background:var(--cloud)"><img src="assets/sb1d-icon.png" alt="icon"></span><span class="ttag" style="color:var(--azure)">THE MATH</span></div>
+          <div class="statwrap">
+            <div><div class="statbig" style="font-size:26cqw; color:var(--navy)">80%</div><div style="font-family:'Hanken Grotesk'; font-weight:600; font-size:4.4cqw; color:var(--graphite); margin-top:1cqw">lower cost than a 4-year degree</div></div>
+            <div><div class="statbig" style="font-size:26cqw; color:var(--azure)">4+ yrs</div><div style="font-family:'Hanken Grotesk'; font-weight:600; font-size:4.4cqw; color:var(--graphite); margin-top:1cqw">faster to a bachelor's</div></div>
+          </div>
+          <span class="url" style="color:var(--navy)">smarterby1degree.com</span>
+        </div>
+      </div>
+      <figcaption><b>Stat card</b>Proof at a glance. Navy + azure stat pairing.</figcaption>
+    </figure>
+
+    <!-- 3. Founder quote -->
+    <figure>
+      <div class="post sq t-navy">
+        <div class="pad">
+          <div style="font-family:'Archivo'; font-weight:900; font-size:22cqw; line-height:.7; color:var(--azure)">&ldquo;</div>
+          <div style="flex:1; display:flex; align-items:center">
+            <h3 class="big" style="font-size:6.6cqw; font-weight:800; letter-spacing:-0.01em">Every student deserves more than a diploma. They deserve <span class="hl">direction.</span></h3>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between">
+            <div><div style="font-family:'Archivo'; font-weight:800; font-size:4cqw">Janine Deems</div><div style="font-size:3.2cqw; color:var(--azure-200)">Founder</div></div>
+            <span class="chip"><img src="assets/sb1d-icon.png" alt="icon"></span>
+          </div>
+        </div>
+        <div class="bottombar"></div>
+      </div>
+      <figcaption><b>Founder quote</b>Voice + trust. Rotate quotes weekly.</figcaption>
+    </figure>
+
+    <!-- 4. Myth vs Fact -->
+    <figure>
+      <div class="post sq t-white">
+        <div class="pad">
+          <div class="toprow"><span class="chip" style="background:var(--cloud)"><img src="assets/sb1d-icon.png" alt="icon"></span><span class="ttag" style="color:var(--mute)">MYTH · FACT</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:4cqw">
+            <div style="font-family:'Hanken Grotesk'; font-weight:600; font-size:5.4cqw; color:var(--mute); text-decoration:line-through; text-decoration-color:var(--azure)">"You can't earn a real degree in high school."</div>
+            <div><span style="font-family:'Archivo'; font-weight:900; font-size:4cqw; color:var(--azure); letter-spacing:0.08em">ACTUALLY,</span><h3 class="big" style="font-size:7.2cqw; color:var(--navy-deep); margin-top:1.5cqw">you can. Accredited, debt-free, years sooner.</h3></div>
+          </div>
+          <span class="url" style="color:var(--navy)">smarterby1degree.com</span>
+        </div>
+      </div>
+      <figcaption><b>Myth vs Fact</b>Reframes objections. Educational series.</figcaption>
+    </figure>
+
+    <!-- 5. Testimonial w/ photo -->
+    <figure>
+      <div class="post sq">
+        <div class="photohalf"><img src="https://images.unsplash.com/photo-1758270705317-3ef6142d306f?auto=format&fit=crop&w=700&q=80" alt="A student working on a laptop, smiling"></div>
+        <div class="quotehalf">
+          <div style="font-family:'Archivo'; font-weight:900; font-size:14cqw; line-height:.6; color:var(--azure)">&ldquo;</div>
+          <h3 class="big" style="font-size:5.4cqw; font-weight:800; margin-top:2cqw">I'm a junior, and I already have college credits.</h3>
+          <div style="margin-top:3cqw"><div style="font-family:'Archivo'; font-weight:800; font-size:3.4cqw">Maya R.</div><div style="font-size:2.9cqw; color:var(--azure-200)">11th grade student</div></div>
+        </div>
+      </div>
+      <figcaption><b>Testimonial</b>Photo + student voice. Most-shared format.</figcaption>
+    </figure>
+
+    <!-- 6. CTA / Enroll -->
+    <figure>
+      <div class="post sq t-azure">
+        <div class="pad">
+          <div class="toprow"><span class="chip"><img src="assets/sb1d-icon.png" alt="icon"></span><span class="ttag" style="color:#fff; opacity:.85">ENROLLING NOW</span></div>
+          <div style="flex:1; display:flex; align-items:center">
+            <h3 class="big" style="font-size:9.6cqw; color:#fff">Fall spots<br>are open.</h3>
+          </div>
+          <div style="display:inline-flex; align-self:flex-start; align-items:center; gap:2.4cqw; background:#fff; color:var(--navy); font-family:'Archivo'; font-weight:800; font-size:4cqw; padding:3cqw 4.4cqw; border-radius:2.6cqw">Book a free call <span class="arrow">→</span></div>
+          <span class="url" style="margin-top:auto">smarterby1degree.com</span>
+        </div>
+      </div>
+      <figcaption><b>Call to action</b>Enrollment pushes. Azure = act now.</figcaption>
+    </figure>
+
+  </div>
+</div></section>
+
+<!-- ============ STORIES (9:16) ============ -->
+<section><div class="wrap">
+  <div class="secthead"><h2>Stories</h2><span class="dim">1080 × 1920 · Instagram / Facebook Stories</span></div>
+  <div class="grid stories">
+
+    <!-- Story 1: announcement -->
+    <figure>
+      <div class="post story t-navy">
+        <div class="glow"></div>
+        <div class="pad" style="padding:9cqw">
+          <span class="chip" style="align-self:center"><img src="assets/sb1d-icon.png" alt="icon"></span>
+          <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
+            <span class="ttag" style="font-size:3.6cqw">THERE'S A BETTER WAY</span>
+            <h3 class="big" style="font-size:11cqw; margin-top:3cqw">Graduate a <span class="hl">degree</span> ahead.</h3>
+            <p style="font-family:'Hanken Grotesk'; font-size:4.2cqw; color:var(--azure-200); margin-top:3cqw; max-width:30ch">Diploma + accredited bachelor's, at the same time.</p>
+          </div>
+          <div style="display:inline-flex; align-self:center; align-items:center; gap:2cqw; background:var(--azure); color:#fff; font-family:'Archivo'; font-weight:800; font-size:3.8cqw; padding:3cqw 5cqw; border-radius:2.4cqw">Link in bio <span>→</span></div>
+        </div>
+        <div class="bottombar"></div>
+      </div>
+      <figcaption><b>Story · Announcement</b></figcaption>
+    </figure>
+
+    <!-- Story 2: stat -->
+    <figure>
+      <div class="post story t-white">
+        <div class="pad" style="padding:9cqw">
+          <span class="chip" style="background:var(--cloud); align-self:center"><img src="assets/sb1d-icon.png" alt="icon"></span>
+          <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center">
+            <div class="statbig" style="font-size:34cqw; color:var(--navy)">80%</div>
+            <div style="font-family:'Hanken Grotesk'; font-weight:600; font-size:5cqw; color:var(--graphite); margin-top:2cqw">less than a<br>4-year degree</div>
+          </div>
+          <span class="url" style="color:var(--navy); align-self:center">smarterby1degree.com</span>
+        </div>
+        <div class="bottombar"></div>
+      </div>
+      <figcaption><b>Story · Stat</b></figcaption>
+    </figure>
+
+    <!-- Story 3: hook -->
+    <figure>
+      <div class="post story t-azure">
+        <div class="pad" style="padding:9cqw">
+          <span class="chip" style="align-self:center"><img src="assets/sb1d-icon.png" alt="icon"></span>
+          <div style="flex:1; display:flex; align-items:center">
+            <h3 class="big" style="font-size:11cqw; color:#fff">Work smarter.<br>Not harder.</h3>
+          </div>
+          <span class="url" style="color:#fff; align-self:center; opacity:.9">smarterby1degree.com</span>
+        </div>
+      </div>
+      <figcaption><b>Story · Hook</b></figcaption>
+    </figure>
+
+    <!-- Story 4: photo + CTA -->
+    <figure>
+      <div class="post story t-navy">
+        <div style="position:absolute; inset:0 0 42% 0; overflow:hidden"><img src="https://images.unsplash.com/photo-1758270705290-62b6294dd044?auto=format&fit=crop&w=700&q=80" alt="Students collaborating" style="width:100%; height:100%; object-fit:cover"></div>
+        <div style="position:absolute; inset:58% 0 0 0; background:var(--navy-deep)"></div>
+        <div class="pad" style="padding:9cqw; justify-content:flex-end">
+          <h3 class="big" style="font-size:8.4cqw">Your future,<br><span class="hl">already moving.</span></h3>
+          <div style="display:inline-flex; align-self:flex-start; align-items:center; gap:2cqw; background:var(--azure); color:#fff; font-family:'Archivo'; font-weight:800; font-size:3.8cqw; padding:3cqw 5cqw; border-radius:2.4cqw; margin-top:4cqw">See how <span>→</span></div>
+        </div>
+        <div class="bottombar"></div>
+      </div>
+      <figcaption><b>Story · Photo + CTA</b></figcaption>
+    </figure>
+
+  </div>
+
+  <div class="note"><b>Using these:</b> they're built in the Momentum system (navy + azure, Archivo + Hanken Grotesk, your real logo, the forward arrow). I can export any of them as ready-to-post PNGs, or rebuild them as editable Canva templates so your team can swap the words. Tell me which ones you want to run with.</div>
+</div></section>
+
+<footer class="foot"><div class="wrap">Smarter by 1 Degree — Momentum social templates. · <a href="02-momentum.html">Momentum guide</a> · <a href="index.html">All four directions →</a></div></footer>
+</body>
+</html>
