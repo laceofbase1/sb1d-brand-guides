@@ -85,6 +85,17 @@
 
   @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)} .grid.stories{grid-template-columns:repeat(2,1fr)} .nav .links{display:none}}
   @media(max-width:560px){.grid{grid-template-columns:1fr}}
+
+  /* export mode: isolate one template at full viewport for PNG rendering */
+  body.exporting{margin:0; background:#fff; overflow:hidden}
+  body.exporting > *:not(.export-stage){display:none!important}
+  .export-stage{position:fixed; inset:0}
+  .export-stage .post{width:100vw; height:100vh; border:none; border-radius:0; box-shadow:none; aspect-ratio:auto!important}
+
+  /* download buttons */
+  .dl{display:inline-flex; align-items:center; gap:7px; font-family:"Archivo"; font-weight:700; font-size:12.5px; color:var(--navy); text-decoration:none; margin-top:8px; padding:6px 12px; border:1px solid var(--line); border-radius:8px; transition:border-color .2s, color .2s}
+  .dl:hover{border-color:var(--azure); color:var(--azure)}
+  .dl-strong{background:var(--azure); color:#fff; border-color:var(--azure)} .dl-strong:hover{color:#fff; box-shadow:0 12px 24px -12px var(--azure)}
 </style>
 </head>
 <body>
@@ -98,6 +109,10 @@
   <div class="kicker">Momentum · Social templates</div>
   <h1>Ready to post, <span class="mv">on brand.</span></h1>
   <p>A starter set of social templates in the Momentum system: square posts for Instagram and Facebook, plus Stories. Same navy, same logo, the azure signal and forward motion throughout. Swap the words and ship.</p>
+  <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap">
+    <a class="dl dl-strong" href="assets/social/sb1d-momentum-social.zip" download>↓ Download all (ZIP)</a>
+    <a class="dl" href="06-logo.html">Logo kit →</a>
+  </div>
 </div></header>
 
 <!-- ============ FEED POSTS (1:1) ============ -->
@@ -273,5 +288,27 @@
 </div></section>
 
 <footer class="foot"><div class="wrap">Smarter by 1 Degree — Momentum social templates. · <a href="02-momentum.html">Momentum guide</a> · <a href="index.html">All four directions →</a></div></footer>
+<script>
+  (function(){
+    var only=new URLSearchParams(location.search).get('only');
+    if(only){
+      var posts=document.querySelectorAll('.post');
+      var el=posts[parseInt(only,10)-1]; if(!el) return;
+      document.body.classList.add('exporting');
+      var stage=document.createElement('div'); stage.className='export-stage';
+      stage.appendChild(el.cloneNode(true)); document.body.appendChild(stage);
+      return;
+    }
+    // inject a download link under each template (DOM order matches the rendered files)
+    var files=['post-hook','post-stat','post-founder','post-myth','post-testimonial','post-cta','story-announcement','story-stat','story-hook','story-photo'];
+    document.querySelectorAll('figure').forEach(function(f,i){
+      if(!files[i]) return;
+      var a=document.createElement('a');
+      a.className='dl'; a.href='assets/social/'+files[i]+'.png'; a.setAttribute('download','');
+      a.textContent='↓ Download PNG';
+      f.appendChild(a);
+    });
+  })();
+</script>
 </body>
 </html>

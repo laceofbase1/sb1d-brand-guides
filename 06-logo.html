@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smarter by 1 Degree — Logo: a slight refinement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F497D; --navy-deep:oklch(0.33 0.078 256); --midnight:oklch(0.22 0.055 256);
+    --azure:oklch(0.64 0.155 244); --azure-bright:oklch(0.70 0.16 244);
+    --azure-200:oklch(0.86 0.08 244); --azure-soft:oklch(0.93 0.045 244);
+    --graphite:oklch(0.31 0.014 256); --ink:oklch(0.24 0.018 256);
+    --paper:oklch(0.992 0.003 250); --cloud:oklch(0.965 0.007 250);
+    --mist:oklch(0.92 0.012 250); --line:oklch(0.90 0.012 250); --mute:oklch(0.50 0.02 250);
+    --maxw:1080px; --r:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--paper); color:var(--graphite); font-family:"Hanken Grotesk",system-ui,sans-serif; font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:"Archivo"; margin:0; letter-spacing:-0.025em; line-height:1.04; color:var(--navy-deep)}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 36px}
+  a{color:var(--navy)}
+  section{padding:clamp(56px,8vw,92px) 0; border-top:1px solid var(--line)}
+  .kicker{display:inline-flex; align-items:center; gap:10px; font-family:"Archivo"; font-weight:800; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--azure)}
+  .kicker::before{content:""; width:26px; height:2px; background:var(--azure); border-radius:2px}
+  .lead{font-size:clamp(19px,2.2vw,22px); color:var(--mute); max-width:62ch; line-height:1.5}
+  .sectionhead{font-size:clamp(28px,4vw,44px); font-weight:900; margin-top:14px}
+
+  .nav{position:sticky; top:0; z-index:40; backdrop-filter:blur(10px); background:oklch(0.992 0.003 250 / .82); border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:62px}
+  .nav .home{display:flex; align-items:center; gap:10px; font-family:"Archivo"; font-weight:800; font-size:14px; color:var(--navy-deep); text-decoration:none}
+  .nav .home img{height:26px}
+  .nav .links a{font-family:"Archivo"; font-weight:700; font-size:12.5px; text-decoration:none; color:var(--mute); margin-left:20px}
+
+  header.hero{padding:74px 0 18px; background:linear-gradient(168deg,var(--paper) 30%,var(--azure-soft))}
+  header h1{font-size:clamp(40px,6.5vw,76px); font-weight:900; color:var(--navy-deep); margin-top:14px}
+  header h1 .mv{color:var(--azure)}
+  header p{margin-top:18px}
+
+  .two{display:grid; grid-template-columns:1.25fr .75fr; gap:clamp(28px,4vw,48px); align-items:start; margin-top:40px}
+  .panel{background:var(--cloud); border:1px solid var(--line); border-radius:var(--r); padding:24px}
+  .panel h4{font-size:16px; margin-bottom:12px}
+  .panel ul{margin:0; padding-left:18px} .panel li{margin:8px 0; font-size:15px}
+
+  .compare{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:34px}
+  .stage{border:1px solid var(--line); border-radius:var(--r); background:#fff; padding:30px; text-align:center; position:relative}
+  .stage img{width:min(58%,220px)}
+  .stage .tagn{font-family:"Archivo"; font-weight:800; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--mute); margin-top:16px}
+  .stage.now{background:var(--cloud)}
+  .stage.next{box-shadow:0 30px 60px -34px oklch(0.33 0.078 256 / .4)}
+  .stage.next::before{content:"PROPOSED"; position:absolute; top:14px; right:14px; font-family:"Archivo"; font-weight:800; font-size:10px; letter-spacing:0.1em; color:#fff; background:var(--azure); padding:4px 9px; border-radius:6px}
+  .changed{margin-top:18px; font-size:15px; color:var(--graphite); max-width:64ch}
+  .changed b{color:var(--navy-deep); font-family:"Archivo"}
+
+  .kit{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:30px}
+  .kitcell{border:1px solid var(--line); border-radius:var(--r); overflow:hidden; background:#fff}
+  .kitcell .art{height:170px; display:flex; align-items:center; justify-content:center}
+  .kitcell .art img{width:118px}
+  .kitcell.dark .art{background:var(--navy-deep)} .kitcell.tint .art{background:var(--mist)}
+  .kitcell .info{padding:16px 18px; border-top:1px solid var(--line)}
+  .kitcell .nm{font-family:"Archivo"; font-weight:800; font-size:15px; color:var(--ink)}
+  .kitcell .role{font-size:13px; color:var(--mute); margin-top:4px}
+
+  .dl{display:inline-flex; align-items:center; gap:7px; font-family:"Archivo"; font-weight:700; font-size:12.5px; color:var(--navy); text-decoration:none; margin-top:12px; padding:7px 13px; border:1px solid var(--line); border-radius:8px; transition:border-color .2s,color .2s}
+  .dl:hover{border-color:var(--azure); color:var(--azure)}
+  .dl-strong{background:var(--azure); color:#fff; border-color:var(--azure)} .dl-strong:hover{color:#fff; box-shadow:0 12px 24px -12px var(--azure)}
+
+  .sizes{display:flex; align-items:flex-end; gap:34px; flex-wrap:wrap; margin-top:30px; padding:30px; border:1px solid var(--line); border-radius:var(--r); background:var(--cloud)}
+  .sizes figure{margin:0; text-align:center}
+  .sizes img{display:block; margin:0 auto}
+  .sizes figcaption{font-size:12px; color:var(--mute); margin-top:10px; font-variant-numeric:tabular-nums}
+
+  .reco{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:28px}
+  .reco .c{border:1px solid var(--line); border-radius:var(--r); padding:22px; background:#fff}
+  .reco .n{font-family:"Archivo"; font-weight:900; font-size:13px; color:var(--azure)}
+  .reco h4{font-size:17px; margin:8px 0 6px}
+  .reco p{font-size:14px; color:var(--mute); margin:0}
+
+  .downloads{background:var(--midnight); border-radius:20px; padding:clamp(28px,4vw,44px); margin-top:34px}
+  .downloads *{color:#fff}
+  .downloads h3{font-size:26px; font-weight:900}
+  .downloads p{color:var(--azure-200); margin:8px 0 0}
+  .dlrow{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px}
+  .downloads .dl{color:#fff; border-color:#ffffff33; background:#ffffff10} .downloads .dl:hover{border-color:var(--azure-bright); color:#fff}
+
+  .foot{padding:50px 0; color:var(--mute); font-size:14px; border-top:1px solid var(--line)}
+  .foot a{color:var(--navy); font-weight:600}
+  @media(max-width:880px){.two,.compare,.kit,.reco{grid-template-columns:1fr} .nav .links{display:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="home" href="index.html"><img src="assets/sb1d-logo-horizontal.png" alt="Smarter by 1 Degree"></a>
+  <div class="links"><a href="02-momentum.html">Momentum guide</a><a href="05-social.html">Social templates</a><a href="index.html">All directions</a></div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Logo · A slight refinement</div>
+  <h1>Keep the mark. <span class="mv">Sharpen it.</span></h1>
+  <p class="lead">You asked what I'd do with the logo. The short answer: almost nothing structural, the S-plus-1 idea is genuinely good and worth protecting. I'd make one small change now, add a few missing kit versions, and tee up a light cleanup for the future. Here it is.</p>
+</div></header>
+
+<!-- assessment -->
+<section><div class="wrap">
+  <div class="kicker">The honest read</div>
+  <h2 class="sectionhead">What's working, and what isn't</h2>
+  <div class="two">
+    <div style="display:flex; flex-direction:column; gap:18px">
+      <div class="panel" style="background:#fff">
+        <h4 style="color:oklch(0.45 0.10 155)">Strengths to protect</h4>
+        <ul>
+          <li>The <b>S + 1</b> built into one shape is clever and ownable, it literally spells "Smarter by 1."</li>
+          <li>The graduation cap reads instantly as "degree," the whole point of the brand.</li>
+          <li>The navy is credible and accreditation-friendly.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4 style="color:oklch(0.52 0.14 35)">What holds it back</h4>
+        <ul>
+          <li>The <b>pure-black cap</b> next to the navy S reads as two different inks, a little disjointed.</li>
+          <li>The <b>laurel sprigs and tassel</b> are fine, detailed line work that turns to mush at small sizes (favicons, app icons, embroidery).</li>
+          <li>There was no <b>one-color</b> or <b>reverse</b> version, you need those for print, merch, and dark backgrounds.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stage" style="padding:40px 30px"><img src="assets/sb1d-icon.png" alt="Current Smarter by 1 Degree mark" style="width:min(70%,230px)"><div class="tagn">Current mark</div></div>
+  </div>
+</div></section>
+
+<!-- the slight update -->
+<section style="background:var(--cloud)"><div class="wrap">
+  <div class="kicker">The one change I'd make now</div>
+  <h2 class="sectionhead">Unify the cap</h2>
+  <p class="lead" style="margin-top:14px">The single highest-value tweak: move the cap from pure black to a deep navy drawn from the same family as the S. The mark instantly feels like one considered object instead of a letter with a black hat dropped on top. Same logo, just more finished.</p>
+  <div class="compare">
+    <div class="stage now"><img src="assets/sb1d-icon.png" alt="Current mark with black cap"><div class="tagn">Now · black cap</div></div>
+    <div class="stage next"><img src="assets/refine-unified.png" alt="Refined mark with deep-navy cap"><div class="tagn">Proposed · deep-navy cap</div></div>
+  </div>
+  <p class="changed"><b>What changed:</b> only the cap and tassel color, from <b>#0C0C0C</b> to a deep navy <b>#12263F</b>. Nothing redrawn, nothing moved. It is reversible and safe to adopt immediately.</p>
+  <a class="dl dl-strong" href="assets/refine-unified.png" download>↓ Download refined mark (PNG)</a>
+</div></section>
+
+<!-- kit versions -->
+<section><div class="wrap">
+  <div class="kicker">Filling the gaps</div>
+  <h2 class="sectionhead">The versions you were missing</h2>
+  <p class="lead" style="margin-top:14px">Every logo needs a few alternates so it works everywhere. I built these from your real mark, ready to use.</p>
+  <div class="kit">
+    <div class="kitcell"><div class="art"><img src="assets/sb1d-icon.png" alt="Full-color mark"></div><div class="info"><div class="nm">Full color</div><div class="role">Default. White and light backgrounds.</div><a class="dl" href="assets/sb1d-icon.png" download>↓ PNG</a></div></div>
+    <div class="kitcell tint"><div class="art"><img src="assets/refine-onecolor.png" alt="One-color navy mark"></div><div class="info"><div class="nm">One-color navy</div><div class="role">Print, stamps, embroidery, faxes of the future.</div><a class="dl" href="assets/refine-onecolor.png" download>↓ PNG</a></div></div>
+    <div class="kitcell dark"><div class="art"><img src="assets/refine-reverse.png" alt="Reverse white mark"></div><div class="info"><div class="nm">Reverse white</div><div class="role">Dark and navy backgrounds, photos.</div><a class="dl" href="assets/refine-reverse.png" download>↓ PNG</a></div></div>
+  </div>
+</div></section>
+
+<!-- recommendation / future -->
+<section style="background:var(--cloud)"><div class="wrap">
+  <div class="kicker">What I'd do next</div>
+  <h2 class="sectionhead">A light cleanup for small sizes</h2>
+  <p class="lead" style="margin-top:14px">Here's the current mark shrinking down. Watch the laurels and tassel: by 32px they're noise, and a favicon or app icon lives at 16–32px.</p>
+  <div class="sizes">
+    <figure><img src="assets/sb1d-icon.png" width="96" alt="mark at 96px"><figcaption>96 px</figcaption></figure>
+    <figure><img src="assets/sb1d-icon.png" width="48" alt="mark at 48px"><figcaption>48 px</figcaption></figure>
+    <figure><img src="assets/sb1d-icon.png" width="32" alt="mark at 32px"><figcaption>32 px · favicon</figcaption></figure>
+    <figure><img src="assets/sb1d-icon.png" width="20" alt="mark at 20px"><figcaption>20 px</figcaption></figure>
+  </div>
+  <div class="reco">
+    <div class="c"><div class="n">01</div><h4>Simplify the laurels</h4><p>Thin them to two or three clean leaves, or drop them in a dedicated small-size version. Keep them on the full logo.</p></div>
+    <div class="c"><div class="n">02</div><h4>Tighten the tassel</h4><p>Slightly thicken the cord and button so it survives below 32px instead of disappearing.</p></div>
+    <div class="c"><div class="n">03</div><h4>Add an app/favicon mark</h4><p>A stripped "S + 1 + cap" with no fine detail, sized for icons, browser tabs, and profile photos.</p></div>
+  </div>
+  <p style="margin-top:22px; color:var(--mute); font-size:15px; max-width:64ch">This step is a proper redraw in vector (so it scales perfectly), not a quick edit. If you like the direction, I can take it on next.</p>
+</div></section>
+
+<!-- downloads -->
+<section><div class="wrap">
+  <div class="downloads">
+    <h3>Download the logo kit</h3>
+    <p>Everything on this page, plus your horizontal lockup. Transparent PNGs, ready to drop into Canva, docs, or the website.</p>
+    <div class="dlrow">
+      <a class="dl" href="assets/sb1d-icon.png" download>↓ Icon · full color</a>
+      <a class="dl" href="assets/refine-unified.png" download>↓ Icon · refined cap</a>
+      <a class="dl" href="assets/sb1d-logo-horizontal.png" download>↓ Horizontal logo</a>
+      <a class="dl" href="assets/refine-onecolor.png" download>↓ One-color navy</a>
+      <a class="dl" href="assets/refine-reverse.png" download>↓ Reverse white</a>
+      <a class="dl dl-strong" href="assets/sb1d-logo-kit.zip" download>↓ Download all (ZIP)</a>
+    </div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap">Smarter by 1 Degree — logo refinement. A proposal, not a redesign. · <a href="02-momentum.html">Momentum guide</a> · <a href="index.html">All four directions →</a></div></footer>
+</body>
+</html>
