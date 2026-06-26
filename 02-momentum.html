@@ -3,224 +3,481 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Smarter by 1 Degree — Momentum Brand Guide</title>
+<title>Smarter by 1 Degree — Momentum Brand System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#1F497D;
-    --navy-deep:oklch(0.28 0.078 256);
-    --azure:oklch(0.66 0.155 245);     /* bright forward-motion signal */
-    --azure-soft:oklch(0.92 0.05 245);
-    --graphite:oklch(0.32 0.012 256);
-    --ink:oklch(0.22 0.012 256);
-    --paper:oklch(0.99 0.004 250);
-    --paper-2:oklch(0.97 0.008 245);
-    --line:oklch(0.91 0.012 245);
-    --line-soft:oklch(0.95 0.008 245);
+    /* ---- Brand color system (OKLCH, neutrals tinted toward navy hue 256) ---- */
+    --navy:#1F497D;                       /* Degree Navy — primary, the brand */
+    --navy-deep:oklch(0.33 0.078 256);    /* Deep Navy — sections, depth */
+    --midnight:oklch(0.22 0.055 256);     /* Midnight — deepest ground */
+    --azure:oklch(0.64 0.155 244);        /* Signal Azure — motion + action */
+    --azure-bright:oklch(0.70 0.16 244);
+    --azure-soft:oklch(0.93 0.045 244);   /* Sky — azure tint wash */
+    --azure-200:oklch(0.86 0.08 244);
+    --graphite:oklch(0.31 0.014 256);     /* Warm graphite — body text */
+    --ink:oklch(0.24 0.018 256);
+
+    --paper:oklch(0.992 0.003 250);
+    --cloud:oklch(0.965 0.007 250);       /* section wash */
+    --mist:oklch(0.92 0.012 250);
+    --line:oklch(0.90 0.012 250);
+    --line-soft:oklch(0.945 0.008 250);
     --mute:oklch(0.50 0.02 250);
-    --r:16px; --maxw:1080px;
+
+    --maxw:1140px; --r:16px;
+    --ease:cubic-bezier(.16,1,.3,1);      /* ease-out-expo: forward, never bounce */
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0; background:var(--paper); color:var(--ink); font-family:"Plus Jakarta Sans",system-ui,sans-serif; font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased}
-  h1,h2,h3,h4{font-family:"Archivo",sans-serif; margin:0; line-height:1.04; letter-spacing:-0.025em; color:var(--navy-deep)}
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px}
-  section{padding:94px 0; border-top:1px solid var(--line)}
-  .eyebrow{font-family:"Archivo"; font-weight:800; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--azure)}
-  .lead{font-size:21px; color:var(--mute); max-width:60ch; line-height:1.5}
+  body{margin:0; background:var(--paper); color:var(--graphite); font-family:"Hanken Grotesk",system-ui,sans-serif; font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:"Archivo",sans-serif; margin:0; line-height:1.03; letter-spacing:-0.025em; color:var(--navy-deep)}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 36px}
+  section{padding:clamp(64px,9vw,108px) 0; border-top:1px solid var(--line)}
+  .kicker{display:inline-flex; align-items:center; gap:10px; font-family:"Archivo"; font-weight:800; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--azure)}
+  .kicker::before{content:""; width:26px; height:2px; background:var(--azure); display:inline-block; border-radius:2px}
+  .lead{font-size:clamp(19px,2.2vw,22px); color:var(--mute); max-width:62ch; line-height:1.5}
+  .sectionhead{font-size:clamp(30px,4.2vw,46px); font-weight:900; margin-top:14px}
   a{color:var(--navy)}
+  .num{font-family:"Archivo"; font-weight:800; font-size:13px; color:var(--azure); letter-spacing:0.08em}
 
-  /* Cover */
-  .cover{border-top:none; padding:90px 0 78px; background:linear-gradient(170deg,var(--paper),var(--azure-soft) 160%)}
-  .cover-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:54px; align-items:center}
-  .cover h1{font-size:clamp(46px,8vw,92px); font-weight:900; color:var(--navy-deep)}
-  .cover h1 em{font-style:normal; color:var(--azure)}
-  .arrowline{height:6px; width:120px; margin:26px 0 0; background:linear-gradient(90deg,var(--navy),var(--azure)); border-radius:6px; position:relative}
-  .arrowline::after{content:""; position:absolute; right:-2px; top:-7px; border:10px solid transparent; border-left-color:var(--azure)}
-  .logo-stage{background:#fff; border:1px solid var(--line); border-radius:24px; aspect-ratio:4/3; display:grid; place-items:center; box-shadow:0 36px 70px -34px oklch(0.40 0.10 245 / .45); position:relative; overflow:hidden}
-  .logo-stage .ray{position:absolute; inset:0; background:radial-gradient(70% 60% at 70% 20%, var(--azure-soft), transparent 70%)}
-  .mark{width:min(58%,230px); position:relative}
+  /* ---- nav ---- */
+  .nav{position:sticky; top:0; z-index:40; backdrop-filter:blur(10px); background:oklch(0.992 0.003 250 / .82); border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:62px}
+  .nav .home{display:flex; align-items:center; gap:10px; font-family:"Archivo"; font-weight:800; font-size:14px; color:var(--navy-deep); text-decoration:none}
+  .nav .home img{height:26px}
+  .nav .links a{font-family:"Archivo"; font-weight:700; font-size:12.5px; letter-spacing:0.02em; text-decoration:none; color:var(--mute); margin-left:22px; transition:color .2s var(--ease)}
+  .nav .links a:hover{color:var(--azure)}
 
-  .two{display:grid; grid-template-columns:1fr 1fr; gap:28px}
-  .three{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
-  .card{background:#fff; border:1px solid var(--line); border-radius:var(--r); padding:26px}
+  /* ---- cover ---- */
+  .cover{border-top:none; padding:clamp(56px,8vw,96px) 0 clamp(52px,7vw,84px); position:relative; overflow:hidden; background:linear-gradient(168deg,var(--paper) 30%,var(--azure-soft))}
+  .cover-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(32px,5vw,64px); align-items:center}
+  .cover h1{font-size:clamp(52px,9vw,108px); font-weight:900; color:var(--navy-deep); letter-spacing:-0.04em}
+  .cover h1 .mv{color:var(--azure); position:relative}
+  .cover .sub{margin-top:clamp(18px,2.5vw,26px)}
+  .runline{height:5px; width:0; background:linear-gradient(90deg,var(--navy),var(--azure)); border-radius:5px; margin-top:30px; position:relative; animation:run 1.1s .25s var(--ease) forwards}
+  .runline::after{content:""; position:absolute; right:-1px; top:-6px; border:8px solid transparent; border-left-color:var(--azure); opacity:0; animation:fadein .4s 1.15s forwards}
+  @keyframes run{to{width:min(360px,70%)}}
+  @keyframes fadein{to{opacity:1}}
+  .badges{display:flex; gap:9px; flex-wrap:wrap; margin-top:32px}
+  .badge{font-family:"Archivo"; font-weight:700; font-size:12.5px; padding:8px 14px; border-radius:999px; background:#fff; border:1px solid var(--line); color:var(--navy-soft,var(--navy))}
+  .badge b{color:var(--navy-deep)}
+  .cover-card{background:var(--navy-deep); border-radius:24px; padding:34px; position:relative; overflow:hidden; box-shadow:0 40px 80px -40px oklch(0.33 0.078 256 / .6)}
+  .cover-card::after{content:""; position:absolute; right:-60px; top:-60px; width:240px; height:240px; background:radial-gradient(circle,var(--azure) ,transparent 68%); opacity:.5}
+  .cover-card .chip{display:inline-block; background:#fff; border-radius:14px; padding:14px; position:relative}
+  .cover-card .chip img{display:block; width:64px}
+  .cover-card h3{color:#fff; font-size:24px; font-weight:800; margin-top:20px; position:relative}
+  .cover-card p{color:var(--azure-200); margin:8px 0 0; font-size:15px; position:relative}
 
-  .swatches{display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:28px}
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease)}
+  .reveal.in{opacity:1; transform:none}
+
+  /* ---- two-col ---- */
+  .two{display:grid; grid-template-columns:1.3fr .7fr; gap:clamp(28px,4vw,48px); align-items:start}
+  .panel{background:var(--cloud); border:1px solid var(--line-soft); border-radius:var(--r); padding:26px}
+
+  /* ---- logo section ---- */
+  .logo-row{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:34px}
+  .logo-cell{border:1px solid var(--line); border-radius:var(--r); min-height:188px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; background:#fff}
+  .logo-cell .cap{font-family:"Archivo"; font-weight:700; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--mute)}
+  .logo-cell.dark{background:var(--navy-deep)} .logo-cell.dark .cap{color:var(--azure-200)}
+  .logo-cell.wash{background:var(--azure-soft)}
+  .whitechip{display:inline-block; background:#fff; border-radius:14px; padding:15px}
+  .specs{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:18px}
+  .spec{display:flex; gap:12px; align-items:flex-start; font-size:14.5px; color:var(--graphite)}
+  .spec b{font-family:"Archivo"; color:var(--navy-deep); display:block; font-size:13px}
+  .spec .dot{width:9px; height:9px; border-radius:50%; background:var(--azure); margin-top:6px; flex:none}
+
+  /* ---- color ---- */
+  .ratio{display:flex; height:46px; border-radius:10px; overflow:hidden; margin-top:30px; border:1px solid var(--line)}
+  .ratio span{display:flex; align-items:center; padding:0 14px; font-family:"Archivo"; font-weight:700; font-size:12px; color:#fff; white-space:nowrap}
+  .swatches{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:24px}
   .sw{border:1px solid var(--line); border-radius:var(--r); overflow:hidden; background:#fff}
-  .sw .chip{height:128px} .sw .meta{padding:14px 16px}
-  .sw .nm{font-family:"Archivo"; font-weight:800; font-size:15px}
-  .sw .hx{font-size:13px; color:var(--mute); font-variant-numeric:tabular-nums}
-  .sw .role{font-size:12px; color:var(--mute); margin-top:8px; line-height:1.4}
+  .sw .chip{height:104px; display:flex; align-items:flex-end; padding:10px}
+  .sw .chip small{font-family:"Hanken Grotesk"; font-size:11px; font-weight:600; padding:3px 7px; border-radius:5px; background:#ffffffcc; color:var(--ink)}
+  .sw .meta{padding:13px 15px}
+  .sw .nm{font-family:"Archivo"; font-weight:800; font-size:14.5px; color:var(--ink)}
+  .sw .hx{font-size:12.5px; color:var(--mute); font-variant-numeric:tabular-nums; margin-top:1px}
+  .sw .role{font-size:12px; color:var(--mute); margin-top:7px; line-height:1.4}
 
-  .scale > div{display:flex; align-items:baseline; gap:22px; padding:16px 0; border-bottom:1px solid var(--line-soft)}
-  .scale .tag{font-size:12px; color:var(--mute); width:120px; flex:none}
+  /* ---- type ---- */
+  .scale > div{display:grid; grid-template-columns:128px 1fr; gap:24px; align-items:baseline; padding:17px 0; border-bottom:1px solid var(--line-soft)}
+  .scale .tag{font-size:12px; color:var(--mute); line-height:1.4}
   .specimen{font-family:"Archivo"; color:var(--navy-deep); line-height:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .fontcards{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:30px}
+  .fontcard{border:1px solid var(--line); border-radius:var(--r); padding:24px; background:#fff}
+  .fontcard .big{font-size:64px; line-height:1; color:var(--navy-deep)}
+  .fontcard .label{font-family:"Archivo"; font-weight:800; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--azure); margin-top:14px}
+  .fontcard .desc{font-size:14.5px; color:var(--mute); margin-top:6px}
 
-  .dd{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:24px}
-  .dd .box{border-radius:var(--r); padding:22px; border:1px solid var(--line)}
-  .dd .do{background:oklch(0.96 0.04 160)} .dd .dont{background:oklch(0.96 0.035 30)}
-  .dd h4{font-size:14px; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px}
-  .dd .do h4{color:oklch(0.42 0.10 160)} .dd .dont h4{color:oklch(0.50 0.13 30)}
-  .dd ul{margin:0; padding-left:18px} .dd li{margin:7px 0}
+  /* ---- momentum motion system ---- */
+  .mo-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:32px}
+  .mo{border:1px solid var(--line); border-radius:var(--r); padding:24px; background:#fff; overflow:hidden}
+  .mo h4{font-size:18px; color:var(--navy-deep); margin-bottom:8px}
+  .mo p{font-size:14px; color:var(--mute); margin:0}
+  .track{height:9px; border-radius:9px; background:var(--mist); margin:20px 0 6px; overflow:hidden}
+  .track i{display:block; height:100%; width:38%; border-radius:9px; background:linear-gradient(90deg,var(--navy),var(--azure)); transition:width 1.1s var(--ease)}
+  .mo.in .track i{width:82%}
+  .arrowdemo{display:flex; gap:8px; align-items:center; margin-top:18px}
+  .arrowbtn{display:inline-flex; align-items:center; gap:9px; background:var(--azure); color:#fff; font-family:"Archivo"; font-weight:700; font-size:14px; padding:11px 18px; border-radius:10px; border:none; cursor:pointer}
+  .arrowbtn .ar{transition:transform .35s var(--ease)}
+  .arrowbtn:hover .ar{transform:translateX(5px)}
+  .specbox{margin-top:20px; font-size:13.5px; color:var(--graphite)}
+  .specbox code{font-family:ui-monospace,Menlo,monospace; font-size:12px; background:var(--cloud); padding:2px 6px; border-radius:5px; color:var(--navy-deep)}
 
-  .voicequote{font-family:"Archivo"; font-weight:800; font-size:clamp(26px,3.6vw,42px); line-height:1.12; color:var(--navy-deep); max-width:20ch; letter-spacing:-0.02em}
-  .voicequote em{font-style:normal; color:var(--azure)}
-  .pill{display:inline-block; font-weight:700; font-size:13px; padding:7px 13px; border-radius:999px; margin:5px 6px 0 0; background:var(--azure-soft); color:var(--navy-deep)}
+  /* ---- ui kit ---- */
+  .btn{display:inline-flex; align-items:center; gap:9px; font-family:"Archivo"; font-weight:800; font-size:15px; padding:13px 22px; border-radius:11px; border:none; cursor:pointer; text-decoration:none; transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .2s}
+  .btn .ar{transition:transform .35s var(--ease)} .btn:hover .ar{transform:translateX(4px)}
+  .btn-azure{background:var(--azure); color:#fff} .btn-azure:hover{box-shadow:0 12px 24px -10px var(--azure)}
+  .btn-navy{background:var(--navy); color:#fff}
+  .btn-ghost{background:#fff; color:var(--navy); border:1.5px solid var(--line)} .btn-ghost:hover{border-color:var(--azure); color:var(--azure)}
+  .kit{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:30px}
+  .kitcard{border:1px solid var(--line); border-radius:var(--r); padding:24px; background:#fff}
+  .kitcard .lbl{font-family:"Archivo"; font-weight:800; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--mute); margin-bottom:16px}
+  .tags{display:flex; gap:8px; flex-wrap:wrap}
+  .tag{font-family:"Archivo"; font-weight:700; font-size:12.5px; padding:6px 12px; border-radius:999px; background:var(--azure-soft); color:var(--navy-deep)}
+  .tag.solid{background:var(--navy); color:#fff}
+  .field{display:block; width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--line); font:inherit; color:var(--ink); background:var(--paper)}
+  .field:focus{outline:none; border-color:var(--azure); box-shadow:0 0 0 3px var(--azure-soft)}
+  .ilink{font-weight:700; color:var(--navy); text-decoration:none; background-image:linear-gradient(var(--azure),var(--azure)); background-size:0% 2px; background-repeat:no-repeat; background-position:0 100%; transition:background-size .35s var(--ease); padding-bottom:2px}
+  .ilink:hover{background-size:100% 2px}
 
-  .btn{display:inline-flex; align-items:center; gap:9px; font-family:"Archivo"; font-weight:800; font-size:15px; padding:14px 24px; border-radius:12px; border:none; cursor:pointer; text-decoration:none}
-  .btn-primary{background:var(--azure); color:#fff} .btn-navy{background:var(--navy); color:#fff}
-  .btn-ghost{background:#fff; color:var(--navy); border:1.5px solid var(--line)}
-  .mock-card{background:var(--navy-deep); color:#fff; border-radius:22px; padding:36px; position:relative; overflow:hidden}
-  .mock-card::before{content:""; position:absolute; right:-40px; top:-40px; width:220px; height:220px; background:radial-gradient(circle, oklch(0.66 0.155 245 / .55), transparent 70%)}
-  .mock-card .mark-sm{width:48px; position:relative}
-  .mock-card h3{color:#fff; font-size:32px; font-weight:900; margin-top:18px; position:relative}
-  .mock-card p{color:oklch(0.88 0.03 245); max-width:32ch; position:relative}
-  .mock-card .btn{margin-top:22px; position:relative}
+  /* ---- icons ---- */
+  .icons{display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin-top:30px}
+  .ico{border:1px solid var(--line); border-radius:14px; aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; background:#fff}
+  .ico svg{width:34px; height:34px; stroke:var(--navy); stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round}
+  .ico span{font-size:11px; color:var(--mute)}
 
-  .nav{position:sticky; top:0; z-index:20; backdrop-filter:blur(8px); background:oklch(0.99 0.004 250 / .85); border-bottom:1px solid var(--line)}
-  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:60px}
-  .nav a{font-family:"Archivo"; font-weight:700; font-size:13px; text-decoration:none; color:var(--mute); margin-left:22px}
-  .nav a:hover{color:var(--azure)} .nav .home{color:var(--navy-deep); margin:0}
-  .foot{padding:54px 0; color:var(--mute); font-size:14px; border-top:1px solid var(--line)}
+  /* ---- imagery ---- */
+  .imgrow{display:grid; grid-template-columns:1.6fr 1fr; gap:18px; margin-top:30px}
+  .imgrow img,.imgcol img{width:100%; height:100%; object-fit:cover; display:block; border-radius:var(--r)}
+  .imgcol{display:grid; grid-template-rows:1fr 1fr; gap:18px}
+  .ph{position:relative; border-radius:var(--r); overflow:hidden; min-height:200px}
+  .ph::after{content:attr(data-cap); position:absolute; left:14px; bottom:12px; color:#fff; font-size:12.5px; font-weight:600; text-shadow:0 1px 8px rgba(0,0,0,.6)}
 
-  @media(max-width:860px){.cover-grid,.two,.dd{grid-template-columns:1fr}.three{grid-template-columns:1fr}.swatches{grid-template-columns:repeat(2,1fr)}.nav .links{display:none}}
+  /* ---- applications ---- */
+  .apps{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:32px}
+  .app{border:1px solid var(--line); border-radius:var(--r); overflow:hidden; background:#fff}
+  .app .capn{font-family:"Archivo"; font-weight:800; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mute); padding:14px 18px 0}
+  /* browser mock */
+  .browser{margin:14px 18px 18px; border:1px solid var(--line); border-radius:12px; overflow:hidden}
+  .bbar{display:flex; align-items:center; gap:6px; padding:9px 12px; background:var(--cloud); border-bottom:1px solid var(--line)}
+  .bbar i{width:9px; height:9px; border-radius:50%; background:var(--mist)}
+  .bnav{display:flex; align-items:center; justify-content:space-between; padding:11px 14px; border-bottom:1px solid var(--line-soft)}
+  .bnav img{height:20px}
+  .bnav .lk{font-family:"Archivo"; font-weight:700; font-size:10px; color:var(--mute); margin-left:10px}
+  .bhero{position:relative; min-height:184px; display:flex; flex-direction:column; justify-content:center; padding:22px; background:linear-gradient(110deg,var(--navy-deep),var(--navy)); overflow:hidden}
+  .bhero::after{content:""; position:absolute; right:-40px; bottom:-40px; width:180px; height:180px; background:radial-gradient(circle,var(--azure),transparent 68%); opacity:.55}
+  .bhero h4{color:#fff; font-size:24px; font-weight:900; position:relative; max-width:14ch}
+  .bhero .mv{color:var(--azure-bright)}
+  .bhero p{color:var(--azure-200); font-size:13px; margin:8px 0 0; position:relative; max-width:30ch}
+  .bhero .btn{margin-top:16px; align-self:flex-start; position:relative; padding:10px 16px; font-size:13px}
+  /* social */
+  .social{aspect-ratio:1; background:var(--navy-deep); margin:14px 18px 18px; border-radius:12px; padding:26px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden}
+  .social::before{content:""; position:absolute; left:0; right:0; bottom:0; height:5px; background:linear-gradient(90deg,var(--navy),var(--azure))}
+  .social .whitechip{padding:9px} .social .whitechip img{width:30px; display:block}
+  .social h3{color:#fff; font-size:30px; font-weight:900; letter-spacing:-0.02em; line-height:1.02}
+  .social h3 .mv{color:var(--azure-bright)}
+  .social .tagrow{font-family:"Archivo"; font-weight:700; font-size:12px; color:var(--azure-200); letter-spacing:0.04em}
+  /* email sig */
+  .sig{margin:14px 18px 18px; display:flex; gap:16px; align-items:center; padding:16px; border:1px solid var(--line); border-radius:12px}
+  .sig .bar{width:3px; align-self:stretch; background:var(--azure); border-radius:3px}
+  .sig .nm{font-family:"Archivo"; font-weight:800; color:var(--navy-deep); font-size:16px}
+  .sig .tt{font-size:13px; color:var(--mute)} .sig .ct{font-size:12.5px; color:var(--navy); margin-top:6px}
+  .sig img{height:30px; margin-bottom:8px}
+  /* portal */
+  .portal{margin:14px 18px 18px; border:1px solid var(--line); border-radius:12px; padding:18px; background:var(--paper)}
+  .portal .ph4{font-family:"Archivo"; font-weight:800; color:var(--navy-deep); font-size:15px}
+  .portal .course{display:flex; align-items:center; gap:12px; margin-top:14px}
+  .portal .course .nm{font-size:13px; flex:1; color:var(--graphite)}
+  .portal .course .pct{font-family:"Archivo"; font-weight:800; font-size:13px; color:var(--azure)}
+  .portal .ptrack{height:7px; border-radius:7px; background:var(--mist); overflow:hidden; margin-top:5px}
+  .portal .ptrack i{display:block; height:100%; border-radius:7px; background:linear-gradient(90deg,var(--navy),var(--azure))}
+
+  /* ---- voice ---- */
+  .voicewrap{display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,4vw,48px); margin-top:30px; align-items:start}
+  .vq{font-family:"Archivo"; font-weight:900; font-size:clamp(28px,4vw,46px); line-height:1.08; color:var(--navy-deep); letter-spacing:-0.02em}
+  .vq .mv{color:var(--azure)}
+  .say{display:flex; gap:10px; align-items:flex-start; padding:13px 0; border-bottom:1px solid var(--line-soft)}
+  .say .y{font-family:"Archivo"; font-weight:800; font-size:12px; color:oklch(0.55 0.13 155); flex:none; width:42px}
+  .say .n{font-family:"Archivo"; font-weight:800; font-size:12px; color:var(--mute); flex:none; width:42px}
+
+  .foot{padding:50px 0; color:var(--mute); font-size:14px; border-top:1px solid var(--line)}
+  .foot a{color:var(--navy); font-weight:600}
+
+  @media(max-width:900px){
+    .cover-grid,.two,.voicewrap{grid-template-columns:1fr}
+    .logo-row,.mo-grid{grid-template-columns:1fr}
+    .swatches{grid-template-columns:repeat(2,1fr)}
+    .kit,.fontcards,.apps,.imgrow{grid-template-columns:1fr}
+    .icons{grid-template-columns:repeat(3,1fr)}
+    .nav .links{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .reveal{opacity:1; transform:none; transition:none}
+  }
 </style>
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute"><symbol id="logo" viewBox="0 0 380 410">
-  <text x="186" y="374" font-family="'Archivo',sans-serif" font-weight="900" font-size="430" text-anchor="middle" style="fill:var(--c-s,#1f497d)">S</text>
-  <path d="M205,118 L238,118 L238,324 L266,324 L266,354 L128,354 L128,324 L205,324 L205,172 L166,198 L148,170 Z" style="fill:var(--c-one,#ffffff)"/>
-  <path d="M190,14 L370,92 L190,170 L10,92 Z" style="fill:var(--c-cap,#0c0c0c)"/>
-  <path d="M361,92 L361,150" style="fill:none;stroke:var(--c-cap,#0c0c0c);stroke-width:7"/>
-  <circle cx="361" cy="159" r="17" style="fill:var(--c-cap,#0c0c0c)"/>
-  <circle cx="361" cy="159" r="7.5" style="fill:var(--c-dot,#1f497d)"/>
-  <path d="M347,177 L375,177 L383,212 L339,212 Z" style="fill:var(--c-cap,#0c0c0c)"/>
-  <g style="fill:none;stroke:var(--c-leaf,#ffffff);stroke-width:2.4;stroke-linecap:round">
-    <path d="M118,208 Q162,150 250,150"/>
-    <path d="M150,180 q20,-11 30,-3"/><path d="M176,166 q21,-10 31,-2"/>
-    <path d="M204,156 q21,-9 31,-1"/><path d="M230,151 q20,-8 29,0"/>
-    <path d="M250,302 Q300,332 332,374"/>
-    <path d="M276,316 q24,-12 30,-3"/><path d="M298,332 q24,-10 30,-1"/>
-    <path d="M318,351 q23,-9 29,1"/>
-  </g>
-</symbol></svg>
-
 <nav class="nav"><div class="wrap">
-  <a class="home" href="index.html">← Brand Guides</a>
-  <div class="links"><a href="#logo">Logo</a><a href="#color">Color</a><a href="#type">Type</a><a href="#voice">Voice</a><a href="#apply">In use</a></div>
+  <a class="home" href="index.html"><img src="assets/sb1d-logo-horizontal.png" alt="Smarter by 1 Degree"></a>
+  <div class="links">
+    <a href="#logo">Logo</a><a href="#color">Color</a><a href="#type">Type</a><a href="#system">Motion</a><a href="#ui">UI</a><a href="#imagery">Imagery</a><a href="#apply">Applications</a><a href="#voice">Voice</a>
+  </div>
 </div></nav>
 
 <header class="cover"><div class="wrap cover-grid">
   <div>
-    <div class="eyebrow">Brand Guide · Direction 02 · Current Identity, Evolved</div>
-    <h1>Momentum</h1>
-    <div class="arrowline"></div>
-    <p class="lead" style="margin-top:24px">The same trusted navy and graduation mark, given forward motion. A bright azure signal and warm graphite turn an institutional logo into a brand that feels like it's going somewhere.</p>
+    <div class="kicker">Brand System · Direction 02 · Current, evolved</div>
+    <h1>Always moving <span class="mv">forward.</span></h1>
+    <div class="runline"></div>
+    <p class="lead sub">The Smarter by 1 Degree identity, kept exactly as it is and given momentum. The same navy and graduation mark, now with a signal color, a sense of motion, and a system the whole team can use.</p>
+    <div class="badges">
+      <span class="badge"><b>Primary</b> Degree Navy</span>
+      <span class="badge"><b>Signal</b> Azure</span>
+      <span class="badge"><b>Type</b> Archivo + Hanken</span>
+      <span class="badge">WASC Accredited</span>
+    </div>
   </div>
-  <div class="logo-stage"><div class="ray"></div><img class="mark" src="assets/sb1d-icon.png" alt="Smarter by 1 Degree icon" style="position:relative"></div>
+  <div class="cover-card">
+    <span class="chip"><img src="assets/sb1d-icon.png" alt="Smarter by 1 Degree icon"></span>
+    <h3>One degree of motion.</h3>
+    <p>A trusted, accredited identity that finally feels like it's going somewhere.</p>
+  </div>
 </div></header>
 
-<section id="essence"><div class="wrap">
-  <div class="eyebrow">Why evolve</div>
-  <h2 style="font-size:clamp(30px,4.4vw,52px); margin-top:14px; max-width:20ch">Keep the trust. Add the spark.</h2>
-  <div class="two" style="margin-top:40px">
-    <p class="lead">Navy says credible and accredited, exactly right for parents. But the students choosing this path are choosing momentum: less time, less debt, more direction. Azure is that energy, used as a signal for action, progress, and what's possible.</p>
-    <div class="card">
-      <div class="eyebrow" style="color:var(--mute)">What changes vs. Cornerstone</div>
-      <ul style="margin:14px 0 0; padding-left:18px; line-height:1.9">
-        <li>Adds <b>Signal Azure</b> as an action color.</li>
-        <li>Adds a motion language: arrows and progress.</li>
-        <li>Rounder corners, softer shadows, more air.</li>
-        <li>Same logo, same navy, same accreditation trust.</li>
-      </ul>
-    </div>
-  </div>
-</div></section>
-
-<section id="logo"><div class="wrap">
-  <div class="eyebrow">The logo</div>
-  <h2 style="font-size:38px; margin-top:12px">The logo, untouched</h2>
-  <p class="lead" style="margin-top:14px">Your logo stays exactly as it is, the anchor of trust we don't modify. Momentum lives in everything around it: the azure signal color, arrows, and a sense of forward motion.</p>
-  <div class="three" style="margin-top:34px">
-    <div class="card" style="text-align:center"><div style="padding:22px"><img src="assets/sb1d-icon.png" style="width:86px" alt="Smarter by 1 Degree icon"></div><div class="eyebrow" style="color:var(--mute)">Primary</div></div>
-    <div class="card" style="text-align:center; display:flex; flex-direction:column; justify-content:center">
-      <div style="display:flex; align-items:center; justify-content:center; min-height:104px">
-        <img src="assets/sb1d-logo-horizontal.png" style="width:230px; max-width:92%" alt="Smarter by 1 Degree horizontal logo">
+<!-- ---------- BRAND IDEA ---------- -->
+<section id="idea"><div class="wrap reveal">
+  <div class="kicker">The idea</div>
+  <h2 class="sectionhead" style="max-width:20ch">Trust you can feel. Momentum you can see.</h2>
+  <div class="two" style="margin-top:42px">
+    <p class="lead" style="color:var(--graphite); max-width:none">Smarter by 1 Degree already owns the credibility, accredited, advised, real degrees. What it has been missing is energy: the feeling that a student here is moving, gaining ground, getting ahead. Momentum keeps every ounce of the existing trust and adds the one thing the category never shows: forward motion. Navy holds the ground. Azure carries the action. Everything leans ahead.</p>
+    <div class="panel">
+      <div class="kicker" style="color:var(--mute)">What changes vs. Cornerstone</div>
+      <div class="specs" style="grid-template-columns:1fr">
+        <div class="spec"><span class="dot"></span><span><b>Adds Signal Azure</b> a single bright action color, never replacing navy.</span></div>
+        <div class="spec"><span class="dot"></span><span><b>A motion language</b> arrows, progress, left-to-right reveals.</span></div>
+        <div class="spec"><span class="dot"></span><span><b>Warmer, rounder UI</b> softer radii, more air, friendlier body type.</span></div>
+        <div class="spec"><span class="dot"></span><span><b>Same logo, same trust</b> the mark and accreditation are untouched.</span></div>
       </div>
-      <div class="eyebrow" style="color:var(--mute); margin-top:20px">Horizontal lockup</div>
     </div>
-    <div class="card" style="text-align:center; background:var(--navy-deep)"><div style="padding:22px"><span style="display:inline-block; background:#fff; border-radius:14px; padding:16px"><img src="assets/sb1d-icon.png" style="width:74px; display:block" alt="Smarter by 1 Degree icon"></span></div><div class="eyebrow" style="color:#cfe0f5">On navy (white field)</div></div>
-  </div>
-  <div class="dd">
-    <div class="box do"><h4>Do</h4><ul><li>Use azure for one action per view, not everywhere.</li><li>Pair the logo with the azure arrow and progress motif.</li><li>Keep navy as the dominant brand color.</li></ul></div>
-    <div class="box dont"><h4>Don't</h4><ul><li>Flood a layout in azure, it loses its signal.</li><li>Recolor or restyle the logo artwork itself.</li><li>Stretch or add effects to the mark.</li></ul></div>
   </div>
 </div></section>
 
-<section id="color"><div class="wrap">
-  <div class="eyebrow">Color</div>
-  <h2 style="font-size:38px; margin-top:12px">Navy leads, azure signals</h2>
-  <p class="lead" style="margin-top:14px">Strategy: <b>committed</b>. Navy is the surface and structure; azure is reserved for action and progress, roughly 10% of any layout.</p>
+<!-- ---------- LOGO ---------- -->
+<section id="logo"><div class="wrap reveal">
+  <div class="num">01</div>
+  <div class="kicker" style="margin-top:4px">The logo</div>
+  <h2 class="sectionhead">The logo, untouched</h2>
+  <p class="lead" style="margin-top:14px">Your logo is the anchor of trust, so it never changes. Momentum lives everywhere around it. Keep clear space, keep contrast, and on dark or busy fields set the full-color mark on a clean white field.</p>
+  <div class="logo-row">
+    <div class="logo-cell"><img src="assets/sb1d-icon.png" style="width:92px" alt="Smarter by 1 Degree icon"><span class="cap">Primary icon</span></div>
+    <div class="logo-cell"><img src="assets/sb1d-logo-horizontal.png" style="width:230px; max-width:90%" alt="Smarter by 1 Degree logo"><span class="cap">Horizontal lockup</span></div>
+    <div class="logo-cell dark"><span class="whitechip"><img src="assets/sb1d-icon.png" style="width:64px; display:block" alt="Smarter by 1 Degree icon"></span><span class="cap">On navy · white field</span></div>
+  </div>
+  <div class="specs">
+    <div class="spec"><span class="dot"></span><span><b>Clear space</b>Keep space equal to the cap height on every side.</span></div>
+    <div class="spec"><span class="dot"></span><span><b>Minimum size</b>Icon ≥ 28px, horizontal logo ≥ 120px wide on screen.</span></div>
+    <div class="spec"><span class="dot"></span><span><b>Do</b>Place on white, cloud, or a white field over color.</span></div>
+    <div class="spec"><span class="dot"></span><span><b>Don't</b>Recolor, redraw, stretch, or set straight onto a photo.</span></div>
+  </div>
+</div></section>
+
+<!-- ---------- COLOR ---------- -->
+<section id="color" style="background:var(--cloud)"><div class="wrap reveal">
+  <div class="num">02</div>
+  <div class="kicker" style="margin-top:4px">Color</div>
+  <h2 class="sectionhead">Navy grounds it. Azure moves it.</h2>
+  <p class="lead" style="margin-top:14px">Strategy: <b>committed</b>. Navy carries most of the brand. Azure is the signal, reserved for action and motion, never wallpaper. Neutrals are tinted toward navy so nothing feels cold.</p>
+
+  <div class="ratio">
+    <span style="background:var(--navy); flex:55">Degree Navy · ~55%</span>
+    <span style="background:var(--mist); flex:30; color:var(--ink)">Tinted neutrals · ~30%</span>
+    <span style="background:var(--azure); flex:11">Azure · ~10%</span>
+    <span style="background:var(--graphite); flex:8">Text</span>
+  </div>
+
   <div class="swatches">
-    <div class="sw"><div class="chip" style="background:#1F497D"></div><div class="meta"><div class="nm">Degree Navy</div><div class="hx">#1F497D</div><div class="role">Primary, structure, text.</div></div></div>
-    <div class="sw"><div class="chip" style="background:#2f8fe0"></div><div class="meta"><div class="nm">Signal Azure</div><div class="hx">#2F8FE0</div><div class="role">Action, links, momentum.</div></div></div>
-    <div class="sw"><div class="chip" style="background:#3a3f47"></div><div class="meta"><div class="nm">Graphite</div><div class="hx">#3A3F47</div><div class="role">Warm body text.</div></div></div>
-    <div class="sw"><div class="chip" style="background:#dbe7f5"></div><div class="meta"><div class="nm">Sky Tint</div><div class="hx">#DBE7F5</div><div class="role">Highlights, soft fills.</div></div></div>
-    <div class="sw"><div class="chip" style="background:#f3f6fa; border-bottom:1px solid var(--line)"></div><div class="meta"><div class="nm">Paper</div><div class="hx">#F3F6FA</div><div class="role">Backgrounds.</div></div></div>
+    <div class="sw"><div class="chip" style="background:#1F497D"></div><div class="meta"><div class="nm">Degree Navy</div><div class="hx">#1F497D</div><div class="role">Primary. Logo, headlines, key surfaces.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.33 0.078 256)"></div><div class="meta"><div class="nm">Deep Navy</div><div class="hx">#1A3960</div><div class="role">Sections, footers, hero grounds.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.22 0.055 256)"></div><div class="meta"><div class="nm">Midnight</div><div class="hx">#11233D</div><div class="role">Deepest backgrounds, contrast.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.64 0.155 244)"><small>AA on navy/white*</small></div><div class="meta"><div class="nm">Signal Azure</div><div class="hx">#2B86DB</div><div class="role">Action, links, motion. ~10% max.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.86 0.08 244)"></div><div class="meta"><div class="nm">Azure 200</div><div class="hx">#AFD2F2</div><div class="role">On-navy text, tints, charts.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.93 0.045 244)"></div><div class="meta"><div class="nm">Sky</div><div class="hx">#E6F1FC</div><div class="role">Washes, highlights, focus rings.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.92 0.012 250)"></div><div class="meta"><div class="nm">Mist</div><div class="hx">#E4E9F0</div><div class="role">Dividers, tracks, fills.</div></div></div>
+    <div class="sw"><div class="chip" style="background:oklch(0.31 0.014 256)"><small style="color:#fff; background:#0003">text</small></div><div class="meta"><div class="nm">Warm Graphite</div><div class="hx">#3A4150</div><div class="role">Body copy on light.</div></div></div>
   </div>
+  <p style="margin-top:18px; color:var(--mute); font-size:13.5px; max-width:64ch">*Use Azure for large UI and buttons (white text passes AA). For small body text on white, use Navy or Graphite, Azure is a signal, not a paragraph color.</p>
 </div></section>
 
-<section id="type"><div class="wrap">
-  <div class="eyebrow">Typography</div>
-  <h2 style="font-size:38px; margin-top:12px">Archivo + Plus Jakarta Sans</h2>
-  <p class="lead" style="margin-top:14px"><b>Archivo</b> stays for headlines (it echoes the wordmark). <b>Plus Jakarta Sans</b> is the rounder, friendlier voice for everything a student reads.</p>
+<!-- ---------- TYPOGRAPHY ---------- -->
+<section id="type"><div class="wrap reveal">
+  <div class="num">03</div>
+  <div class="kicker" style="margin-top:4px">Typography</div>
+  <h2 class="sectionhead">Archivo, with Hanken Grotesk</h2>
+  <p class="lead" style="margin-top:14px"><b>Archivo</b> is the voice of the wordmark: heavy, geometric, confident, used for every headline and label. <b>Hanken Grotesk</b> is its warmer counterpart for body and UI, friendly enough for a teenager, clear enough for a parent.</p>
+  <div class="fontcards">
+    <div class="fontcard"><div class="big" style="font-family:'Archivo'; font-weight:900">Aa</div><div class="label">Archivo · 700–900</div><div class="desc">Display, headlines, buttons, labels. Tight tracking, big weight contrast.</div></div>
+    <div class="fontcard"><div class="big" style="font-family:'Hanken Grotesk'; font-weight:600">Aa</div><div class="label">Hanken Grotesk · 400–700</div><div class="desc">Body, captions, UI text. Set 400–500 for paragraphs, 600–700 for emphasis.</div></div>
+  </div>
   <div class="scale" style="margin-top:30px">
-    <div><span class="tag">Display / 900</span><span class="specimen" style="font-size:56px; font-weight:900">Go further, faster</span></div>
-    <div><span class="tag">H2 / 800</span><span class="specimen" style="font-size:38px; font-weight:800">Two credentials at once</span></div>
-    <div><span class="tag">H3 / 700</span><span class="specimen" style="font-size:26px; font-weight:700">Flex-paced. Mastery-based.</span></div>
-    <div><span class="tag">Body / Jakarta</span><span class="specimen" style="font-family:'Plus Jakarta Sans'; font-size:18px; font-weight:500; color:var(--graphite)">An advisor with you from day one to graduation.</span></div>
+    <div><span class="tag">Display · 900</span><span class="specimen" style="font-size:58px; font-weight:900">Get ahead, faster</span></div>
+    <div><span class="tag">H2 · 800</span><span class="specimen" style="font-size:38px; font-weight:800">Two credentials, one path</span></div>
+    <div><span class="tag">H3 · 700</span><span class="specimen" style="font-size:26px; font-weight:700">Advised every step of the way</span></div>
+    <div><span class="tag">Lead · Hanken 500</span><span class="specimen" style="font-family:'Hanken Grotesk'; font-size:21px; font-weight:500; color:var(--graphite)">Mastery over busywork.</span></div>
+    <div><span class="tag">Body · Hanken 400</span><span class="specimen" style="font-family:'Hanken Grotesk'; font-size:17px; font-weight:400; color:var(--graphite)">A real, accredited bachelor's, in less time and without the debt.</span></div>
   </div>
 </div></section>
 
-<section id="voice"><div class="wrap">
-  <div class="eyebrow">Voice &amp; tone</div>
-  <h2 style="font-size:38px; margin-top:12px; margin-bottom:30px">Energetic, plain-spoken, on the student's side</h2>
-  <div class="two">
-    <p class="voicequote">Work <em>smarter</em>, not harder. There's a better way to do high school.</p>
-    <div>
-      <div class="eyebrow" style="color:var(--mute)">Signature phrases</div>
-      <div style="margin-top:12px">
-        <span class="pill">Go further, faster</span><span class="pill">Smarter, not harder</span><span class="pill">Your path, your pace</span><span class="pill">Momentum starts now</span><span class="pill">Less debt, more direction</span>
+<!-- ---------- MOMENTUM / MOTION ---------- -->
+<section id="system" style="background:var(--cloud)"><div class="wrap reveal">
+  <div class="num">04</div>
+  <div class="kicker" style="margin-top:4px">The momentum system</div>
+  <h2 class="sectionhead">Motion that means progress</h2>
+  <p class="lead" style="margin-top:14px">Momentum is not decoration, it is the brand's one rule made visible: every student is moving forward. Motion always travels the same way, ahead, and always eases out, never bounces.</p>
+  <div class="mo-grid">
+    <div class="mo reveal-mo"><h4>Progress, made visible</h4><p>Show how far a student has come. Progress tracks fill navy-to-azure, left to right.</p><div class="track"><i></i></div></div>
+    <div class="mo"><h4>Forward cues</h4><p>The azure arrow is the brand's gesture. On hover it nudges forward, never back.</p><div class="arrowdemo"><button class="arrowbtn">See the path <span class="ar">→</span></button></div></div>
+    <div class="mo"><h4>The rules of motion</h4><p>One language across web, video, and UI.</p><div class="specbox">Duration <code>180ms</code> UI · <code>600ms</code> reveals<br>Easing <code>cubic-bezier(.16,1,.3,1)</code><br>Direction left → right, up. Never bounce.</div></div>
+  </div>
+</div></section>
+
+<!-- ---------- UI KIT ---------- -->
+<section id="ui"><div class="wrap reveal">
+  <div class="num">05</div>
+  <div class="kicker" style="margin-top:4px">Interface kit</div>
+  <h2 class="sectionhead">Components, on brand</h2>
+  <div class="kit">
+    <div class="kitcard"><div class="lbl">Buttons</div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center">
+        <a class="btn btn-azure">Enroll today <span class="ar">→</span></a>
+        <a class="btn btn-navy">How it works</a>
+        <a class="btn btn-ghost">Talk to an advisor</a>
       </div>
-      <div class="eyebrow" style="color:var(--mute); margin-top:24px">Tone dial</div>
-      <p style="color:var(--ink); margin-top:8px">Warm and direct with students, calm and credible with parents. Confident, never pushy.</p>
+      <p style="font-size:13.5px; color:var(--mute); margin:18px 0 0">Azure = the primary action, one per view. Navy = secondary. Ghost = tertiary.</p>
+    </div>
+    <div class="kitcard"><div class="lbl">Tags &amp; links</div>
+      <div class="tags"><span class="tag solid">Flex-paced</span><span class="tag">Debt-free</span><span class="tag">Accredited</span><span class="tag">Mastery-based</span></div>
+      <p style="font-size:15px; margin:18px 0 0">Inline links use an animated underline, like <a class="ilink">a degree ahead</a>, that draws in on hover.</p>
+    </div>
+    <div class="kitcard"><div class="lbl">Form field</div>
+      <label style="font-family:'Archivo'; font-weight:700; font-size:13px; color:var(--navy-deep)">Student email</label>
+      <input class="field" style="margin-top:8px" value="hello@student.com">
+      <p style="font-size:13.5px; color:var(--mute); margin:12px 0 0">Focus rings use Sky, the soft azure tint.</p>
+    </div>
+    <div class="kitcard"><div class="lbl">Stat lockup</div>
+      <div style="display:flex; gap:30px; align-items:flex-end">
+        <div><div style="font-family:'Archivo'; font-weight:900; font-size:48px; color:var(--navy); line-height:.9">80%</div><div style="font-size:13px; color:var(--mute); margin-top:4px">lower cost</div></div>
+        <div><div style="font-family:'Archivo'; font-weight:900; font-size:48px; color:var(--azure); line-height:.9">4+</div><div style="font-size:13px; color:var(--mute); margin-top:4px">years saved</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kicker" style="color:var(--mute); margin-top:46px">Iconography</div>
+  <p style="font-size:15px; color:var(--mute); margin:6px 0 0; max-width:56ch">Single-weight line icons, 2px navy strokes, rounded ends, drawn with a slight forward lean.</p>
+  <div class="icons">
+    <div class="ico"><svg viewBox="0 0 24 24"><path d="M2 8l10-4 10 4-10 4z"/><path d="M6 10v5c0 1.5 12 1.5 12 0v-5"/><path d="M22 8v5"/></svg><span>Degree</span></div>
+    <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Time saved</span></div>
+    <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M16 7H10a3 3 0 000 6h4a3 3 0 010 6H7"/></svg><span>Debt-free</span></div>
+    <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 5h11a3 3 0 013 3v11"/><path d="M4 5v14h11"/><path d="M4 19a3 3 0 013-3h11"/></svg><span>Mastery</span></div>
+    <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><span>Advised</span></div>
+    <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 13l5 5L20 6"/><path d="M4 18h16"/></svg><span>Forward</span></div>
+  </div>
+</div></section>
+
+<!-- ---------- IMAGERY ---------- -->
+<section id="imagery" style="background:var(--cloud)"><div class="wrap reveal">
+  <div class="num">06</div>
+  <div class="kicker" style="margin-top:4px">Photography</div>
+  <h2 class="sectionhead">Real students, real momentum</h2>
+  <p class="lead" style="margin-top:14px">Bright, candid, and diverse. Students mid-action, working together, looking ahead, never stiff stock poses. Natural light, warm skin tones, screens and notebooks in use.</p>
+  <div class="imgrow">
+    <div class="ph" data-cap="Working together, mid-momentum"><img src="https://images.unsplash.com/photo-1758270705290-62b6294dd044?auto=format&fit=crop&w=1300&q=80" alt="Diverse students collaborating around a laptop, smiling"></div>
+    <div class="imgcol">
+      <div class="ph" data-cap="Hands-on, screens in use"><img src="https://images.unsplash.com/photo-1758270705317-3ef6142d306f?auto=format&fit=crop&w=800&q=80" alt="Multiracial team of students working on a laptop"></div>
+      <div class="ph" data-cap="Confident, connected"><img src="https://images.unsplash.com/photo-1758270705518-b61b40527e76?auto=format&fit=crop&w=800&q=80" alt="Students in a video call, smiling and waving"></div>
+    </div>
+  </div>
+  <div class="specs" style="grid-template-columns:repeat(3,1fr); margin-top:22px">
+    <div class="spec"><span class="dot"></span><span><b>Do</b>Candid action, eye contact, daylight, diverse faces.</span></div>
+    <div class="spec"><span class="dot"></span><span><b>Treatment</b>A subtle navy duotone or azure accent is welcome for hero crops.</span></div>
+    <div class="spec"><span class="dot"></span><span><b>Don't</b>Cheesy thumbs-up, empty lecture halls, gray cubicles.</span></div>
+  </div>
+</div></section>
+
+<!-- ---------- APPLICATIONS ---------- -->
+<section id="apply"><div class="wrap reveal">
+  <div class="num">07</div>
+  <div class="kicker" style="margin-top:4px">Applications</div>
+  <h2 class="sectionhead">The system in the wild</h2>
+  <div class="apps">
+    <div class="app"><div class="capn">Website hero</div>
+      <div class="browser">
+        <div class="bbar"><i></i><i></i><i></i></div>
+        <div class="bnav"><img src="assets/sb1d-logo-horizontal.png" alt="Smarter by 1 Degree"><span><span class="lk">HOW IT WORKS</span><span class="lk">TUITION</span><span class="lk">ENROLL</span></span></div>
+        <div class="bhero"><h4>Graduate a <span class="mv">degree</span> ahead.</h4><p>Earn your diploma and an accredited bachelor's at the same time.</p><a class="btn btn-azure">Start your plan <span class="ar">→</span></a></div>
+      </div>
+    </div>
+    <div class="app"><div class="capn">Social post</div>
+      <div class="social">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start"><span class="whitechip"><img src="assets/sb1d-icon.png" alt="icon"></span><span class="tagrow">WORK SMARTER →</span></div>
+        <h3>Two years in,<br>you'll be a <span class="mv">sophomore</span><br>in college.</h3>
+        <div class="tagrow">smarterby1degree.com</div>
+      </div>
+    </div>
+    <div class="app"><div class="capn">Email signature</div>
+      <div class="sig">
+        <div class="bar"></div>
+        <div>
+          <img src="assets/sb1d-logo-horizontal.png" alt="Smarter by 1 Degree">
+          <div class="nm">Janine Deems</div>
+          <div class="tt">Founder &amp; Academic Advisor</div>
+          <div class="ct">smarterby1degree.com · WASC Accredited</div>
+        </div>
+      </div>
+    </div>
+    <div class="app"><div class="capn">Student portal · progress</div>
+      <div class="portal">
+        <div class="ph4">Your momentum</div>
+        <div class="course"><span class="nm">English Composition</span><span class="pct">92%</span></div><div class="ptrack"><i style="width:92%"></i></div>
+        <div class="course"><span class="nm">College Algebra</span><span class="pct">68%</span></div><div class="ptrack"><i style="width:68%"></i></div>
+        <div class="course"><span class="nm">U.S. History</span><span class="pct">45%</span></div><div class="ptrack"><i style="width:45%"></i></div>
+      </div>
     </div>
   </div>
 </div></section>
 
-<section id="apply"><div class="wrap">
-  <div class="eyebrow">In use</div>
-  <h2 style="font-size:38px; margin-top:12px; margin-bottom:30px">The system, applied</h2>
-  <div class="two">
-    <div class="mock-card">
-      <span style="display:inline-block; background:#fff; border-radius:11px; padding:9px; position:relative"><img src="assets/sb1d-icon.png" style="width:36px; display:block" alt="Smarter by 1 Degree icon"></span>
-      <h3>Your degree,<br>already in motion.</h3>
-      <p>Start earning college credit in high school, advised every step of the way.</p>
-      <a class="btn btn-primary" href="#">Start my plan →</a>
+<!-- ---------- VOICE ---------- -->
+<section id="voice" style="background:var(--midnight)">
+  <div class="wrap reveal" style="color:#fff">
+  <div class="num" style="color:var(--azure-bright)">08</div>
+  <div class="kicker" style="margin-top:4px; color:var(--azure-bright)">Voice &amp; tone</div>
+  <h2 class="sectionhead" style="color:#fff; margin-top:10px">Confident, warm, always forward</h2>
+  <div class="voicewrap">
+    <div>
+      <p class="vq" style="color:#fff">Work <span class="mv">smarter.</span><br>Get a <span class="mv">degree</span> ahead.</p>
+      <p style="color:var(--azure-200); margin-top:18px; max-width:34ch">We speak to teenagers like capable adults and to parents like partners. Encouraging, never pushy. We sell momentum, not fear.</p>
     </div>
-    <div class="card" style="display:flex; flex-direction:column; gap:18px; justify-content:center">
-      <div class="eyebrow" style="color:var(--mute)">Buttons</div>
-      <div style="display:flex; gap:12px; flex-wrap:wrap"><a class="btn btn-primary" href="#">Enroll</a><a class="btn btn-navy" href="#">How it works</a><a class="btn btn-ghost" href="#">Talk to an advisor</a></div>
-      <div class="eyebrow" style="color:var(--mute); margin-top:8px">Progress motif</div>
-      <div style="display:flex; align-items:center; gap:10px"><div style="flex:1; height:10px; border-radius:6px; background:linear-gradient(90deg,var(--navy),var(--azure)); background-size:62% 100%; background-repeat:no-repeat; background-color:var(--line)"></div><span style="font-family:Archivo; font-weight:800; color:var(--azure)">62%</span></div>
-      <p style="color:var(--mute); margin:0; font-size:14px">Use the navy→azure bar to show a student's path to graduation.</p>
+    <div>
+      <div class="say"><span class="y">Say</span><span style="color:#fff">There's a better way to do high school.</span></div>
+      <div class="say"><span class="y">Say</span><span style="color:#fff">A real, accredited degree, debt-free.</span></div>
+      <div class="say"><span class="y">Say</span><span style="color:#fff">You're already moving. Let's go further.</span></div>
+      <div class="say"><span class="n">Not</span><span style="color:var(--azure-200)">Don't fall behind. (fear)</span></div>
+      <div class="say"><span class="n">Not</span><span style="color:var(--azure-200)">Revolutionary synergistic learning. (jargon)</span></div>
     </div>
   </div>
-</div></section>
+  </div>
+</section>
 
-<footer class="foot"><div class="wrap">Smarter by 1 Degree — Momentum direction. Evolves the current navy identity. · <a href="index.html">All four directions →</a></div></footer>
+<footer class="foot"><div class="wrap">Smarter by 1 Degree — Momentum brand system. The current navy identity, evolved. Built around your existing logo. · <a href="index.html">All four directions →</a></div></footer>
+
+<script>
+  const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target);}})},{threshold:.16});
+  document.querySelectorAll('.reveal, .mo').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
