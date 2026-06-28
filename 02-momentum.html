@@ -219,6 +219,24 @@
     *{animation:none!important}
     .reveal{opacity:1; transform:none; transition:none}
   }
+
+  /* Download-PDF button */
+  .pdfbtn{display:inline-flex; align-items:center; gap:8px; margin-top:22px; font-family:"Archivo"; font-weight:800; font-size:13px; color:#fff; background:var(--navy); text-decoration:none; padding:11px 18px; border-radius:10px; transition:background .2s, box-shadow .2s}
+  .pdfbtn:hover{background:var(--azure); box-shadow:0 12px 24px -12px var(--azure)}
+
+  /* Print / PDF rendering */
+  @media print{
+    @page{ size:1240px 1754px; margin:0 }
+    *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; animation:none !important }
+    html,body{ background:#fff }
+    .nav, .pdfhide{ display:none !important }
+    .reveal{ opacity:1 !important; transform:none !important }
+    .runline{ width:340px !important }
+    .mo .track i{ width:82% !important }
+    section{ break-before:page; border-top:none }
+    .card,.panel,.sw,.mo,.kitcard,.logo-cell,.fontcard,.app,.ph,.ico,figure,.voicewrap,.fontcards,.compare,.swatches > *{ break-inside:avoid }
+    .cover{ background:linear-gradient(168deg,var(--paper) 30%,var(--azure-soft)) }
+  }
 </style>
 </head>
 <body>
@@ -242,6 +260,7 @@
       <span class="badge"><b>Type</b> Archivo + Hanken</span>
       <span class="badge">WASC Accredited</span>
     </div>
+    <a class="pdfbtn pdfhide" href="assets/sb1d-momentum-brand-guide.pdf" download>↓ Download this guide (PDF)</a>
   </div>
   <div class="cover-card">
     <span class="chip"><img src="assets/sb1d-icon.png" alt="Smarter by 1 Degree icon"></span>
