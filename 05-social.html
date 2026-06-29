@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Smarter by 1 Degree — Momentum Social Templates</title>
+<title>Smarter by 1 Degree — Momentum Brand Kit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -83,8 +83,35 @@
   .foot{padding:46px 0; color:var(--mute); font-size:14px; border-top:1px solid var(--line); margin-top:40px}
   .foot a{color:var(--navy); font-weight:600}
 
-  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)} .grid.stories{grid-template-columns:repeat(2,1fr)} .nav .links{display:none}}
-  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  /* category chips in hero */
+  .cats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px}
+  .catchip{display:flex; flex-direction:column; gap:3px; padding:16px 18px; border:1px solid var(--line); border-radius:14px; background:#fff; text-decoration:none; transition:border-color .2s, transform .25s var(--ease,ease)}
+  .catchip:hover{border-color:var(--azure); transform:translateY(-2px)}
+  .catchip b{font-family:"Archivo"; font-weight:800; font-size:16px; color:var(--navy-deep)}
+  .catchip span{font-size:13px; color:var(--mute)}
+
+  /* category section header */
+  .cat{display:flex; align-items:baseline; gap:14px}
+  .cat .catnum{font-family:"Archivo"; font-weight:800; font-size:13px; color:var(--azure)}
+  .cat h2{font-size:clamp(26px,3.4vw,40px); font-weight:900}
+  .catlead{font-size:17px; color:var(--mute); max-width:60ch; margin:10px 0 0}
+
+  /* asset (logo / icon) grids */
+  .assetgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px}
+  .acard{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#fff; display:flex; flex-direction:column}
+  .acard .art{height:158px; display:flex; align-items:center; justify-content:center; padding:18px}
+  .acard .art img{max-width:74%; max-height:100%}
+  .acard.dark .art{background:var(--navy-deep)} .acard.tint .art{background:var(--mist)}
+  .acard.iconcard .art{height:118px} .acard.iconcard .art img{max-width:46px}
+  .acard .info{padding:14px 16px; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:3px; flex:1}
+  .acard .nm{font-family:"Archivo"; font-weight:800; font-size:14px; color:var(--ink)}
+  .acard .role{font-size:12.5px; color:var(--mute)}
+  .acard .dls{display:flex; gap:8px; margin-top:auto; padding-top:11px}
+  .acard .dls .dl{margin-top:0; padding:5px 11px}
+  .catdl{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
+
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)} .grid.stories{grid-template-columns:repeat(2,1fr)} .nav .links{display:none} .cats{grid-template-columns:1fr} .assetgrid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr} .assetgrid{grid-template-columns:1fr}}
 
   /* export mode: isolate one template at full viewport for PNG rendering */
   body.exporting{margin:0; background:#fff; overflow:hidden}
@@ -120,23 +147,26 @@
 
 <nav class="nav"><div class="wrap">
   <a class="home" href="index.html"><img src="assets/sb1d-logo-horizontal.png" alt="Smarter by 1 Degree"></a>
-  <div class="links"><a href="02-momentum.html">← Momentum guide</a><a href="index.html">All directions</a></div>
+  <div class="links"><a href="#social">Social</a><a href="#logos">Logos</a><a href="#icons">Icons</a><a href="02-momentum.html">Guide</a><a href="index.html">All directions</a></div>
 </div></nav>
 
 <header class="hero"><div class="wrap">
-  <div class="kicker">Momentum · Social templates</div>
-  <h1>Ready to post, <span class="mv">on brand.</span></h1>
-  <p>A starter set of social templates in the Momentum system: square posts for Instagram and Facebook, plus Stories. Same navy, same logo, the azure signal and forward motion throughout. Swap the words and ship.</p>
-  <p style="margin-top:16px; font-size:15px; color:var(--navy); font-weight:600">✎ Editable, right here: hit <b>Edit &amp; download</b> on any template to change the words, swap the photo, and export a fresh PNG. No login.</p>
-  <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap">
-    <a class="dl dl-strong" href="assets/social/sb1d-momentum-social.zip" download>↓ Download originals (ZIP)</a>
-    <a class="dl" href="06-logo.html">Logo kit →</a>
+  <div class="kicker">Smarter by 1 Degree · Momentum</div>
+  <h1>The brand <span class="mv">kit.</span></h1>
+  <p>Everything from the Momentum direction in one place, ready to download and use: editable social templates, the logo in every version, and the icon set. All on-brand, no design tools needed.</p>
+  <div class="cats">
+    <a class="catchip" href="#social"><b>Social templates</b><span>Editable posts &amp; Stories</span></a>
+    <a class="catchip" href="#logos"><b>Logos</b><span>Every version + favicons</span></a>
+    <a class="catchip" href="#icons"><b>Icons</b><span>SVG &amp; PNG set</span></a>
   </div>
 </div></header>
 
-<!-- ============ FEED POSTS (1:1) ============ -->
-<section><div class="wrap">
-  <div class="secthead"><h2>Feed posts</h2><span class="dim">1080 × 1080 · Instagram / Facebook</span></div>
+<!-- ============ SOCIAL TEMPLATES ============ -->
+<section id="social"><div class="wrap">
+  <div class="cat"><span class="catnum">01</span><h2>Social media templates</h2></div>
+  <p class="catlead">Click <b>Edit &amp; download</b> on any template to retype the text, swap the photo, and export a ready-to-post PNG, all in the Momentum system. Or grab the whole set as a ZIP.</p>
+  <div class="catdl"><a class="dl dl-strong" href="assets/social/sb1d-momentum-social.zip" download>↓ All posts &amp; stories (ZIP)</a></div>
+  <div class="secthead" style="margin-top:36px"><h2 style="font-size:21px">Feed posts</h2><span class="dim">1080 × 1080 · Instagram / Facebook</span></div>
   <div class="grid">
 
     <!-- 1. Hook headline -->
@@ -306,7 +336,39 @@
   <div class="note"><b>How to use:</b> click <b>Edit &amp; download</b> on any template, then click any line of text to retype it, use <b>↻ Replace photo</b> to drop in your own image, and hit <b>Download PNG</b> for a ready-to-post file (1080×1080 posts, 1080×1920 Stories). Everything stays in the Momentum system: navy + azure, your real logo, Archivo + Hanken Grotesk.</div>
 </div></section>
 
-<footer class="foot"><div class="wrap">Smarter by 1 Degree — Momentum social templates. · <a href="02-momentum.html">Momentum guide</a> · <a href="index.html">All four directions →</a></div></footer>
+<!-- ============ LOGOS ============ -->
+<section id="logos" style="background:var(--cloud)"><div class="wrap">
+  <div class="cat"><span class="catnum">02</span><h2>Logos</h2></div>
+  <p class="catlead">Your real logo in every version you'll need, transparent PNGs ready for the web, docs, slides, and merch. The story behind the refined version lives on the <a href="06-logo.html">logo page</a>.</p>
+  <div class="assetgrid">
+    <div class="acard"><div class="art"><img src="assets/sb1d-icon.png" alt="Full-color icon"></div><div class="info"><div class="nm">Icon — full color</div><div class="role">Default mark, light backgrounds.</div><div class="dls"><a class="dl" href="assets/sb1d-icon.png" download>PNG</a></div></div></div>
+    <div class="acard"><div class="art"><img src="assets/refine-unified.png" alt="Refined icon"></div><div class="info"><div class="nm">Icon — refined cap</div><div class="role">Deep-navy cap, more unified.</div><div class="dls"><a class="dl" href="assets/refine-unified.png" download>PNG</a></div></div></div>
+    <div class="acard"><div class="art"><img src="assets/sb1d-logo-horizontal.png" alt="Horizontal logo"></div><div class="info"><div class="nm">Horizontal logo</div><div class="role">Icon + wordmark lockup.</div><div class="dls"><a class="dl" href="assets/sb1d-logo-horizontal.png" download>PNG</a></div></div></div>
+    <div class="acard tint"><div class="art"><img src="assets/refine-onecolor.png" alt="One-color navy"></div><div class="info"><div class="nm">One-color navy</div><div class="role">Print, stamps, embroidery.</div><div class="dls"><a class="dl" href="assets/refine-onecolor.png" download>PNG</a></div></div></div>
+    <div class="acard dark"><div class="art"><img src="assets/refine-reverse.png" alt="Reverse white"></div><div class="info"><div class="nm">Reverse white</div><div class="role">Dark backgrounds, photos.</div><div class="dls"><a class="dl" href="assets/refine-reverse.png" download>PNG</a></div></div></div>
+    <div class="acard"><div class="art"><img src="assets/favicon/favicon-512.png" alt="Favicon" style="max-width:64px"></div><div class="info"><div class="nm">Favicon pack</div><div class="role">16–512px, .ico &amp; Apple touch.</div><div class="dls"><a class="dl" href="assets/favicon/sb1d-favicons.zip" download>ZIP</a></div></div></div>
+  </div>
+  <div class="catdl"><a class="dl dl-strong" href="assets/sb1d-logo-kit.zip" download>↓ All logos (ZIP)</a><a class="dl" href="assets/favicon/sb1d-favicons.zip" download>↓ Favicon pack (ZIP)</a></div>
+  <p style="font-size:13px; color:var(--mute); margin-top:14px">Need true vector (SVG/EPS) for large-format print or signage? That comes with the logo cleanup, see the <a href="06-logo.html">logo page</a>.</p>
+</div></section>
+
+<!-- ============ ICONS ============ -->
+<section id="icons"><div class="wrap">
+  <div class="cat"><span class="catnum">03</span><h2>Icons</h2></div>
+  <p class="catlead">The Momentum icon set: single-weight navy line icons with 2px strokes, drawn to match the brand. Each in scalable SVG and ready-to-use PNG.</p>
+  <div class="assetgrid">
+    <div class="acard iconcard"><div class="art"><img src="assets/icons/degree.png" alt="Degree icon"></div><div class="info"><div class="nm">Degree</div><div class="dls"><a class="dl" href="assets/icons/degree.svg" download>SVG</a><a class="dl" href="assets/icons/degree.png" download>PNG</a></div></div></div>
+    <div class="acard iconcard"><div class="art"><img src="assets/icons/time-saved.png" alt="Time saved icon"></div><div class="info"><div class="nm">Time saved</div><div class="dls"><a class="dl" href="assets/icons/time-saved.svg" download>SVG</a><a class="dl" href="assets/icons/time-saved.png" download>PNG</a></div></div></div>
+    <div class="acard iconcard"><div class="art"><img src="assets/icons/debt-free.png" alt="Debt-free icon"></div><div class="info"><div class="nm">Debt-free</div><div class="dls"><a class="dl" href="assets/icons/debt-free.svg" download>SVG</a><a class="dl" href="assets/icons/debt-free.png" download>PNG</a></div></div></div>
+    <div class="acard iconcard"><div class="art"><img src="assets/icons/mastery.png" alt="Mastery icon"></div><div class="info"><div class="nm">Mastery</div><div class="dls"><a class="dl" href="assets/icons/mastery.svg" download>SVG</a><a class="dl" href="assets/icons/mastery.png" download>PNG</a></div></div></div>
+    <div class="acard iconcard"><div class="art"><img src="assets/icons/advised.png" alt="Advised icon"></div><div class="info"><div class="nm">Advised</div><div class="dls"><a class="dl" href="assets/icons/advised.svg" download>SVG</a><a class="dl" href="assets/icons/advised.png" download>PNG</a></div></div></div>
+    <div class="acard iconcard"><div class="art"><img src="assets/icons/forward.png" alt="Forward icon"></div><div class="info"><div class="nm">Forward</div><div class="dls"><a class="dl" href="assets/icons/forward.svg" download>SVG</a><a class="dl" href="assets/icons/forward.png" download>PNG</a></div></div></div>
+  </div>
+  <div class="catdl"><a class="dl dl-strong" href="assets/icons/sb1d-icons.zip" download>↓ All icons (ZIP)</a></div>
+  <p style="font-size:13px; color:var(--mute); margin-top:14px">Navy by default. Need a white set for dark backgrounds? I can add it.</p>
+</div></section>
+
+<footer class="foot"><div class="wrap">Smarter by 1 Degree — Momentum brand kit. · <a href="02-momentum.html">Momentum guide</a> · <a href="06-logo.html">Logo page</a> · <a href="index.html">All four directions →</a></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.13/dist/html-to-image.js"></script>
 <script>
   (function(){
