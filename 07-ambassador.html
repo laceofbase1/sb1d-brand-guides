@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smarter by 1 Degree — Ambassador Toolkit (Smarter Together)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F497D; --navy-deep:oklch(0.33 0.078 256); --midnight:oklch(0.22 0.055 256);
+    --azure:oklch(0.64 0.155 244); --azure-bright:oklch(0.70 0.16 244);
+    --azure-200:oklch(0.86 0.08 244); --azure-soft:oklch(0.93 0.045 244);
+    --graphite:oklch(0.31 0.014 256); --ink:oklch(0.24 0.018 256);
+    --paper:oklch(0.992 0.003 250); --cloud:oklch(0.965 0.007 250);
+    --mist:oklch(0.92 0.012 250); --line:oklch(0.90 0.012 250); --mute:oklch(0.50 0.02 250);
+    --maxw:1180px; --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--paper); color:var(--graphite); font-family:"Hanken Grotesk",system-ui,sans-serif; font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Archivo"; margin:0; letter-spacing:-0.025em; line-height:1.03; color:var(--navy-deep)}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 36px}
+  a{color:var(--navy)}
+  .kicker{display:inline-flex; align-items:center; gap:10px; font-family:"Archivo"; font-weight:800; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--azure)}
+  .kicker::before{content:""; width:26px; height:2px; background:var(--azure); border-radius:2px}
+
+  .nav{position:sticky; top:0; z-index:40; backdrop-filter:blur(10px); background:oklch(0.992 0.003 250 / .82); border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:62px}
+  .nav .home{display:flex; align-items:center; gap:10px; font-family:"Archivo"; font-weight:800; font-size:14px; color:var(--navy-deep); text-decoration:none}
+  .nav .home img{height:26px}
+  .nav .links a{font-family:"Archivo"; font-weight:700; font-size:12.5px; text-decoration:none; color:var(--mute); margin-left:18px}
+  .nav .links a:hover{color:var(--azure)}
+
+  header.hero{padding:74px 0 18px; background:linear-gradient(168deg,var(--paper) 30%,var(--azure-soft))}
+  header h1{font-size:clamp(40px,6.5vw,76px); font-weight:900; color:var(--navy-deep); margin-top:14px}
+  header h1 .mv{color:var(--azure)}
+  header p{font-size:21px; color:var(--mute); max-width:62ch; margin-top:18px; line-height:1.5}
+  .howto{display:flex; gap:14px; flex-wrap:wrap; margin-top:26px}
+  .howto .step{flex:1; min-width:200px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px}
+  .howto .step b{font-family:"Archivo"; color:var(--navy-deep); display:block; font-size:15px}
+  .howto .step span{font-size:14px; color:var(--mute)}
+  .howto .step .n{font-family:"Archivo"; font-weight:900; color:var(--azure); font-size:13px}
+
+  section{padding:54px 0 10px}
+  .cat{display:flex; align-items:baseline; gap:14px}
+  .cat .catnum{font-family:"Archivo"; font-weight:800; font-size:13px; color:var(--azure)}
+  .cat h2{font-size:clamp(24px,3.2vw,36px); font-weight:900}
+  .catlead{font-size:16px; color:var(--mute); max-width:64ch; margin:8px 0 0}
+
+  .grid{display:grid; gap:24px; margin-top:26px; grid-template-columns:repeat(3,1fr)}
+  .grid.g45{grid-template-columns:repeat(3,1fr)}
+  .grid.g11{grid-template-columns:repeat(3,1fr)}
+  .grid.g916{grid-template-columns:repeat(4,1fr); max-width:760px}
+  figure{margin:0}
+  figcaption{font-size:13px; color:var(--mute); margin-top:9px}
+  figcaption b{font-family:"Archivo"; font-weight:700; color:var(--navy-deep); display:block; font-size:13px}
+  figcaption .tip{color:var(--azure); font-weight:700}
+
+  /* ---- template canvas ---- */
+  .post{container-type:inline-size; position:relative; border-radius:14px; overflow:hidden; box-shadow:0 18px 40px -24px oklch(0.33 0.078 256 / .5); border:1px solid var(--line)}
+  .p45{aspect-ratio:4/5} .p11{aspect-ratio:1/1} .p916{aspect-ratio:9/16}
+  .pad{position:absolute; inset:0; padding:7cqw; display:flex; flex-direction:column}
+  .chip{display:inline-flex; background:#fff; border-radius:3cqw; padding:2.3cqw}
+  .chip img{display:block; width:8.5cqw}
+  .toprow{display:flex; align-items:flex-start; justify-content:space-between; gap:3cqw}
+  .ttag{font-family:"Archivo"; font-weight:800; font-size:2.9cqw; letter-spacing:0.1em; text-transform:uppercase; color:var(--azure-bright)}
+  .ttag.pilltag{border:1px solid currentColor; border-radius:999px; padding:1.6cqw 3cqw; color:var(--azure-bright)}
+  .url{font-family:"Archivo"; font-weight:700; font-size:3cqw; letter-spacing:0.03em}
+  .eyebrow2{font-family:"Archivo"; font-weight:800; font-size:3cqw; letter-spacing:0.16em; text-transform:uppercase; color:var(--azure)}
+  .big{font-family:"Archivo"; font-weight:900; letter-spacing:-0.02em; line-height:.98}
+  .hl{color:var(--azure-bright)}
+  .lighttheme .hl{color:var(--azure)}
+  .body{font-family:"Hanken Grotesk"; line-height:1.4}
+  .cta{display:inline-flex; align-items:center; gap:2.2cqw; align-self:flex-start; background:var(--azure); color:#fff; font-family:"Archivo"; font-weight:800; padding:3cqw 4.6cqw; border-radius:2.6cqw; font-size:3.7cqw}
+  .pillrow{display:flex; gap:2cqw; flex-wrap:wrap}
+  .pill{font-family:"Archivo"; font-weight:700; font-size:3cqw; padding:2cqw 3.2cqw; border-radius:999px; background:#fff; color:var(--navy-deep); border:1px solid var(--line)}
+  .t-navy .pill{background:#ffffff14; color:#fff; border-color:#ffffff2e}
+  /* themes */
+  .t-navy{background:var(--navy-deep)} .t-navy *{color:#fff}
+  .t-navy .glow{position:absolute; right:-16cqw; top:-16cqw; width:58cqw; height:58cqw; background:radial-gradient(circle,var(--azure),transparent 68%); opacity:.45}
+  .t-navy .bottombar{position:absolute; left:0; right:0; bottom:0; height:1.5cqw; background:linear-gradient(90deg,var(--navy),var(--azure))}
+  .t-light{background:var(--paper)} .t-light *{color:var(--graphite)}
+  .t-light .big, .t-light h3{color:var(--navy-deep)}
+  .t-mid{background:var(--midnight)} .t-mid *{color:#fff}
+
+  /* compare cards (savings) */
+  .cmp{display:flex; gap:3cqw}
+  .cmpcard{flex:1; border-radius:3cqw; padding:4cqw}
+  .cmpcard.dim{background:#ffffff12}
+  .cmpcard.hi{background:var(--azure)}
+  .cmpcard .lab{font-family:"Archivo"; font-weight:700; font-size:2.7cqw; opacity:.85}
+  .cmpcard .amt{font-family:"Archivo"; font-weight:900; font-size:11cqw; line-height:.9; margin-top:1cqw}
+  .strike{text-decoration:line-through; text-decoration-color:var(--azure-bright); opacity:.7}
+
+  /* quote / fill-in */
+  .qmark{font-family:"Archivo"; font-weight:900; font-size:18cqw; line-height:.5; color:var(--azure)}
+  .signrow{display:flex; align-items:center; gap:3cqw; margin-top:auto}
+  .avatar{width:11cqw; height:11cqw; border-radius:50%; background:var(--navy-deep); display:flex; align-items:center; justify-content:center; flex:none; overflow:hidden}
+  .avatar img{width:100%; height:100%; object-fit:cover}
+  .t-navy .avatar{background:#ffffff1f; border:1px solid var(--azure)}
+  .signname{font-family:"Hanken Grotesk"; font-weight:700; font-size:4.6cqw; color:inherit}
+  .signrole{font-family:"Archivo"; font-weight:700; font-size:2.6cqw; letter-spacing:0.06em; text-transform:uppercase; opacity:.7}
+  .fillcard{position:absolute; inset:5cqw; background:#fff; border-radius:4cqw; padding:6cqw; display:flex; flex-direction:column; box-shadow:0 8cqw 16cqw -8cqw rgba(0,0,0,.25)}
+  .fillline{border-bottom:0.5cqw dashed var(--mist); height:5cqw; margin-top:2cqw}
+  .photocirc{width:18cqw; height:18cqw; border-radius:50%; border:0.6cqw dashed var(--azure); position:absolute; right:6cqw; top:6cqw; display:flex; align-items:center; justify-content:center; text-align:center; font-size:2.4cqw; color:var(--mute); overflow:hidden}
+  .photocirc img{width:100%;height:100%;object-fit:cover}
+
+  /* checklist (legit) */
+  .check{display:flex; gap:3cqw; align-items:flex-start; padding:2.4cqw 0; border-bottom:1px solid var(--line)}
+  .check .ck{width:5.4cqw; height:5.4cqw; border-radius:50%; background:var(--azure); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; font-size:3cqw; font-weight:900}
+  .check .tx{font-size:3.5cqw; line-height:1.3}
+  .disc{font-size:2.3cqw; color:var(--mute); line-height:1.4; margin-top:auto}
+
+  /* steps (how it works) */
+  .stepline{display:flex; gap:3cqw; align-items:flex-start; padding:2.6cqw 0}
+  .stepline .sn{font-family:"Archivo"; font-weight:900; font-size:6cqw; color:var(--azure); line-height:1; flex:none; width:9cqw}
+  .stepline .st b{font-family:"Archivo"; font-size:4cqw; color:#fff; display:block}
+  .stepline .st span{font-size:3.1cqw; color:var(--azure-200)}
+
+  /* download + editor (shared) */
+  .dl{display:inline-flex; align-items:center; gap:7px; font-family:"Archivo"; font-weight:700; font-size:12.5px; color:var(--navy); text-decoration:none; margin-top:8px; padding:6px 12px; border:1px solid var(--line); border-radius:8px}
+  .dl:hover{border-color:var(--azure); color:var(--azure)}
+  .dl-strong{background:var(--azure); color:#fff; border-color:var(--azure)}
+  .editbtn{display:inline-flex; align-items:center; gap:7px; font-family:"Archivo"; font-weight:800; font-size:12.5px; color:#fff; background:var(--navy); border:none; cursor:pointer; margin-top:9px; padding:8px 14px; border-radius:8px}
+  .editbtn:hover{background:var(--azure)}
+  .catdl{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
+
+  body.exporting{margin:0; background:#fff; overflow:hidden}
+  body.exporting > *:not(.export-stage){display:none!important}
+  .export-stage{position:fixed; inset:0}
+  .export-stage .post{width:100vw; height:100vh; border:none; border-radius:0; box-shadow:none; aspect-ratio:auto!important}
+
+  .editor-modal{position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; padding:24px}
+  .em-backdrop{position:absolute; inset:0; background:oklch(0.22 0.055 256 / .62); backdrop-filter:blur(5px)}
+  .em-panel{position:relative; display:flex; flex-direction:column; gap:16px; align-items:center; max-height:94vh}
+  .em-stage{position:relative; display:flex}
+  .em-stage .post{box-shadow:0 40px 90px -34px rgba(0,0,0,.65)}
+  .em-bar{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center; background:#fff; padding:12px 16px; border-radius:14px; box-shadow:0 20px 50px -24px rgba(0,0,0,.5)}
+  .em-hint{font-size:13px; color:var(--mute); margin-right:4px}
+  .em-bar button{font-family:"Archivo"; font-weight:700; font-size:13px; padding:10px 16px; border-radius:9px; border:1px solid var(--line); background:#fff; color:var(--navy); cursor:pointer}
+  .em-bar .em-dl{background:var(--azure); color:#fff; border-color:var(--azure)}
+  .em-bar .em-close{color:var(--mute); border-color:transparent}
+  .editable{outline:1px dashed transparent; cursor:text; border-radius:4px}
+  .em-stage .editable:hover{outline-color:rgba(127,140,160,.7)}
+  .em-stage .editable:focus{outline:2px solid var(--azure); background:rgba(43,134,219,.12)}
+
+  .foot{padding:50px 0; color:var(--mute); font-size:14px; border-top:1px solid var(--line); margin-top:40px}
+  .foot a{color:var(--navy); font-weight:600}
+  @media(max-width:900px){.nav .links{display:none} .grid.g45,.grid.g11{grid-template-columns:repeat(2,1fr)} .grid.g916{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="home" href="index.html"><img src="assets/sb1d-logo-horizontal.png" alt="Smarter by 1 Degree"></a>
+  <div class="links"><a href="#feed">Feed posts</a><a href="#grid">Grid posts</a><a href="#stories">Stories</a><a href="05-social.html">Brand kit</a><a href="index.html">All directions</a></div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Smarter Together · Ambassador toolkit</div>
+  <h1>Share it. <span class="mv">Earn it.</span></h1>
+  <p>Ready-to-post graphics for Smarter by 1 Degree ambassadors, all in the brand. Click <b>Edit &amp; download</b> on any template to put your own words (and photo) in, then export a PNG to post. Earn <b>$35</b> for every family whose degree-planning session you send our way.</p>
+  <div class="howto">
+    <div class="step"><span class="n">01</span><b>Pick a template</b><span>Feed, grid, or story.</span></div>
+    <div class="step"><span class="n">02</span><b>Make it yours</b><span>Edit the text, add your photo.</span></div>
+    <div class="step"><span class="n">03</span><b>Post &amp; earn</b><span>Download the PNG and share.</span></div>
+  </div>
+</div></header>
+
+<!-- ============ FEED POSTS 4:5 ============ -->
+<section id="feed"><div class="wrap">
+  <div class="cat"><span class="catnum">01</span><h2>Feed posts</h2></div>
+  <p class="catlead">Portrait posts for Instagram &amp; Facebook (1080 × 1350). The voice posts have a <span style="color:var(--azure);font-weight:700">name &amp; photo you can edit</span>.</p>
+  <div class="grid g45">
+
+    <!-- 1: share & earn $35 -->
+    <figure><div class="post p45 t-navy" data-name="amb-01-share-earn" data-w="1080" data-h="1350">
+      <div class="glow"></div>
+      <div class="pad">
+        <div class="toprow"><span class="chip"><img src="assets/sb1d-icon.png" alt="icon"></span><span class="ttag pilltag">Ambassador</span></div>
+        <div class="eyebrow2" style="margin-top:5cqw">From one family to the next</div>
+        <h3 class="big" style="font-size:9.6cqw; margin-top:2cqw">Share what you love. Get <span class="hl">rewarded</span> for it.</h3>
+        <div style="display:flex; align-items:baseline; gap:2cqw; margin-top:4cqw"><span class="big" style="font-size:24cqw; color:var(--azure-bright)">$35</span><span class="body" style="font-size:3.4cqw; color:var(--azure-200)">per referral<br>every degree-planning<br>session you send our way</span></div>
+        <p class="body" style="font-size:3.5cqw; color:var(--azure-200); margin-top:auto">You already tell other families about us. Now there's a thank-you attached to every family you help find the smarter path.</p>
+        <span class="cta" style="margin-top:4cqw">Ready to join? Let's talk <span>→</span></span>
+      </div>
+      <div class="bottombar"></div>
+    </div><figcaption><b>Share &amp; earn $35</b>Recruit / program.</figcaption></figure>
+
+    <!-- 2: teen degree -->
+    <figure><div class="post p45 t-light lighttheme" data-name="amb-02-teen-degree" data-w="1080" data-h="1350">
+      <div class="pad">
+        <div class="toprow"><img src="assets/sb1d-logo-horizontal.png" alt="logo" style="height:6cqw"><span class="ttag" style="color:var(--mute)">Online high school + college</span></div>
+        <div class="eyebrow2" style="margin-top:5cqw">Rethink high school</div>
+        <h3 class="big" style="font-size:10cqw; margin-top:2cqw">Graduate high school <span class="hl">with</span> a bachelor's degree.</h3>
+        <p class="body" style="font-size:4cqw; color:var(--mute); margin-top:3cqw">Accredited. Debt-free. And years ahead of everyone else.</p>
+        <div class="pillrow" style="margin-top:4cqw"><span class="pill">No SATs</span><span class="pill">Self-paced</span><span class="pill">Save up to <span class="hl">80%</span></span></div>
+        <div class="signrow" style="justify-content:space-between"><span class="cta">Free intro call <span>→</span></span><span class="url" style="color:var(--mute)">smarterby1degree.com</span></div>
+      </div>
+    </div><figcaption><b>Teen: graduate with a degree</b>Awareness.</figcaption></figure>
+
+    <!-- 3: savings compare -->
+    <figure><div class="post p45 t-navy" data-name="amb-03-savings" data-w="1080" data-h="1350">
+      <div class="glow"></div>
+      <div class="pad">
+        <div class="toprow"><span class="chip"><img src="assets/sb1d-icon.png" alt="icon"></span><span class="ttag">Same degree · less money</span></div>
+        <h3 class="big" style="font-size:9.4cqw; margin-top:5cqw">The same degree. For a <span class="hl">lot</span> less money.</h3>
+        <div class="cmp" style="margin-top:5cqw">
+          <div class="cmpcard dim"><div class="lab">Typical college class</div><div class="amt strike">$975+</div><div class="body" style="font-size:2.8cqw; color:var(--azure-200); margin-top:1cqw">up to $3,700 each</div></div>
+          <div class="cmpcard hi"><div class="lab" style="color:#fff">With Smarter by 1 Degree</div><div class="amt" style="color:#fff">$249</div><div class="body" style="font-size:2.8cqw; color:#fff; margin-top:1cqw">per class · pay as you go</div></div>
+        </div>
+        <p class="body" style="font-size:3.4cqw; color:var(--azure-200); margin-top:4cqw">No giant tuition bill up front. Just one class at a time, all the way to an accredited bachelor's degree.</p>
+        <span class="cta" style="margin-top:auto">See how it works <span>→</span></span>
+      </div>
+      <div class="bottombar"></div>
+    </div><figcaption><b>Savings comparison</b>Cost objection.</figcaption></figure>
+
+    <!-- 4: parent voice (editable) -->
+    <figure><div class="post p45 t-light lighttheme" data-name="amb-04-parent-voice" data-w="1080" data-h="1350">
+      <div class="pad">
+        <div class="eyebrow2">From one parent to another</div>
+        <div class="qmark" style="margin-top:3cqw">&ldquo;</div>
+        <p class="big" style="font-size:5.4cqw; font-weight:800; line-height:1.18; color:var(--navy-deep); margin-top:1cqw">Okay, I have to share this. I took a leap and did high school <span class="hl">differently</span> for my kid. Now they're earning an accredited bachelor's degree, debt-free, before they even graduate. If you've ever felt like there had to be a better way, there is.</p>
+        <div class="signrow"><span class="avatar"><img src="assets/photos/students-2.jpg" alt="photo"></span><div><div class="signname" style="color:var(--navy-deep)">Your name here</div><div class="signrole" style="color:var(--mute)">Smarter by 1 Degree parent</div></div></div>
+      </div>
+    </div><figcaption><b>Parent voice</b><span class="tip">✎ Editable name + photo</span></figcaption></figure>
+
+    <!-- 5: became ambassador -->
+    <figure><div class="post p45 t-navy" data-name="amb-05-became-ambassador" data-w="1080" data-h="1350">
+      <div class="glow"></div>
+      <div class="pad">
+        <div class="eyebrow2">Why I share</div>
+        <h3 class="big" style="font-size:8.6cqw; margin-top:3cqw">I believed in it so much, I became an <span class="hl">Ambassador.</span></h3>
+        <p class="body" style="font-size:3.6cqw; color:var(--azure-200); margin-top:3cqw">My child graduates this year with their bachelor's degree, debt-free. I already tell every parent I meet, so I made it official. If you're curious, I'd love to share exactly what worked for us.</p>
+        <div class="signrow"><span class="avatar"><img src="assets/photos/students-1.jpg" alt="photo"></span><div><div class="signname">Your name here</div><div class="signrole" style="color:var(--azure-200)">Smarter by 1 Degree Ambassador</div></div></div>
+      </div>
+      <div class="bottombar"></div>
+    </div><figcaption><b>Became an ambassador</b><span class="tip">✎ Editable name + photo</span></figcaption></figure>
+
+    <!-- 6: make it yours (blank fill-in) -->
+    <figure><div class="post p45 t-light" data-name="amb-06-make-it-yours" data-w="1080" data-h="1350" style="background:var(--cloud)">
+      <div class="pad" style="padding:0">
+        <div class="fillcard">
+          <span class="ttag" style="color:var(--azure); align-self:flex-start; background:var(--azure-soft); border-radius:999px; padding:1.6cqw 3cqw">Make it yours</span>
+          <div class="photocirc"><img src="assets/photos/students-3.jpg" alt="add your photo"></div>
+          <div class="qmark" style="margin-top:4cqw">&ldquo;</div>
+          <p class="body" style="font-size:4.6cqw; font-style:italic; color:var(--mute); line-height:1.35; margin-top:1cqw">Your story goes here. What made you take the leap for your family, and what feels different now?</p>
+          <div class="fillline"></div><div class="fillline"></div>
+          <div style="margin-top:5cqw"><div class="signname" style="color:var(--navy-deep); font-size:5cqw">Your name</div><div class="signrole" style="color:var(--mute)">Smarter by 1 Degree parent</div></div>
+        </div>
+      </div>
+    </div><figcaption><b>Make it yours (blank)</b><span class="tip">✎ Editable text + photo</span></figcaption></figure>
+
+    <!-- 7: adult degree -->
+    <figure><div class="post p45 t-navy" data-name="amb-07-adult-degree" data-w="1080" data-h="1350">
+      <div class="glow"></div>
+      <div class="pad">
+        <div class="toprow"><span class="chip"><img src="assets/sb1d-icon.png" alt="icon"></span><span class="ttag pilltag">For adults &amp; returning students</span></div>
+        <div class="eyebrow2" style="margin-top:5cqw">It's not too late</div>
+        <h3 class="big" style="font-size:9.6cqw; margin-top:2cqw">Finish your degree. <span class="hl">Skip</span> the debt.</h3>
+        <p class="body" style="font-size:3.6cqw; color:var(--azure-200); margin-top:3cqw">An accredited bachelor's degree for about</p>
+        <div class="big" style="font-size:13cqw; color:var(--azure-bright); margin-top:1cqw">$7,995 total</div>
+        <div class="pillrow" style="margin-top:3cqw"><span class="pill">Flexible &amp; online</span><span class="pill">Transfer your credits</span><span class="pill">Around your job</span></div>
+        <p class="body" style="font-size:3cqw; color:var(--azure-200); margin-top:3cqw">★ Military &amp; first responders welcome. Use your benefits &amp; training credits.</p>
+        <span class="cta" style="margin-top:auto">Free intro call <span>→</span></span>
+      </div>
+      <div class="bottombar"></div>
+    </div><figcaption><b>Adult: finish your degree</b>Returning students.</figcaption></figure>
+
+    <!-- 8: adult voice (editable) -->
+    <figure><div class="post p45 t-light lighttheme" data-name="amb-08-adult-voice" data-w="1080" data-h="1350">
+      <div class="pad">
+        <div class="eyebrow2">It's not too late</div>
+        <div class="qmark" style="margin-top:3cqw">&ldquo;</div>
+        <p class="big" style="font-size:5cqw; font-weight:800; line-height:1.2; color:var(--navy-deep); margin-top:1cqw">I always figured finishing my degree was off the table. Too expensive, too late. I was <span class="hl">wrong</span>. I finished an accredited bachelor's around my full-time job, for a fraction of what I expected. If you've been putting it off, ask me how it actually works.</p>
+        <div class="signrow"><span class="avatar"><img src="assets/photos/students-3.jpg" alt="photo"></span><div><div class="signname" style="color:var(--navy-deep)">Your name here</div><div class="signrole" style="color:var(--mute)">Smarter by 1 Degree graduate</div></div></div>
+      </div>
+    </div><figcaption><b>Adult voice</b><span class="tip">✎ Editable name + photo</span></figcaption></figure>
+
+    <!-- 9: is this legit -->
+    <figure><div class="post p45 t-light lighttheme" data-name="amb-09-legit" data-w="1080" data-h="1350">
+      <div class="pad">
+        <div class="eyebrow2">Is this legit?</div>
+        <h3 class="big" style="font-size:8cqw; margin-top:2cqw">Yes. Here's why families say yes.</h3>
+        <div style="margin-top:3cqw">
+          <div class="check"><span class="ck">✓</span><span class="tx"><b>Accredited</b> bachelor's &amp; master's degrees through established partner universities</span></div>
+          <div class="check"><span class="ck">✓</span><span class="tx">Around <b>80% less</b> than traditional tuition. Just <b>$249 per class</b>, pay as you go</span></div>
+          <div class="check"><span class="ck">✓</span><span class="tx">Teens graduate high school <b>with a degree already done</b>, debt-free</span></div>
+          <div class="check"><span class="ck">✓</span><span class="tx"><b>1-on-1 advising</b> from day one through graduation</span></div>
+          <div class="check"><span class="ck">✓</span><span class="tx"><b>ESA / school-choice scholarships</b> accepted (ClassWallet, Odyssey, EMA)</span></div>
+          <div class="check" style="border:none"><span class="ck">✓</span><span class="tx"><b>10,000+ students</b> helped · real 5-star reviews</span></div>
+        </div>
+        <p class="disc">Smarter by 1 Degree provides college advising and degree planning for partner universities. It is not a college or university and does not confer degrees or award credit.</p>
+      </div>
+    </div><figcaption><b>Is this legit?</b>Trust / FAQ.</figcaption></figure>
+
+  </div>
+</div></section>
+
+<!-- ============ GRID POSTS 1:1 ============ -->
+<section id="grid" style="background:var(--cloud)"><div class="wrap">
+  <div class="cat"><span class="catnum">02</span><h2>Grid posts</h2></div>
+  <p class="catlead">Square posts (1080 × 1080) for the feed grid, built around the Smarter Together program.</p>
+  <div class="grid g11">
+
+    <figure><div class="post p11 t-navy" data-name="grid-how-it-works" data-w="1080" data-h="1080">
+      <div class="glow"></div>
+      <div class="pad">
+        <div class="toprow"><span class="chip"><img src="assets/sb1d-icon.png" alt="icon"></span><span class="ttag">Smarter Together</span></div>
+        <h3 class="big" style="font-size:8.4cqw; margin-top:3cqw">Become an ambassador in <span class="hl">3 steps.</span></h3>
+        <div style="margin-top:2cqw">
+          <div class="stepline"><span class="sn">1</span><span class="st"><b>Share your link</b><span>With families who'd love a smarter path.</span></span></div>
+          <div class="stepline"><span class="sn">2</span><span class="st"><b>They book a session</b><span>A free degree-planning call.</span></span></div>
+          <div class="stepline"><span class="sn">3</span><span class="st"><b>You earn $35</b><span>For every family you send our way.</span></span></div>
+        </div>
+        <span class="cta" style="margin-top:auto">Join Smarter Together <span>→</span></span>
+      </div>
+      <div class="bottombar"></div>
+    </div><figcaption><b>How it works</b>Program explainer.</figcaption></figure>
+
+    <figure><div class="post p11 t-light lighttheme" data-name="grid-35-referral" data-w="1080" data-h="1080">
+      <div class="pad">
+        <div class="toprow"><img src="assets/sb1d-logo-horizontal.png" alt="logo" style="height:6cqw"><span class="ttag" style="color:var(--azure)">Ambassador program</span></div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
+          <div class="big" style="font-size:34cqw; color:var(--azure); line-height:.82">$35</div>
+          <p class="body" style="font-size:4.4cqw; color:var(--navy-deep); font-weight:600; margin-top:2cqw">for every family whose degree-planning session you send our way.</p>
+        </div>
+        <span class="url" style="color:var(--mute)">smartertogether.smarterby1degree.com</span>
+      </div>
+    </div><figcaption><b>$35 per referral</b>Reward highlight.</figcaption></figure>
+
+    <figure><div class="post p11 t-mid" data-name="grid-share-love" data-w="1080" data-h="1080">
+      <div class="pad">
+        <div class="toprow"><span class="chip"><img src="assets/sb1d-icon.png" alt="icon"></span><span class="ttag">Smarter Together</span></div>
+        <div style="flex:1; display:flex; align-items:center"><h3 class="big" style="font-size:9cqw">Love what we did for your family? <span class="hl">Get paid to share it.</span></h3></div>
+        <span class="cta" style="margin-top:0">Ask me how <span>→</span></span>
+      </div>
+      <div class="bottombar"></div>
+    </div><figcaption><b>Share the love</b>Recruit.</figcaption></figure>
+
+  </div>
+</div></section>
+
+<!-- ============ STORIES 9:16 ============ -->
+<section id="stories"><div class="wrap">
+  <div class="cat"><span class="catnum">03</span><h2>Stories</h2></div>
+  <p class="catlead">Vertical Stories (1080 × 1920) for Instagram &amp; Facebook.</p>
+  <div class="grid g916">
+
+    <figure><div class="post p916 t-navy" data-name="story-become-ambassador" data-w="1080" data-h="1920">
+      <div class="glow"></div>
+      <div class="pad" style="padding:9cqw">
+        <span class="chip" style="align-self:center"><img src="assets/sb1d-icon.png" alt="icon"></span>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
+          <span class="ttag" style="font-size:3.4cqw">Smarter Together</span>
+          <h3 class="big" style="font-size:10.5cqw; margin-top:3cqw">Get <span class="hl">$35</span> for every family you help.</h3>
+          <p class="body" style="font-size:4cqw; color:var(--azure-200); margin-top:3cqw; max-width:30ch">Share the smarter path. We'll thank you for every degree-planning session you send.</p>
+        </div>
+        <span class="cta" style="align-self:center">Link in bio <span>→</span></span>
+      </div>
+      <div class="bottombar"></div>
+    </div><figcaption><b>Become an ambassador</b>Recruit story.</figcaption></figure>
+
+    <figure><div class="post p916 t-light lighttheme" data-name="story-your-voice" data-w="1080" data-h="1920">
+      <div class="pad" style="padding:9cqw">
+        <span class="chip" style="background:var(--cloud); align-self:center"><img src="assets/sb1d-icon.png" alt="icon"></span>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center; text-align:center; align-items:center">
+          <span class="avatar" style="width:26cqw; height:26cqw"><img src="assets/photos/students-2.jpg" alt="photo"></span>
+          <h3 class="big" style="font-size:9cqw; margin-top:5cqw">Ask me about <span class="hl">Smarter by 1 Degree.</span></h3>
+          <p class="body" style="font-size:4cqw; color:var(--mute); margin-top:3cqw">My family took the leap. Happy to share what worked.</p>
+        </div>
+        <div style="text-align:center"><div class="signname" style="color:var(--navy-deep)">Your name here</div><div class="signrole" style="color:var(--mute)">Smarter by 1 Degree Ambassador</div></div>
+      </div>
+    </div><figcaption><b>Your voice</b><span class="tip">✎ Editable name + photo</span></figcaption></figure>
+
+  </div>
+  <div class="catdl"><a class="dl dl-strong" href="assets/ambassador/sb1d-ambassador-templates.zip" download>↓ All ambassador templates (ZIP)</a></div>
+</div></section>
+
+<footer class="foot"><div class="wrap">Smarter by 1 Degree — Smarter Together ambassador toolkit. · <a href="05-social.html">Brand kit</a> · <a href="02-momentum.html">Momentum guide</a> · <a href="index.html">All four directions →</a></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.13/dist/html-to-image.js"></script>
+<script>
+  (function(){
+    var only=new URLSearchParams(location.search).get('only');
+    if(only){
+      var posts=document.querySelectorAll('.post'); var el=posts[parseInt(only,10)-1]; if(!el) return;
+      document.body.classList.add('exporting');
+      var s=document.createElement('div'); s.className='export-stage'; s.appendChild(el.cloneNode(true)); document.body.appendChild(s); return;
+    }
+    var figs=Array.prototype.slice.call(document.querySelectorAll('figure'));
+    var fontCSS=null, modal=null, current=null, placeholder=null;
+    function setEd(el){ if(el.dataset.ed) return; el.dataset.ed='1'; el.setAttribute('contenteditable','true'); el.classList.add('editable'); el.spellcheck=false; }
+    function markEditable(post){
+      post.querySelectorAll('h3,.big,.signname,.url,.ttag,.eyebrow2,.tx,.st b,.st span').forEach(setEd);
+      post.querySelectorAll('.pad p, .pad div, .pad span').forEach(function(el){ if(!el.querySelector('*') && el.textContent.trim()) setEd(el); });
+    }
+    function photoImg(post){ return Array.prototype.slice.call(post.querySelectorAll('img')).filter(function(im){ return !/sb1d-icon|logo-horizontal/.test(im.getAttribute('src')||''); })[0]; }
+    function buildModal(){
+      modal=document.createElement('div'); modal.className='editor-modal'; modal.style.display='none';
+      modal.innerHTML='<div class="em-backdrop"></div><div class="em-panel"><div class="em-stage"></div><div class="em-bar"><span class="em-hint">Click any text to edit.</span><button class="em-photo" type="button">↻ Replace photo</button><button class="em-dl" type="button">↓ Download PNG</button><button class="em-close" type="button">Done</button></div></div>';
+      document.body.appendChild(modal);
+      modal.querySelector('.em-backdrop').addEventListener('click',close);
+      modal.querySelector('.em-close').addEventListener('click',close);
+      modal.querySelector('.em-dl').addEventListener('click',download);
+      modal.querySelector('.em-photo').addEventListener('click',function(){
+        var img=current&&photoImg(current); if(!img) return;
+        var inp=document.createElement('input'); inp.type='file'; inp.accept='image/*';
+        inp.addEventListener('change',function(){ if(inp.files[0]){ img.removeAttribute('crossorigin'); img.src=URL.createObjectURL(inp.files[0]); } });
+        inp.click();
+      });
+    }
+    function open(i){
+      if(!modal) buildModal();
+      var post=figs[i].querySelector('.post'); if(!post) return; current=post;
+      placeholder=document.createComment('ph'); post.parentNode.insertBefore(placeholder,post);
+      var st=modal.querySelector('.em-stage'); st.innerHTML=''; st.appendChild(post);
+      var ar=(+post.dataset.h)/(+post.dataset.w);
+      var vw=Math.min(window.innerWidth*0.84, 520), vh=window.innerHeight*0.78;
+      var w=Math.min(vw, vh/ar); post.style.width=w+'px'; post.style.height=''; post.style.margin='0';
+      markEditable(post);
+      modal.querySelector('.em-photo').style.display = photoImg(post)?'':'none';
+      modal.style.display='flex'; document.body.style.overflow='hidden';
+    }
+    function close(){ if(!current) return; current.style.width=''; current.style.height=''; current.style.margin=''; placeholder.parentNode.replaceChild(current,placeholder); modal.style.display='none'; document.body.style.overflow=''; current=null; }
+    async function download(){
+      if(!current) return;
+      var w=+current.dataset.w, h=+current.dataset.h;
+      var btn=modal.querySelector('.em-dl'), label=btn.textContent; btn.textContent='Rendering…'; btn.disabled=true;
+      var stage=document.createElement('div'); stage.style.cssText='position:fixed;left:-99999px;top:0;width:'+w+'px;height:'+h+'px;';
+      var clone=current.cloneNode(true);
+      clone.style.width=w+'px'; clone.style.height=h+'px'; clone.style.aspectRatio='auto'; clone.style.borderRadius='0'; clone.style.boxShadow='none'; clone.style.border='none'; clone.style.margin='0';
+      clone.querySelectorAll('[contenteditable]').forEach(function(e){e.removeAttribute('contenteditable'); e.classList.remove('editable');});
+      stage.appendChild(clone); document.body.appendChild(stage);
+      try{
+        if(fontCSS===null){ try{ fontCSS=await htmlToImage.getFontEmbedCSS(document.body);}catch(e){fontCSS='';} }
+        var url=await htmlToImage.toPng(clone,{width:w,height:h,pixelRatio:1,fontEmbedCSS:fontCSS});
+        var a=document.createElement('a'); a.download=(current.dataset.name||'template')+'.png'; a.href=url; a.click();
+      }catch(e){ alert('Export failed: '+(e&&e.message||e)); }
+      document.body.removeChild(stage); btn.textContent=label; btn.disabled=false;
+    }
+    figs.forEach(function(f,i){
+      var post=f.querySelector('.post');
+      var b=document.createElement('button'); b.type='button'; b.className='editbtn'; b.textContent='✎ Edit & download'; b.addEventListener('click',function(){ open(i); }); f.appendChild(b);
+      if(post && post.dataset.name){ var a=document.createElement('a'); a.className='dl'; a.style.marginLeft='8px'; a.href='assets/ambassador/'+post.dataset.name+'.png'; a.setAttribute('download',''); a.textContent='↓ PNG'; f.appendChild(a); }
+    });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape' && modal && modal.style.display!=='none') close(); });
+  })();
+</script>
+</body>
+</html>
