@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Smarter by 1 Degree — Momentum Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F497D; --navy-deep:#1A3960; --midnight:#11233D;
+    --azure:#2B86DB; --azure-bright:#3E97E8; --azure-200:#AFD2F2; --sky:#E6F1FC;
+    --mist:#E4E9F0; --line:#DDE3EC; --graphite:#3A4150; --mute:#6B7480;
+    --paper:#FBFCFE;
+  }
+  *{box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  html,body{margin:0; padding:0; background:#8a94a3; font-family:"Hanken Grotesk",system-ui,sans-serif; color:var(--graphite)}
+  h1,h2,h3,h4{font-family:"Archivo",sans-serif; margin:0; line-height:1.02; letter-spacing:-0.02em; color:var(--navy-deep)}
+
+  /* one physical page */
+  .page{
+    position:relative; width:8.5in; height:11in; background:#fff; overflow:hidden;
+    padding:0.72in 0.78in 0.68in; margin:0 auto 26px; box-shadow:0 10px 40px rgba(0,0,0,.28);
+  }
+  @media print{
+    html,body{background:#fff}
+    .page{margin:0; box-shadow:none; page-break-after:always; break-after:page}
+    .page:last-child{page-break-after:auto}
+  }
+  @page{ size:letter; margin:0 }
+
+  /* running header / footer */
+  .phead{display:flex; justify-content:space-between; align-items:center; font-family:"Archivo"; font-weight:700; font-size:8.5pt; letter-spacing:0.14em; text-transform:uppercase; color:var(--mute); border-bottom:1px solid var(--line); padding-bottom:9px}
+  .phead .mk{display:flex; align-items:center; gap:8px} .phead .mk img{height:15px}
+  .pfoot{position:absolute; left:0.78in; right:0.78in; bottom:0.5in; display:flex; justify-content:space-between; align-items:center; font-family:"Archivo"; font-weight:700; font-size:8pt; letter-spacing:0.1em; text-transform:uppercase; color:var(--mute); border-top:1px solid var(--line); padding-top:9px}
+  .pnum b{color:var(--navy)}
+  .sectionlabel{font-family:"Archivo"; font-weight:800; font-size:9pt; letter-spacing:0.2em; text-transform:uppercase; color:var(--azure); margin-top:34px}
+  .sectionlabel .num{color:var(--mute)}
+  .h2{font-size:30pt; font-weight:900; color:var(--navy-deep); margin-top:8px; line-height:1.0}
+  .lead{font-size:12.5pt; color:var(--mute); line-height:1.5; max-width:52ch; margin-top:12px}
+  .body{font-size:10.5pt; color:var(--graphite); line-height:1.5}
+
+  /* ---- COVER ---- */
+  .cover{background:linear-gradient(158deg,var(--navy-deep),var(--midnight)); color:#fff; padding:0}
+  .cover .inner{position:absolute; inset:0.72in 0.78in; display:flex; flex-direction:column}
+  .cover .glow{position:absolute; right:-1.4in; top:-1.2in; width:5.6in; height:5.6in; background:radial-gradient(circle,var(--azure),transparent 66%); opacity:.55}
+  .cover .chip{display:inline-flex; background:#fff; border-radius:14px; padding:14px; align-self:flex-start; position:relative}
+  .cover .chip img{width:52px; display:block}
+  .cover .kick{font-family:"Archivo"; font-weight:800; font-size:10pt; letter-spacing:0.24em; text-transform:uppercase; color:var(--azure-200); margin-top:40px; position:relative}
+  .cover h1{font-size:82pt; font-weight:900; color:#fff; letter-spacing:-0.04em; line-height:0.9; margin-top:10px; position:relative}
+  .cover h1 .dot{color:var(--azure-bright)}
+  .cover .rule{height:5px; width:150px; background:linear-gradient(90deg,var(--navy),var(--azure-bright)); border-radius:5px; margin-top:26px; position:relative}
+  .cover .sub{font-size:14pt; color:var(--azure-200); margin-top:22px; max-width:44ch; position:relative; line-height:1.45}
+  .cover .meta{margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; position:relative; font-family:"Archivo"; font-weight:700; font-size:9pt; letter-spacing:0.08em; text-transform:uppercase; color:var(--azure-200)}
+  .cover .meta b{color:#fff; display:block; font-size:11pt; letter-spacing:0}
+
+  /* ---- contents ---- */
+  .toc{margin-top:26px}
+  .toc .row{display:flex; align-items:baseline; gap:14px; padding:13px 0; border-bottom:1px solid var(--line)}
+  .toc .row .n{font-family:"Archivo"; font-weight:900; font-size:11pt; color:var(--azure); width:34px}
+  .toc .row .t{font-family:"Archivo"; font-weight:800; font-size:14pt; color:var(--navy-deep); flex:1}
+  .toc .row .p{font-family:"Archivo"; font-weight:700; font-size:10pt; color:var(--mute)}
+  .essence{margin-top:34px; background:var(--sky); border-radius:14px; padding:26px 28px}
+  .essence .q{font-family:"Archivo"; font-weight:900; font-size:19pt; color:var(--navy-deep); line-height:1.15; letter-spacing:-0.02em}
+  .pillars{display:grid; grid-template-columns:1fr 1fr; gap:10px 28px; margin-top:18px}
+  .pillars div{font-size:10pt; color:var(--graphite)} .pillars b{font-family:"Archivo"; color:var(--navy-deep)}
+
+  /* ---- logo page ---- */
+  .logogrid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-top:26px}
+  .logocell{border:1px solid var(--line); border-radius:12px; height:150px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; background:#fff}
+  .logocell.dark{background:var(--navy-deep)}
+  .logocell .cap{font-family:"Archivo"; font-weight:700; font-size:7.5pt; letter-spacing:0.12em; text-transform:uppercase; color:var(--mute)}
+  .logocell.dark .cap{color:var(--azure-200)}
+  .wchip{background:#fff; border-radius:12px; padding:12px; display:inline-flex}
+  .rules2{display:grid; grid-template-columns:1fr 1fr; gap:12px 30px; margin-top:26px}
+  .rules2 .r{display:flex; gap:11px; font-size:10pt}
+  .rules2 .r .d{width:8px; height:8px; border-radius:50%; background:var(--azure); margin-top:5px; flex:none}
+  .rules2 .r b{font-family:"Archivo"; color:var(--navy-deep); display:block}
+
+  /* ---- color page ---- */
+  .ratio{display:flex; height:34px; border-radius:8px; overflow:hidden; margin-top:22px; border:1px solid var(--line)}
+  .ratio span{display:flex; align-items:center; padding:0 12px; font-family:"Archivo"; font-weight:700; font-size:8pt; color:#fff; white-space:nowrap}
+  .swgrid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:22px}
+  .swat{display:flex; gap:14px; border:1px solid var(--line); border-radius:12px; padding:12px; align-items:center}
+  .swat .cb{width:74px; height:74px; border-radius:9px; flex:none; border:1px solid rgba(0,0,0,.06)}
+  .swat .swname{font-family:"Archivo"; font-weight:800; font-size:11.5pt; color:var(--navy-deep)}
+  .swat .swhex{font-family:"Archivo"; font-weight:800; font-size:13pt; color:var(--azure); letter-spacing:0.02em; font-variant-numeric:tabular-nums; margin-top:1px}
+  .swat .swrgb{font-size:8pt; color:var(--mute); font-variant-numeric:tabular-nums; margin-top:3px}
+  .swat .swrole{font-size:8.5pt; color:var(--graphite); margin-top:5px; line-height:1.3}
+
+  /* ---- type page ---- */
+  .fontcards{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px}
+  .fontcard{border:1px solid var(--line); border-radius:12px; padding:20px}
+  .fontcard .big{font-size:48pt; line-height:1; color:var(--navy-deep)}
+  .fontcard .lab{font-family:"Archivo"; font-weight:800; font-size:9pt; letter-spacing:0.1em; text-transform:uppercase; color:var(--azure); margin-top:12px}
+  .fontcard .d{font-size:9.5pt; color:var(--mute); margin-top:5px}
+  .scale > div{display:flex; align-items:baseline; gap:20px; padding:12px 0; border-bottom:1px solid var(--line)}
+  .scale .tag{font-size:8.5pt; color:var(--mute); width:120px; flex:none}
+  .spec{font-family:"Archivo"; color:var(--navy-deep); line-height:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+  /* ---- motion/voice/apps ---- */
+  .mo3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-top:24px}
+  .mo{border:1px solid var(--line); border-radius:12px; padding:18px}
+  .mo h4{font-size:12pt; color:var(--navy-deep); margin-bottom:6px}
+  .mo p{font-size:9pt; color:var(--mute); margin:0}
+  .track{height:8px; border-radius:8px; background:var(--mist); margin:16px 0 4px; overflow:hidden}
+  .track i{display:block; height:100%; width:80%; border-radius:8px; background:linear-gradient(90deg,var(--navy),var(--azure))}
+  .arrowbtn{display:inline-flex; align-items:center; gap:8px; background:var(--azure); color:#fff; font-family:"Archivo"; font-weight:800; font-size:10pt; padding:9px 15px; border-radius:9px; margin-top:12px}
+  .code{font-family:ui-monospace,Menlo,monospace; font-size:8.5pt; background:var(--sky); border-radius:6px; padding:2px 6px; color:var(--navy-deep)}
+  .say{display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--line); font-size:11pt}
+  .say .y{font-family:"Archivo"; font-weight:800; font-size:9pt; color:#2E8B57; width:42px; flex:none}
+  .say .n{font-family:"Archivo"; font-weight:800; font-size:9pt; color:var(--mute); width:42px; flex:none}
+  .vq{font-family:"Archivo"; font-weight:900; font-size:26pt; color:var(--navy-deep); line-height:1.1; letter-spacing:-0.02em; margin-top:20px}
+  .vq .dot{color:var(--azure)}
+  .appmock{background:var(--navy-deep); border-radius:14px; padding:26px; color:#fff; margin-top:16px; position:relative; overflow:hidden}
+  .appmock .g{position:absolute; right:-40px; top:-40px; width:180px; height:180px; background:radial-gradient(circle,var(--azure),transparent 68%); opacity:.5}
+  .appmock h3{color:#fff; font-size:20pt; font-weight:900; position:relative}
+  .appmock .dot{color:var(--azure-bright)}
+  .btnrow{display:flex; gap:10px; margin-top:16px}
+  .btn{font-family:"Archivo"; font-weight:800; font-size:9.5pt; padding:9px 16px; border-radius:9px}
+  .btn.a{background:var(--azure); color:#fff} .btn.n{background:var(--navy); color:#fff} .btn.g{background:#fff; color:var(--navy); border:1px solid var(--line)}
+  .stat{display:flex; gap:30px; margin-top:6px}
+  .stat b{font-family:"Archivo"; font-weight:900; font-size:30pt; color:var(--navy); line-height:.9; display:block}
+  .stat .az{color:var(--azure)}
+  .stat span{font-size:9pt; color:var(--mute)}
+</style>
+</head>
+<body>
+
+<!-- 1 · COVER -->
+<div class="page cover">
+  <div class="glow"></div>
+  <div class="inner">
+    <span class="chip"><img src="assets/sb1d-icon.png" alt="Smarter by 1 Degree"></span>
+    <div class="kick">Brand Guidelines</div>
+    <h1>Momentum<span class="dot">.</span></h1>
+    <div class="rule"></div>
+    <p class="sub">The Smarter by 1 Degree identity, kept exactly as it is and given forward motion. The visual system, in one document.</p>
+    <div class="meta"><div>Smarter by 1 Degree<b>Momentum Direction</b></div><div style="text-align:right">Version 1.0<b>June 2026</b></div></div>
+  </div>
+</div>
+
+<!-- 2 · CONTENTS -->
+<div class="page">
+  <div class="phead"><span class="mk"><img src="assets/sb1d-logo-horizontal.png" alt="">Smarter by 1 Degree</span><span>Momentum Brand Guidelines</span></div>
+  <div class="sectionlabel"><span class="num">00 · </span>Contents</div>
+  <h2 class="h2">What's inside</h2>
+  <div class="toc">
+    <div class="row"><span class="n">01</span><span class="t">The logo</span><span class="p">p.03</span></div>
+    <div class="row"><span class="n">02</span><span class="t">Color</span><span class="p">p.04</span></div>
+    <div class="row"><span class="n">03</span><span class="t">Typography</span><span class="p">p.05</span></div>
+    <div class="row"><span class="n">04</span><span class="t">The Momentum system</span><span class="p">p.06</span></div>
+    <div class="row"><span class="n">05</span><span class="t">Voice &amp; tone</span><span class="p">p.07</span></div>
+    <div class="row"><span class="n">06</span><span class="t">In use</span><span class="p">p.08</span></div>
+  </div>
+  <div class="essence">
+    <div class="q">Trust you can feel. Momentum you can see.</div>
+    <p class="body" style="margin-top:12px">Smarter by 1 Degree already owns the credibility, accredited, advised, real degrees. Momentum keeps every ounce of that trust and adds the one thing the category never shows: forward motion. Navy holds the ground; azure carries the action.</p>
+    <div class="pillars">
+      <div><b>Credible</b> — accredited, advised, real.</div>
+      <div><b>Strategic</b> — a planned path, not busywork.</div>
+      <div><b>Forward</b> — always moving ahead.</div>
+      <div><b>Warm</b> — for teens and families alike.</div>
+    </div>
+  </div>
+  <div class="pfoot"><span>Momentum · Smarter by 1 Degree</span><span class="pnum"><b>02</b> / 08</span></div>
+</div>
+
+<!-- 3 · LOGO -->
+<div class="page">
+  <div class="phead"><span class="mk"><img src="assets/sb1d-logo-horizontal.png" alt="">Smarter by 1 Degree</span><span>Momentum Brand Guidelines</span></div>
+  <div class="sectionlabel"><span class="num">01 · </span>The logo</div>
+  <h2 class="h2">The mark stays the anchor</h2>
+  <p class="lead">The logo is the anchor of trust, so it never changes. Give it clear space, keep contrast, and on dark or busy fields place the full-color mark on a clean white field.</p>
+  <div class="logogrid">
+    <div class="logocell"><img src="assets/sb1d-icon.png" style="width:74px" alt=""><span class="cap">Primary icon</span></div>
+    <div class="logocell"><img src="assets/sb1d-logo-horizontal.png" style="width:78%" alt=""><span class="cap">Horizontal lockup</span></div>
+    <div class="logocell dark"><span class="wchip"><img src="assets/sb1d-icon.png" style="width:56px; display:block" alt=""></span><span class="cap">On navy · white field</span></div>
+  </div>
+  <div class="rules2">
+    <div class="r"><span class="d"></span><span><b>Clear space</b>Keep space equal to the cap height on every side.</span></div>
+    <div class="r"><span class="d"></span><span><b>Minimum size</b>Icon ≥ 28 px; horizontal logo ≥ 120 px wide on screen.</span></div>
+    <div class="r"><span class="d"></span><span><b>Do</b>Place on white, light neutrals, or a white field over color.</span></div>
+    <div class="r"><span class="d"></span><span><b>Don't</b>Recolor, redraw, stretch, or set straight onto a photo.</span></div>
+  </div>
+  <div class="pfoot"><span>The logo</span><span class="pnum"><b>03</b> / 08</span></div>
+</div>
+
+<!-- 4 · COLOR -->
+<div class="page">
+  <div class="phead"><span class="mk"><img src="assets/sb1d-logo-horizontal.png" alt="">Smarter by 1 Degree</span><span>Momentum Brand Guidelines</span></div>
+  <div class="sectionlabel"><span class="num">02 · </span>Color</div>
+  <h2 class="h2">Navy grounds it. Azure moves it.</h2>
+  <div class="ratio">
+    <span style="background:#1F497D; flex:55">Degree Navy · ~55%</span>
+    <span style="background:#E4E9F0; flex:30; color:#1A3960">Tinted neutrals · ~30%</span>
+    <span style="background:#2B86DB; flex:11">Azure · ~10%</span>
+    <span style="background:#3A4150; flex:9">Text</span>
+  </div>
+  <div class="swgrid">
+    <div class="swat"><div class="cb" style="background:#1F497D"></div><div><div class="swname">Degree Navy</div><div class="swhex">#1F497D</div><div class="swrgb">RGB 31 · 73 · 125 &nbsp;·&nbsp; CMYK 75 · 42 · 0 · 51</div><div class="swrole">Primary. Logo, headlines, key surfaces.</div></div></div>
+    <div class="swat"><div class="cb" style="background:#1A3960"></div><div><div class="swname">Deep Navy</div><div class="swhex">#1A3960</div><div class="swrgb">RGB 26 · 57 · 96</div><div class="swrole">Sections, footers, hero grounds.</div></div></div>
+    <div class="swat"><div class="cb" style="background:#11233D"></div><div><div class="swname">Midnight</div><div class="swhex">#11233D</div><div class="swrgb">RGB 17 · 35 · 61</div><div class="swrole">Deepest backgrounds, contrast.</div></div></div>
+    <div class="swat"><div class="cb" style="background:#2B86DB"></div><div><div class="swname">Signal Azure</div><div class="swhex">#2B86DB</div><div class="swrgb">RGB 43 · 134 · 219 &nbsp;·&nbsp; CMYK 80 · 39 · 0 · 14</div><div class="swrole">Action, links, motion. ~10% max.</div></div></div>
+    <div class="swat"><div class="cb" style="background:#AFD2F2"></div><div><div class="swname">Azure 200</div><div class="swhex">#AFD2F2</div><div class="swrgb">RGB 175 · 210 · 242</div><div class="swrole">On-navy text, tints, charts.</div></div></div>
+    <div class="swat"><div class="cb" style="background:#E6F1FC"></div><div><div class="swname">Sky</div><div class="swhex">#E6F1FC</div><div class="swrgb">RGB 230 · 241 · 252</div><div class="swrole">Washes, highlights, focus rings.</div></div></div>
+    <div class="swat"><div class="cb" style="background:#E4E9F0"></div><div><div class="swname">Mist</div><div class="swhex">#E4E9F0</div><div class="swrgb">RGB 228 · 233 · 240</div><div class="swrole">Dividers, tracks, fills.</div></div></div>
+    <div class="swat"><div class="cb" style="background:#3A4150"></div><div><div class="swname">Warm Graphite</div><div class="swhex">#3A4150</div><div class="swrgb">RGB 58 · 65 · 80</div><div class="swrole">Body copy on light.</div></div></div>
+  </div>
+  <p class="body" style="margin-top:16px; font-size:9pt; color:var(--mute)">Azure passes AA for large UI and buttons with white text. For small body text on white, use Degree Navy or Warm Graphite, azure is a signal, not a paragraph color.</p>
+  <div class="pfoot"><span>Color</span><span class="pnum"><b>04</b> / 08</span></div>
+</div>
+
+<!-- 5 · TYPOGRAPHY -->
+<div class="page">
+  <div class="phead"><span class="mk"><img src="assets/sb1d-logo-horizontal.png" alt="">Smarter by 1 Degree</span><span>Momentum Brand Guidelines</span></div>
+  <div class="sectionlabel"><span class="num">03 · </span>Typography</div>
+  <h2 class="h2">Archivo, with Hanken Grotesk</h2>
+  <p class="lead">Archivo, a heavy grotesque that matches the wordmark, carries every headline and label. Hanken Grotesk is its warmer counterpart for body and interface text.</p>
+  <div class="fontcards">
+    <div class="fontcard"><div class="big" style="font-family:'Archivo'; font-weight:900">Aa</div><div class="lab">Archivo · 700–900</div><div class="d">Display, headlines, buttons, labels. Tight tracking, strong weight contrast.</div></div>
+    <div class="fontcard"><div class="big" style="font-family:'Hanken Grotesk'; font-weight:600">Aa</div><div class="lab">Hanken Grotesk · 400–700</div><div class="d">Body, captions, UI. Set 400–500 for paragraphs, 600–700 for emphasis.</div></div>
+  </div>
+  <div class="scale" style="margin-top:24px">
+    <div><span class="tag">Display · 900</span><span class="spec" style="font-size:34pt; font-weight:900">Get ahead, faster</span></div>
+    <div><span class="tag">Heading · 800</span><span class="spec" style="font-size:24pt; font-weight:800">Two credentials, one path</span></div>
+    <div><span class="tag">Subhead · 700</span><span class="spec" style="font-size:17pt; font-weight:700">Advised every step of the way</span></div>
+    <div><span class="tag">Lead · Hanken 500</span><span class="spec" style="font-family:'Hanken Grotesk'; font-size:14pt; font-weight:500; color:var(--graphite)">Mastery over busywork.</span></div>
+    <div><span class="tag">Body · Hanken 400</span><span class="spec" style="font-family:'Hanken Grotesk'; font-size:11pt; font-weight:400; color:var(--graphite)">A real, accredited bachelor's, in less time and without the debt.</span></div>
+  </div>
+  <div class="pfoot"><span>Typography</span><span class="pnum"><b>05</b> / 08</span></div>
+</div>
+
+<!-- 6 · MOMENTUM SYSTEM -->
+<div class="page">
+  <div class="phead"><span class="mk"><img src="assets/sb1d-logo-horizontal.png" alt="">Smarter by 1 Degree</span><span>Momentum Brand Guidelines</span></div>
+  <div class="sectionlabel"><span class="num">04 · </span>The Momentum system</div>
+  <h2 class="h2">Motion that means progress</h2>
+  <p class="lead">Momentum is the brand's one rule made visible: every student is moving forward. Motion always travels ahead and always eases out, never bounces.</p>
+  <div class="mo3">
+    <div class="mo"><h4>Progress, visible</h4><p>Progress tracks fill navy-to-azure, left to right.</p><div class="track"><i></i></div></div>
+    <div class="mo"><h4>Forward cues</h4><p>The azure arrow is the brand's gesture. It nudges ahead, never back.</p><span class="arrowbtn">See the path →</span></div>
+    <div class="mo"><h4>Rules of motion</h4><p style="margin-bottom:8px">One language everywhere.</p><p style="font-size:8.5pt; color:var(--graphite); line-height:1.7">Duration <span class="code">180ms</span> UI · <span class="code">600ms</span> reveals<br>Easing <span class="code">cubic-bezier(.16,1,.3,1)</span><br>Direction: left → right, up.</p></div>
+  </div>
+  <div class="essence" style="margin-top:26px; background:var(--sky)">
+    <div class="q" style="font-size:16pt">The whole system leans forward.</div>
+    <p class="body" style="margin-top:8px">Arrows point ahead. Progress bars fill toward the goal. Reveals rise and settle. Nothing bounces, nothing drifts backward. If an element could suggest motion, it moves the same way the student does, forward.</p>
+  </div>
+  <div class="pfoot"><span>The Momentum system</span><span class="pnum"><b>06</b> / 08</span></div>
+</div>
+
+<!-- 7 · VOICE -->
+<div class="page">
+  <div class="phead"><span class="mk"><img src="assets/sb1d-logo-horizontal.png" alt="">Smarter by 1 Degree</span><span>Momentum Brand Guidelines</span></div>
+  <div class="sectionlabel"><span class="num">05 · </span>Voice &amp; tone</div>
+  <h2 class="h2">Confident, warm, always forward</h2>
+  <p class="lead">We speak to teenagers like capable adults and to parents like partners. Encouraging, never pushy. We sell momentum, not fear.</p>
+  <div class="vq">Work <span class="dot">smarter.</span> Get a <span class="dot">degree</span> ahead.</div>
+  <div style="margin-top:26px">
+    <div class="say"><span class="y">Say</span><span>There's a better way to do high school.</span></div>
+    <div class="say"><span class="y">Say</span><span>A real, accredited degree, debt-free.</span></div>
+    <div class="say"><span class="y">Say</span><span>You're already moving. Let's go further.</span></div>
+    <div class="say"><span class="n">Not</span><span style="color:var(--mute)">Don't fall behind. <i>(fear-based)</i></span></div>
+    <div class="say"><span class="n">Not</span><span style="color:var(--mute)">Revolutionary synergistic learning. <i>(jargon)</i></span></div>
+  </div>
+  <div class="pfoot"><span>Voice &amp; tone</span><span class="pnum"><b>07</b> / 08</span></div>
+</div>
+
+<!-- 8 · IN USE -->
+<div class="page">
+  <div class="phead"><span class="mk"><img src="assets/sb1d-logo-horizontal.png" alt="">Smarter by 1 Degree</span><span>Momentum Brand Guidelines</span></div>
+  <div class="sectionlabel"><span class="num">06 · </span>In use</div>
+  <h2 class="h2">The system, applied</h2>
+  <div class="appmock">
+    <div class="g"></div>
+    <span style="display:inline-block; background:#fff; border-radius:10px; padding:8px; position:relative"><img src="assets/sb1d-icon.png" style="width:30px; display:block" alt=""></span>
+    <h3 style="margin-top:14px">Graduate a <span class="dot">degree</span> ahead.</h3>
+    <p style="color:var(--azure-200); font-size:10pt; position:relative; margin-top:6px">Earn your diploma and an accredited bachelor's at the same time.</p>
+    <div class="btnrow" style="position:relative"><span class="btn" style="background:#fff; color:var(--navy)">Start your plan →</span></div>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px">
+    <div style="border:1px solid var(--line); border-radius:14px; padding:20px">
+      <div class="sectionlabel" style="margin-top:0; font-size:8pt">Buttons</div>
+      <div class="btnrow"><span class="btn a">Enroll today →</span><span class="btn n">How it works</span><span class="btn g">Talk to an advisor</span></div>
+    </div>
+    <div style="border:1px solid var(--line); border-radius:14px; padding:20px">
+      <div class="sectionlabel" style="margin-top:0; font-size:8pt">Outcome stats</div>
+      <div class="stat"><div><b>80%</b><span>lower cost</span></div><div><b class="az">4+</b><span>years saved</span></div></div>
+    </div>
+  </div>
+  <p class="body" style="margin-top:24px; color:var(--mute); font-size:9.5pt">For the full living system, editable social templates, logos, and the ambassador toolkit, see the online brand kit.</p>
+  <div class="pfoot"><span>Smarter by 1 Degree — Momentum</span><span class="pnum"><b>08</b> / 08</span></div>
+</div>
+
+</body>
+</html>
