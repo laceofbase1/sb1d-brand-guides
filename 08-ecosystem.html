@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smarter by 1 Degree Ecosystem — Team &amp; Sales Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F497D; --navy-deep:#1A3960; --midnight:#11233D;
+    --azure:#2B86DB; --azure-bright:#3E97E8; --azure-200:#AFD2F2; --sky:#E6F1FC;
+    --mist:#E4E9F0; --line:#DBE1EA; --line-soft:#EAEEF4; --graphite:#3A4150; --mute:#6B7480;
+    --paper:#FBFCFE; --cloud:#F4F7FB;
+    --green:#2E8B57; --amber:#B7791F; --coral:#C0492E;
+    --maxw:1080px; --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--paper); color:var(--graphite); font-family:"Hanken Grotesk",system-ui,sans-serif; font-size:16.5px; line-height:1.6; -webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:"Archivo",sans-serif; margin:0; line-height:1.05; letter-spacing:-0.02em; color:var(--navy-deep)}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 34px}
+  a{color:var(--navy)}
+  p{margin:0 0 12px}
+  .kicker{display:inline-flex; align-items:center; gap:10px; font-family:"Archivo"; font-weight:800; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--azure)}
+  .kicker::before{content:""; width:26px; height:2px; background:var(--azure); border-radius:2px}
+  .num{font-family:"Archivo"; font-weight:900; color:var(--azure)}
+  .lead{font-size:19px; color:var(--mute); line-height:1.5}
+
+  /* nav */
+  .nav{position:sticky; top:0; z-index:40; backdrop-filter:blur(10px); background:rgba(251,252,254,.86); border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:58px}
+  .nav .home{display:flex; align-items:center; gap:10px; font-family:"Archivo"; font-weight:800; font-size:13.5px; color:var(--navy-deep); text-decoration:none}
+  .nav .home img{height:22px}
+  .nav .links a{font-family:"Archivo"; font-weight:700; font-size:12px; text-decoration:none; color:var(--mute); margin-left:16px}
+  .nav .links a:hover{color:var(--azure)}
+  .nav .dl{background:var(--azure); color:#fff; padding:7px 13px; border-radius:8px}
+
+  /* cover */
+  .cover{background:linear-gradient(158deg,var(--navy-deep),var(--midnight)); color:#fff; position:relative; overflow:hidden}
+  .cover .glow{position:absolute; right:-120px; top:-140px; width:520px; height:520px; background:radial-gradient(circle,var(--azure),transparent 66%); opacity:.5}
+  .cover .wrap{padding:66px 34px 56px; position:relative}
+  .cover .chip{display:inline-flex; background:#fff; border-radius:13px; padding:12px}
+  .cover .chip img{width:46px; display:block}
+  .cover .kick{color:var(--azure-200); margin-top:26px}
+  .cover h1{color:#fff; font-size:clamp(38px,6vw,62px); font-weight:900; letter-spacing:-0.03em; margin-top:12px; max-width:20ch}
+  .cover .sub{color:var(--azure-200); font-size:18px; margin-top:16px; max-width:60ch}
+  .cover .metarow{display:flex; gap:36px; flex-wrap:wrap; margin-top:32px; font-family:"Archivo"; font-weight:700; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--azure-200)}
+  .cover .metarow b{color:#fff; display:block; font-size:14px; letter-spacing:0; text-transform:none}
+
+  section{padding:52px 0; border-top:1px solid var(--line)}
+  .seclabel{font-family:"Archivo"; font-weight:800; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--azure)}
+  h2.sec{font-size:clamp(26px,3.6vw,38px); font-weight:900; margin-top:8px}
+  h3.sub{font-size:20px; font-weight:800; margin:30px 0 10px; color:var(--navy-deep)}
+
+  .callout{background:var(--sky); border:1px solid #CFE4F8; border-radius:14px; padding:18px 22px; margin:18px 0}
+  .callout.warn{background:#FBF3E6; border-color:#F0E0C0}
+  .callout .lbl{font-family:"Archivo"; font-weight:800; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--azure); margin-bottom:6px}
+  .callout.warn .lbl{color:var(--amber)}
+
+  /* generic table */
+  table.t{width:100%; border-collapse:collapse; margin:16px 0; font-size:14.5px}
+  table.t th{font-family:"Archivo"; font-weight:800; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--navy-deep); text-align:left; padding:11px 12px; border-bottom:2px solid var(--line); background:var(--cloud)}
+  table.t td{padding:11px 12px; border-bottom:1px solid var(--line-soft); vertical-align:top}
+  table.t tr:last-child td{border-bottom:none}
+  table.t td b{color:var(--navy-deep)}
+
+  /* three-brand quick cards */
+  .brands3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:22px}
+  .bcard{border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; display:flex; flex-direction:column}
+  .bcard .top{padding:18px 20px; color:#fff}
+  .bcard .top.b1{background:linear-gradient(150deg,var(--navy),var(--navy-deep))}
+  .bcard .top.b2{background:linear-gradient(150deg,var(--midnight),#0C1B30)}
+  .bcard .top.b3{background:linear-gradient(150deg,var(--azure),#1E6FB8)}
+  .bcard .top .nm{font-family:"Archivo"; font-weight:900; font-size:19px}
+  .bcard .top .tag{font-size:12.5px; opacity:.9; margin-top:2px}
+  .bcard .bd{padding:16px 20px; font-size:14px; flex:1}
+  .bcard .bd .row{display:flex; gap:8px; margin:7px 0}
+  .bcard .bd .row b{font-family:"Archivo"; color:var(--navy-deep); font-size:12px; min-width:64px; flex:none}
+
+  /* routing matrix highlight */
+  .route th{background:var(--navy-deep); color:#fff}
+  .route td b{color:var(--azure)}
+
+  /* voice do/don't */
+  .dd{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:18px 0}
+  .dd .box{border-radius:14px; padding:18px 20px; border:1px solid var(--line)}
+  .dd .do{background:#EAF6EF; border-color:#CBE7D6} .dd .dont{background:#FBECE8; border-color:#F2D3C9}
+  .dd h4{font-size:13px; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px}
+  .dd .do h4{color:var(--green)} .dd .dont h4{color:var(--coral)}
+  .dd ul{margin:0; padding-left:18px} .dd li{margin:7px 0; font-size:14.5px}
+
+  .pills{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 4px}
+  .pill{font-family:"Archivo"; font-weight:700; font-size:13px; padding:6px 12px; border-radius:999px; background:var(--sky); color:var(--navy-deep)}
+  .pill.no{background:#FBECE8; color:var(--coral)}
+
+  /* brand deep module */
+  .brandmod{border:1px solid var(--line); border-radius:18px; overflow:hidden; margin-top:26px; background:#fff}
+  .brandmod > .head{padding:22px 26px; color:#fff}
+  .brandmod .head .eyebrow{font-family:"Archivo"; font-weight:800; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:.85}
+  .brandmod .head h3{color:#fff; font-size:26px; font-weight:900; margin-top:4px}
+  .brandmod .head p{margin:8px 0 0; font-size:15px; opacity:.95; max-width:70ch}
+  .brandmod .inner{padding:24px 26px}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+  .block .blabel{font-family:"Archivo"; font-weight:800; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--azure); margin:22px 0 8px}
+  .persona{background:var(--cloud); border-radius:14px; padding:18px 20px}
+  .persona dl{display:grid; grid-template-columns:auto 1fr; gap:6px 14px; margin:0; font-size:14px}
+  .persona dt{font-family:"Archivo"; font-weight:800; font-size:11px; letter-spacing:0.04em; text-transform:uppercase; color:var(--navy-deep); padding-top:2px}
+  .persona dd{margin:0}
+  .pitch{background:var(--navy-deep); color:#fff; border-radius:14px; padding:18px 20px; font-size:15.5px; line-height:1.5}
+  .pitch .lbl{font-family:"Archivo"; font-weight:800; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--azure-bright); margin-bottom:8px}
+  .maplist{list-style:none; margin:0; padding:0}
+  .maplist li{display:grid; grid-template-columns:1fr auto 1fr; gap:12px; align-items:center; padding:9px 0; border-bottom:1px solid var(--line-soft); font-size:14px}
+  .maplist li:last-child{border:none}
+  .maplist .pain{color:var(--graphite)} .maplist .arw{color:var(--azure); font-weight:800} .maplist .sol{color:var(--navy-deep); font-weight:600}
+
+  /* objection cards */
+  .objcard{border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin:12px 0; background:#fff}
+  .objcard .obj{font-family:"Archivo"; font-weight:800; font-size:15px; color:var(--coral)}
+  .objcard dl{display:grid; grid-template-columns:auto 1fr; gap:5px 12px; margin:10px 0 0; font-size:14px}
+  .objcard dt{font-family:"Archivo"; font-weight:800; font-size:10.5px; letter-spacing:0.05em; text-transform:uppercase; color:var(--mute); padding-top:2px}
+  .objcard dd{margin:0}
+  .objcard dd b{color:var(--navy-deep)}
+
+  .qbank{background:var(--cloud); border-radius:14px; padding:18px 22px; margin:14px 0}
+  .qbank ul{margin:6px 0 0; padding-left:20px} .qbank li{margin:6px 0}
+  .qbank .cat{font-family:"Archivo"; font-weight:800; font-size:12px; color:var(--navy-deep); margin-top:12px}
+
+  /* cheat sheet */
+  .cheat{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px}
+  .cheatcard{border:1px solid var(--line); border-radius:14px; padding:16px; font-size:13.5px; background:#fff}
+  .cheatcard .cn{font-family:"Archivo"; font-weight:900; font-size:16px; color:var(--navy-deep)}
+  .cheatcard .cprice{font-family:"Archivo"; font-weight:800; color:var(--azure); font-size:13px; margin:2px 0 8px}
+  .cheatcard b{color:var(--navy-deep)}
+  .cheatcard .cline{margin:7px 0}
+
+  .foot{padding:44px 0; color:var(--mute); font-size:13.5px; border-top:1px solid var(--line)}
+  .foot a{color:var(--navy); font-weight:600}
+
+  @media(max-width:880px){
+    .nav .links a:not(.dl){display:none}
+    .brands3,.grid2,.dd,.cheat{grid-template-columns:1fr}
+    .maplist li{grid-template-columns:1fr; gap:2px}
+    .maplist .arw{display:none}
+  }
+  /* print */
+  @media print{
+    @page{size:letter; margin:0.6in 0.6in}
+    *{-webkit-print-color-adjust:exact!important; print-color-adjust:exact!important}
+    .nav{display:none!important}
+    body{font-size:10.5pt}
+    section{padding:16px 0; border-top:none; break-inside:auto}
+    .cover{break-after:page}
+    .brandmod,.objcard,.bcard,.persona,.pitch,.callout,.qbank,.cheatcard,table.t,.dd .box{break-inside:avoid}
+    h2.sec{break-after:avoid}
+    .wrap{max-width:none; padding:0}
+    a{color:var(--navy-deep); text-decoration:none}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="home" href="index.html"><img src="assets/sb1d-logo-horizontal.png" alt="Smarter by 1 Degree">Ecosystem Playbook</a>
+  <div class="links">
+    <a href="#glance">At a glance</a><a href="#voice">How we talk</a><a href="#brands">The brands</a><a href="#toolkit">Sales toolkit</a><a href="#cheat">Cheat sheet</a>
+    <a class="dl" href="assets/sb1d-ecosystem-playbook.pdf" download>↓ PDF</a>
+  </div>
+</div></nav>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="glow"></div>
+  <div class="wrap">
+    <span class="chip"><img src="assets/sb1d-icon.png" alt="Smarter by 1 Degree"></span>
+    <div class="kicker kick">Internal · Team &amp; Sales Playbook</div>
+    <h1>The Smarter by 1 Degree Ecosystem</h1>
+    <p class="sub">Who we serve, what we solve, how we talk, and how to route every prospect to the right brand. Built for everyone, written for sales.</p>
+    <div class="metarow">
+      <div>Version<b>1.0 · 2026</b></div>
+      <div>Owner<b>[Assign an owner]</b></div>
+      <div>Review<b>Quarterly</b></div>
+      <div>Status<b>Internal use only</b></div>
+    </div>
+  </div>
+</header>
+
+<!-- HOW TO USE -->
+<section id="how"><div class="wrap">
+  <span class="seclabel">Start here</span>
+  <h2 class="sec">How to use this playbook</h2>
+  <p class="lead" style="margin-top:12px; max-width:70ch">Three tiers: the <b>Foundation</b> (read once), the <b>Message</b> (how we position and talk), and the <b>Sales Toolkit</b> (use it on every call). If you only have 30 seconds before a call, jump to the <a href="#glance">routing matrix</a> and the <a href="#cheat">cheat sheet</a>.</p>
+  <div class="callout warn"><div class="lbl">One rule above all</div>We are strategists and advisors, <b>not a college</b>. We do not grant degrees or award credit, our accredited partner universities do. Every rep must use the compliance line in <a href="#voice">How we talk</a> and never promise a specific credit transfer, a guaranteed job, or a salary. When in doubt, under-promise.</div>
+</div></section>
+
+<!-- AT A GLANCE + ROUTING -->
+<section id="glance"><div class="wrap">
+  <span class="seclabel">01 · The ecosystem</span>
+  <h2 class="sec">One mission, three front doors</h2>
+  <p class="lead" style="margin-top:12px; max-width:72ch">Every brand exists to do the same thing: help a student earn a <b>real, accredited bachelor's degree</b> faster and for far less by strategizing the smartest path, then handing them a roadmap and support to the finish. We meet three different people at three different doors.</p>
+
+  <div class="brands3">
+    <div class="bcard"><div class="top b1"><div class="nm">Smarter by 1 Degree</div><div class="tag">High school + bachelor's · the value path</div></div>
+      <div class="bd">
+        <div class="row"><b>For</b><span>Parents of homeschooled teens (13–18)</span></div>
+        <div class="row"><b>Gets</b><span>Diploma + accredited bachelor's, done together</span></div>
+        <div class="row"><b>Price</b><span>$349 to start, then $249 / class, pay-as-you-go</span></div>
+        <div class="row"><b>Vibe</b><span>Flexible, self-directed, budget-first</span></div>
+      </div>
+    </div>
+    <div class="bcard"><div class="top b2"><div class="nm">Compass Virtual Academy</div><div class="tag">Accredited online private high school · premium</div></div>
+      <div class="bd">
+        <div class="row"><b>For</b><span>Parents who want a structured private-school experience</span></div>
+        <div class="row"><b>Gets</b><span>WASC private-school diploma + accredited BBA, advisor-led</span></div>
+        <div class="row"><b>Price</b><span>$7,000 / year (4 × $1,750), all-inclusive</span></div>
+        <div class="row"><b>Vibe</b><span>White-glove, done-for-you, prestige</span></div>
+      </div>
+    </div>
+    <div class="bcard"><div class="top b3"><div class="nm">SB1D</div><div class="tag">Adults &amp; Heroes · career advancement</div></div>
+      <div class="bd">
+        <div class="row"><b>For</b><span>Working adults &amp; first responders / military</span></div>
+        <div class="row"><b>Gets</b><span>Accredited BBA in ~1 year</span></div>
+        <div class="row"><b>Price</b><span>$7,995 flat + $349 advising (waived for Heroes)</span></div>
+        <div class="row"><b>Vibe</b><span>Fast, benefits-funded, honor-forward</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub" id="route">The routing matrix — which brand for whom</h3>
+  <p style="max-width:72ch">Compass and Smarter by 1 Degree serve the same teen outcome, so lead with <b>experience vs. price</b>, not "cheaper." Their yearly costs are similar; Compass earns its keep on structure and advising.</p>
+  <table class="t route">
+    <tr><th>If the prospect is…</th><th>Their real goal</th><th>Route to</th><th>Lead with</th><th>Don't pitch</th></tr>
+    <tr><td>Homeschool parent of a teen, budget-conscious, wants to drive it themselves &amp; pay per class</td><td>Lowest all-in cost + flexibility</td><td><b>Smarter by 1 Degree</b></td><td>~80% savings, pay-as-you-go, no SAT/ACT, ESA-funded</td><td>Compass (too structured/priced)</td></tr>
+    <tr><td>Parent of a teen who wants a "real school" to run it, an advisor, and hand-holding</td><td>Structure, safety, done-for-you</td><td><b>Compass Virtual Academy</b></td><td>Private-school experience, Academic Advisor, all-inclusive, WASC</td><td>Price-shopping (sell the experience)</td></tr>
+    <tr><td>Working adult who needs a bachelor's to advance / was passed over</td><td>A degree, fast, around a job</td><td><b>SB1D (Adults)</b></td><td>~1 year, $7,995 flat, pay-per-class, fits your schedule</td><td>The teen brands</td></tr>
+    <tr><td>Police / fire / EMS / military needing a degree for promotion</td><td>Promotion unlock, paid by benefits</td><td><b>SB1D (Heroes)</b></td><td>Academy/JST credit, $0 out of pocket, fee waived</td><td>Full-price framing</td></tr>
+  </table>
+  <div class="callout"><div class="lbl">Three tell-tale questions to place anyone fast</div>
+    <b>1. Is this for a teen or an adult?</b> Teen → a high-school brand. Adult → SB1D.<br>
+    <b>2. (Teen) Do you want a school to run it for you, or drive it yourself and pay per class?</b> Run it for me → Compass. Drive it myself → Smarter by 1 Degree.<br>
+    <b>3. (Adult) Are you a first responder or military?</b> Yes → SB1D Heroes track (credit for training, benefits, waived fee).</div>
+</div></section>
+
+<!-- FOUNDATION -->
+<section id="foundation"><div class="wrap">
+  <span class="seclabel">02 · Foundation</span>
+  <h2 class="sec">Who we are</h2>
+  <div class="grid2" style="margin-top:18px">
+    <div>
+      <h3 class="sub" style="margin-top:0">Mission</h3>
+      <p>Every student deserves more than a diploma, they deserve <b>direction, purpose, and a future they're excited about</b>. We help students earn a real, accredited bachelor's degree faster, debt-free, and for a fraction of the cost by strategizing the smartest path, not taking shortcuts.</p>
+      <h3 class="sub">The story</h3>
+      <p>Founder <b>Janine Deems</b> is an education strategist with 25 years of teaching experience. She homeschooled her own daughter to a <b>bachelor's degree by age 16</b>, then turned that playbook into a company. The ecosystem has since helped <b>10,000+ students</b>.</p>
+    </div>
+    <div>
+      <h3 class="sub" style="margin-top:0">Positioning</h3>
+      <p><b>For</b> families and adults who refuse to overpay in money and years for a degree, <b>Smarter by 1 Degree</b> is the strategy-and-support partner that maps the fastest, cheapest, fully accredited path to a real bachelor's, <b>unlike</b> traditional college or DIY dual-enrollment, because we choose the university first and reverse-engineer every class so nothing is wasted.</p>
+      <h3 class="sub">Messaging pillars</h3>
+      <div class="pills"><span class="pill">Learn once, earn twice</span><span class="pill">Work smarter, not harder</span><span class="pill">A real, accredited degree</span><span class="pill">Debt-free &amp; years ahead</span></div>
+    </div>
+  </div>
+
+  <h3 class="sub">How the credential actually works (know this cold)</h3>
+  <table class="t">
+    <tr><th>Piece</th><th>What it is</th><th>Who's accountable</th></tr>
+    <tr><td><b>Us</b></td><td>Strategy, degree planning, roadmap, advising, and affordable self-paced courses</td><td>Smarter by 1 Degree / Compass / SB1D</td></tr>
+    <tr><td><b>The credits</b></td><td>Course credits <b>recommended for transfer</b> by ACE, NCCRS, and DEAC's Approved Quality Curriculum</td><td>Third-party evaluators</td></tr>
+    <tr><td><b>The degree</b></td><td>The actual bachelor's diploma is granted by an <b>accredited partner university</b></td><td>Partner universities (below)</td></tr>
+    <tr><td><b>HS accreditation</b></td><td>Compass is a <b>WASC-accredited</b> private high school</td><td>Compass Virtual Academy</td></tr>
+  </table>
+  <p style="font-size:14px"><b>Partner universities:</b> Excelsior University (regionally accredited, Middle States) · Thomas Edison State University (regional) · Niagara University (Middle States) · Bellevue University (regional) · Crestpoint University (nationally accredited, DEAC / CHEA-recognized).</p>
+  <div class="callout warn"><div class="lbl">Compliance line — use it verbatim when asked "are you the school?"</div>"<b>[Brand] provides college advising and degree planning. It is not a college or university and does not confer degrees or award credit.</b> Your degree is granted by an accredited partner university." Never say <i>we</i> grant degrees or guarantee a specific credit transfers, that depends on the chosen university's policy.</div>
+</div></section>
+
+<!-- VOICE -->
+<section id="voice"><div class="wrap">
+  <span class="seclabel">03 · How we talk</span>
+  <h2 class="sec">Voice &amp; language</h2>
+  <p class="lead" style="margin-top:12px; max-width:70ch">One voice across all three brands: <b>confident, warm, plain-spoken, and always forward</b>. We speak to teens like capable adults and to parents like partners. We sell momentum, not fear. (Full visual system: the <a href="02-momentum.html">Momentum brand guide</a>.)</p>
+
+  <div class="dd">
+    <div class="box do"><h4>Do say</h4><ul>
+      <li>"There's a better way to do high school."</li>
+      <li>"Learn once, earn twice." / "Work smarter, not harder."</li>
+      <li>"A real, accredited degree, debt-free."</li>
+      <li>"You're already moving, let's go further."</li>
+      <li>Plain English, active voice, a warm teacher-friend tone.</li>
+    </ul></div>
+    <div class="box dont"><h4>Don't say</h4><ul>
+      <li>Fear bait: "Don't fall behind," "you'll regret it."</li>
+      <li>Jargon: "synergistic," "revolutionary learning solution."</li>
+      <li>Over-promises: "guaranteed job," "guaranteed salary," "your credits <i>will</i> transfer."</li>
+      <li>"We're a college/university" or "we grant degrees."</li>
+      <li>Talking down to a teenager.</li>
+    </ul></div>
+  </div>
+
+  <h3 class="sub">Key phrases by brand</h3>
+  <table class="t">
+    <tr><th>Brand</th><th>Signature phrases to reuse</th></tr>
+    <tr><td><b>Smarter by 1 Degree</b></td><td>"Rethink high school." · "No fluff, no busywork." · "Learn to mastery." · "~80% savings." · "No ACTs or SATs." · "We do 95% for you."</td></tr>
+    <tr><td><b>Compass</b></td><td>"Learn ONCE, earn TWICE." · "Accredited online private school." · "Quality, not quantity." · "A competitive advantage that saves 4 years." · "Completely debt-free."</td></tr>
+    <tr><td><b>SB1D (Adults/Heroes)</b></td><td>"Same degree, less money." · "College on your terms." · "Fast, flexible, affordable." · "Honoring your service." · "Use your benefits, zero out of pocket."</td></tr>
+  </table>
+
+  <h3 class="sub">Vocabulary &amp; words to avoid</h3>
+  <div class="pills"><span class="pill">strategy / roadmap</span><span class="pill">accredited partner university</span><span class="pill">recommended for transfer</span><span class="pill">flex-paced / mastery</span><span class="pill">debt-free</span><span class="pill">Heroes</span></div>
+  <div class="pills"><span class="pill no">✕ "our accreditation"</span><span class="pill no">✕ "we grant your degree"</span><span class="pill no">✕ "guaranteed"</span><span class="pill no">✕ "college" (for us)</span><span class="pill no">✕ "cheap" (say "affordable")</span></div>
+  <p style="font-size:14px; color:var(--mute)"><b>Note on "degree":</b> in our world "degree" means a <b>bachelor's / academic degree</b>, always. Say what you mean.</p>
+</div></section>
+
+<!-- THE BRANDS -->
+<section id="brands"><div class="wrap">
+  <span class="seclabel">04 · The brands</span>
+  <h2 class="sec">A deep dive on each brand</h2>
+  <p class="lead" style="margin-top:12px; max-width:70ch">Each brand below follows the same layout: positioning, the avatar, pains → solutions, what's unique, the offer, how they sign up, proof, elevator pitch, discovery questions, and objection cards.</p>
+
+  <!-- BRAND 1 -->
+  <div class="brandmod">
+    <div class="head" style="background:linear-gradient(150deg,var(--navy),var(--navy-deep))">
+      <div class="eyebrow">Brand 01 · The value path</div>
+      <h3>Smarter by 1 Degree</h3>
+      <p>A homeschool-native strategy service that helps a teen graduate high school holding <b>both a diploma and an accredited bachelor's</b>, debt-free, for ~80% less, pay-as-you-go.</p>
+    </div>
+    <div class="inner">
+      <div class="grid2">
+        <div class="block">
+          <div class="blabel">The avatar — the homeschool parent</div>
+          <div class="persona"><dl>
+            <dt>Who</dt><dd>A homeschool mom of a 13–18-year-old, often with several kids. Values-driven, faith-adjacent, already outside traditional school by choice.</dd>
+            <dt>Job to be done</dt><dd>Give her teen a debt-free head start and a real credential without her having to build the whole plan herself.</dd>
+            <dt>What she weighs</dt><dd>Cost/value first, then legitimacy (accreditation), flexibility, and fit for how her teen learns.</dd>
+            <dt>Trigger</dt><dd>Teen entering high school + sticker-shock of $100K college; discovering ESA/school-choice funds; meeting us at a homeschool convention.</dd>
+            <dt>Hopes</dt><dd>Debt-free launch, a bachelor's years early, time freed for sports/scouts/work/travel, "direction and purpose."</dd>
+            <dt>Fears</dt><dd>Debt, wasted years, "is this legit?", managing it all alone, test anxiety for an ADHD/dyslexic teen.</dd>
+            <dt>Influencers</dt><dd>Other homeschool moms, convention speakers, her faith community.</dd>
+          </dl></div>
+          <div class="blabel">Pain → what solves it</div>
+          <ul class="maplist">
+            <li><span class="pain">$100K+ college cost / debt</span><span class="arw">→</span><span class="sol">Degree under $10K, ~80% off, pay-per-class</span></li>
+            <li><span class="pain">4 wasted years after high school</span><span class="arw">→</span><span class="sol">"Learn once, earn twice" dual credit</span></li>
+            <li><span class="pain">Parent overwhelm (transcripts, planning)</span><span class="arw">→</span><span class="sol">"We do 95% for you" + roadmap</span></li>
+            <li><span class="pain">Test anxiety / learning differences</span><span class="arw">→</span><span class="sol">No SAT/ACT, self-paced, bite-sized lessons</span></li>
+          </ul>
+        </div>
+        <div class="block">
+          <div class="blabel">What's unique</div>
+          <div class="pills"><span class="pill">Diploma + bachelor's at once</span><span class="pill">University-first reverse planning</span><span class="pill">Pay-as-you-go, no lock-in</span><span class="pill">Built for homeschoolers</span><span class="pill">ESA / ClassWallet approved</span></div>
+          <div class="blabel">The offer &amp; pricing</div>
+          <table class="t" style="margin-top:4px">
+            <tr><td><b>Start</b></td><td>Free consult → RoadMap; enroll = <b>$349</b> ($100 admin + first class)</td></tr>
+            <tr><td><b>Per class</b></td><td><b>$249</b>, pay as you go (vs. $975–$3,700 elsewhere)</td></tr>
+            <tr><td><b>Full degree</b></td><td>Typically <b>under $10K</b> all-in (vs. up to $141K at list)</td></tr>
+            <tr><td><b>Partner</b></td><td>Excelsior University &amp; others · <b>ESA/ClassWallet</b> accepted</td></tr>
+          </table>
+          <div class="blabel">How they sign up</div>
+          <p style="font-size:14px">Homeschool convention booth / referral → free weekly <b>teen webinar</b> + sample class → free <b>1-on-1 Zoom consult</b> (builds the RoadMap, the real conversion moment) → enroll at $349 → $249/class to graduation.</p>
+          <div class="blabel">Proof to drop</div>
+          <p style="font-size:14px">10,000+ students · founder's daughter earned a degree at 16 · Excelsior lists us as a partner · ESA-approved in AZ, UT, AR, NH, FL, SC, TX + more · named teen graduates at 16–19.</p>
+        </div>
+      </div>
+      <div class="pitch"><div class="lbl">30-second elevator pitch</div>"What if your teen could finish high school already holding an accredited bachelor's degree, debt-free, without a single SAT? We map every class so it counts twice, once for the diploma, once for the degree, and you pay as you go, about $249 a class. Most families finish the whole degree for under ten thousand dollars. Want me to show you the roadmap for your student?"</div>
+
+      <div class="blabel">Objections</div>
+      <div class="objcard"><div class="obj">"Is this even legit? Is it a real degree?"</div><dl>
+        <dt>Means</dt><dd>Show me proof of accreditation.</dd>
+        <dt>Reframe</dt><dd><b>Fair question, and the right one to ask.</b> The degree isn't from us, it's from an accredited partner university, the same degree a traditional student earns.</dd>
+        <dt>Proof</dt><dd>Excelsior (Middle States) lists us as a partner; credits are ACE/NCCRS/DEAC-recommended; 10,000+ students.</dd>
+        <dt>Follow-up</dt><dd>"Would it help if I showed you exactly which university would grant your teen's degree?"</dd></dl></div>
+      <div class="objcard"><div class="obj">"How can it possibly be that cheap?"</div><dl>
+        <dt>Means</dt><dd>What's the catch?</dd>
+        <dt>Reframe</dt><dd>It's <b>strategy, not a shortcut</b>. We use transfer-credit partnerships and pay-per-class instead of full university tuition, so you only pay for what you take.</dd>
+        <dt>Proof</dt><dd>$249/class vs. $975–$3,700 elsewhere; under $10K all-in.</dd>
+        <dt>Follow-up</dt><dd>"Do you have ESA or school-choice funds? Many families cover it that way."</dd></dl></div>
+    </div>
+  </div>
+
+  <!-- BRAND 2 -->
+  <div class="brandmod">
+    <div class="head" style="background:linear-gradient(150deg,var(--midnight),#0C1B30)">
+      <div class="eyebrow">Brand 02 · The premium path</div>
+      <h3>Compass Virtual Academy</h3>
+      <p>An <b>accredited online private high school</b> where a teen graduates in four years with a diploma <b>and</b> an accredited BBA, advisor-led, all-inclusive, white-glove.</p>
+    </div>
+    <div class="inner">
+      <div class="grid2">
+        <div class="block">
+          <div class="blabel">The avatar — the structure-seeking parent</div>
+          <div class="persona"><dl>
+            <dt>Who</dt><dd>Intentional parent of a 9th–12th grader who wants a "real school," not a course library. Often ESA-funded in AZ/FL/UT/TX.</dd>
+            <dt>Job to be done</dt><dd>Hand the whole thing to a trusted school, curriculum, plan, advisor, diploma, degree, so they don't assemble it.</dd>
+            <dt>What they weigh</dt><dd>Experience, structure, safety, accreditation, and outcomes, over lowest price.</dd>
+            <dt>Trigger</dt><dd>Frustration with public school + desire for a premium alternative; ESA funds available.</dd>
+            <dt>Hopes</dt><dd>A structured, safe, prestigious path; a bachelor's by 18; a named school and advisor guiding it.</dd>
+            <dt>Fears</dt><dd>Chaos / no support; "will colleges/employers respect it?"; their teen falling through the cracks.</dd>
+            <dt>Influencers</dt><dd>Spouse, ESA community, other private-school families.</dd>
+          </dl></div>
+          <div class="blabel">Pain → what solves it</div>
+          <ul class="maplist">
+            <li><span class="pain">Public-school busywork &amp; wasted time</span><span class="arw">→</span><span class="sol">Mastery-based, ~3 hrs/day, degree included</span></li>
+            <li><span class="pain">Homeschool "assemble-it-yourself" burden</span><span class="arw">→</span><span class="sol">All-in-one: advisor, curriculum, transcript, diploma</span></li>
+            <li><span class="pain">No structure / accountability</span><span class="arw">→</span><span class="sol">Named Head of School + 1-on-1 advisor plan</span></li>
+            <li><span class="pain">4 extra years + debt after HS</span><span class="arw">→</span><span class="sol">Graduates debt-free with a BBA in hand</span></li>
+          </ul>
+        </div>
+        <div class="block">
+          <div class="blabel">What's unique (premium markers)</div>
+          <div class="pills"><span class="pill">WASC-accredited private school</span><span class="pill">Named Head of School</span><span class="pill">1-on-1 Academic Advisor</span><span class="pill">All-inclusive, no upsells</span><span class="pill">Structured 4-year plan</span></div>
+          <div class="blabel">The offer &amp; pricing</div>
+          <table class="t" style="margin-top:4px">
+            <tr><td><b>Tuition</b></td><td><b>$7,000 / year</b>, four quarterly payments of <b>$1,750</b></td></tr>
+            <tr><td><b>Included</b></td><td>HS diploma + accredited BBA + advising, <b>no extra fees</b></td></tr>
+            <tr><td><b>Degree</b></td><td>Crestpoint University BBA (DEAC) · HS is <b>WASC</b>-accredited</td></tr>
+            <tr><td><b>Pay with</b></td><td>ESA: ClassWallet, EMA (FL), Odyssey + cards</td></tr>
+          </table>
+          <div class="blabel">How they sign up / admissions</div>
+          <p style="font-size:14px">Free <b>15-minute consult</b> with an Academic Advisor (maps the 4-year plan) → "Reserve your spot" / Enroll Today. Open enrollment, start anytime; year runs Aug–May. <b>Note:</b> full-year commitment, no refunds, set the expectation kindly.</p>
+          <div class="blabel">Proof to drop</div>
+          <p style="font-size:14px">WASC accreditation · Crestpoint (DEAC/CHEA) · founder Janine Deems as Head of School · 2024 grad Ava H. earned diploma + bachelor's via AZ ESA.</p>
+        </div>
+      </div>
+      <div class="pitch"><div class="lbl">30-second elevator pitch</div>"Compass is an accredited online private high school where your teen graduates in four years with a diploma <i>and</i> an accredited bachelor's degree, planned one-on-one with an academic advisor. It's about three hours a day, no busywork, no SATs, and it's all-inclusive, tuition covers the degree too. Many families fund it with ESA. Want to book a fifteen-minute call to map your teen's four years?"</div>
+
+      <div class="blabel">Objections</div>
+      <div class="objcard"><div class="obj">"It's not really cheaper than Smarter by 1 Degree."</div><dl>
+        <dt>Means</dt><dd>Justify the premium.</dd>
+        <dt>Reframe</dt><dd><b>You're right, they're close on price, and that's the point.</b> Compass isn't the budget option; it's the <b>done-for-you private school</b>, a named school, an advisor mapping all four years, and structure so nothing falls on you.</dd>
+        <dt>Proof</dt><dd>WASC private-school accreditation, 1-on-1 advising, all-inclusive tuition.</dd>
+        <dt>Follow-up</dt><dd>"Do you want to run the plan yourself, or have a school run it for you?" (self → route to Smarter by 1 Degree.)</dd></dl></div>
+      <div class="objcard"><div class="obj">"Will colleges and employers respect a degree from a national-accredited school?"</div><dl>
+        <dt>Means</dt><dd>Reduce my risk / reputation worry.</dd>
+        <dt>Reframe</dt><dd>Great question. The bachelor's is granted by <b>Crestpoint University, a DEAC-accredited, CHEA-recognized university</b>. The high school is <b>WASC</b>-accredited.</dd>
+        <dt>Proof</dt><dd>Accreditor names; real 2024 graduate outcome.</dd>
+        <dt>Follow-up</dt><dd>"Is there a specific next step, a job or grad program, you want it to support? Let's check the fit."</dd></dl></div>
+      <div class="callout" style="margin-top:12px"><div class="lbl">Honest gap for reps to coach</div>Compass publishes little on <b>which colleges/employers accept the degree</b>, transfer of Crestpoint credits, or grad-school acceptance, and DEAC is <b>national</b>, not regional, accreditation. Be ready to explain the difference plainly and set realistic expectations rather than dodge it.</div>
+    </div>
+  </div>
+
+  <!-- BRAND 3 -->
+  <div class="brandmod">
+    <div class="head" style="background:linear-gradient(150deg,var(--azure),#1E6FB8)">
+      <div class="eyebrow">Brand 03 · Adults &amp; Heroes</div>
+      <h3>SB1D</h3>
+      <p>A degree-completion advising service that gets working adults, veterans, and first responders an accredited bachelor's in about <b>one year</b> for a flat <b>$7,995</b>, ~80% off.</p>
+    </div>
+    <div class="inner">
+      <div class="grid2">
+        <div class="block">
+          <div class="blabel">Avatar A — the career-advancement adult</div>
+          <div class="persona"><dl>
+            <dt>Who</dt><dd>28–50, employed full-time, some prior credit but never finished. Family + job responsibilities.</dd>
+            <dt>Job to be done</dt><dd>Get the degree a promotion/role requires, without quitting, without debt.</dd>
+            <dt>Trigger</dt><dd>Passed over for a promotion that "requires a degree"; a role they can't reach; "it's finally time."</dd>
+            <dt>Fears</dt><dd>"Too late" after years away; debt; not fitting school around work.</dd>
+          </dl></div>
+          <div class="blabel">Avatar B — the Hero (first responder / military)</div>
+          <div class="persona"><dl>
+            <dt>Who</dt><dd>Police, fire, EMS, active/veteran military. Shift workers with training credit sitting unused.</dd>
+            <dt>Job to be done</dt><dd>Unlock a rank/promotion that requires a bachelor's, paid by benefits.</dd>
+            <dt>Trigger</dt><dd>Promotion gate; learning academy/JST training converts to credit; union endorsement.</dd>
+            <dt>Fears</dt><dd>No time around shifts; paying out of pocket; training "won't count."</dd>
+          </dl></div>
+          <div class="blabel">Pain → what solves it</div>
+          <ul class="maplist">
+            <li><span class="pain">"A degree I need is 4 years away"</span><span class="arw">→</span><span class="sol">Accredited BBA in ~1 year</span></li>
+            <li><span class="pain">Can't afford it / debt</span><span class="arw">→</span><span class="sol">$7,995 flat vs ~$39K; benefits = $0 out of pocket</span></li>
+            <li><span class="pain">Shift work, no fixed schedule</span><span class="arw">→</span><span class="sol">Asynchronous, anytime, pay-per-class</span></li>
+            <li><span class="pain">"It's too late for me"</span><span class="arw">→</span><span class="sol">25 yrs out → graduated in 14 months</span></li>
+          </ul>
+        </div>
+        <div class="block">
+          <div class="blabel">What's unique</div>
+          <div class="pills"><span class="pill">~1-year degree</span><span class="pill">Flat $7,995</span><span class="pill">"Not paid by the university"</span><span class="pill">Academy credit (39–40)</span><span class="pill">JST military credit</span><span class="pill">Union-endorsed</span></div>
+          <div class="blabel">The offer &amp; pricing</div>
+          <table class="t" style="margin-top:4px">
+            <tr><td><b>Degree</b></td><td>Accredited <b>BBA</b> (120 credits), ~1 year</td></tr>
+            <tr><td><b>Price</b></td><td><b>$7,995</b> flat (vs ~$39,195) + <b>$349</b> advising, <b>waived for Heroes</b></td></tr>
+            <tr><td><b>Heroes credit</b></td><td>39–40 credits for academy training; JST for military</td></tr>
+            <tr><td><b>Fund it</b></td><td>Tuition assistance, reimbursement, FAFSA, military aid → <b>$0 out of pocket</b></td></tr>
+          </table>
+          <div class="blabel">How they sign up</div>
+          <p style="font-size:14px">Free weekly <b>webinar + demo class</b> → free <b>consultation</b> (transcript/JST eval + custom Map) → advising fee (waived for Heroes) → enroll, pay-per-class to graduation. Dedicated union landing pages (e.g., PLEA).</p>
+          <div class="blabel">Proof to drop</div>
+          <p style="font-size:14px">Accredited partners (Excelsior, TESU, Bellevue, Niagara, Crestpoint) · 10,000+ students · "62% of employers require a degree" · union endorsements (NAPO, APA, PLEA, LVPPA) · Terri P.: 25 yrs out → BBA in 14 months.</p>
+        </div>
+      </div>
+      <div class="pitch"><div class="lbl">30-second elevator pitch</div>"If a promotion is stuck behind a bachelor's degree, we get working adults and first responders an accredited degree in about a year, for a flat $7,995, roughly 80% less than a university. If you're a first responder, your academy training likely counts for 39–40 credits, and benefits can cover it so you pay nothing out of pocket. Want me to evaluate your transcript on a free call and map your fastest path?"</div>
+
+      <div class="blabel">Objections</div>
+      <div class="objcard"><div class="obj">"It's too late, I've been out of school for years."</div><dl>
+        <dt>Means</dt><dd>Reassure me I can actually do this.</dd>
+        <dt>Reframe</dt><dd><b>That's exactly who this is built for.</b> Classes are self-paced and built around a working life, and prior credit gets you started ahead.</dd>
+        <dt>Proof</dt><dd>Terri P.: 25 years out, graduated in 14 months.</dd>
+        <dt>Follow-up</dt><dd>"Want me to pull your old transcript and show you how much you're already partway to?"</dd></dl></div>
+      <div class="objcard"><div class="obj">"I can't afford to pay out of pocket." (Heroes)</div><dl>
+        <dt>Means</dt><dd>Show me the funding path.</dd>
+        <dt>Reframe</dt><dd>Most Heroes pay <b>zero out of pocket</b>, benefits, tuition assistance, or FAFSA cover it, and we <b>waive the $349 fee</b> for first responders and military.</dd>
+        <dt>Proof</dt><dd>Academy = 39–40 credits; JST evaluation; union endorsements.</dd>
+        <dt>Follow-up</dt><dd>"What benefits do you have available? Let's see what gets you to $0."</dd></dl></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- SALES TOOLKIT -->
+<section id="toolkit" style="background:var(--cloud)"><div class="wrap">
+  <span class="seclabel">05 · Sales toolkit</span>
+  <h2 class="sec">The shared playbook</h2>
+
+  <h3 class="sub">The buyer journey &amp; your job at each step</h3>
+  <table class="t">
+    <tr><th>Stage</th><th>What's happening</th><th>Your job</th></tr>
+    <tr><td><b>1. Awareness</b></td><td>Convention booth, webinar, referral, ad</td><td>Earn the free consult. Lead with the outcome ("a degree by graduation / in a year"), not features.</td></tr>
+    <tr><td><b>2. Consultation</b></td><td>Free 1-on-1 Zoom, the conversion event</td><td>Discover (below), evaluate transcripts, and <b>build the RoadMap</b>. Make it real and specific to their student.</td></tr>
+    <tr><td><b>3. Enroll</b></td><td>$349 / reserve spot / advising fee</td><td>Remove the money barrier (per-class, ESA, benefits). Confirm fit and next class.</td></tr>
+    <tr><td><b>4. Support</b></td><td>Courses + advising to graduation</td><td>Set expectations, hand off cleanly, and ask for the referral / review.</td></tr>
+  </table>
+
+  <h3 class="sub">Discovery &amp; qualifying questions (70% them talking)</h3>
+  <div class="qbank">
+    <div class="cat">Placement &amp; goal</div>
+    <ul><li>"Is this for a teen or for you / an adult?" (routes the brand)</li><li>"What are you hoping they'll be doing 1–2 years after they finish?"</li></ul>
+    <div class="cat">Trigger &amp; cost of inaction</div>
+    <ul><li>"What's making now the right time to look at this?"</li><li>"If nothing changes over the next year, what happens?"</li></ul>
+    <div class="cat">Fit &amp; obstacles</div>
+    <ul><li>"How does your teen learn best?" / "What does your work schedule look like?"</li><li>"What would need to be true for this to work with your budget and time?"</li></ul>
+    <div class="cat">Money path</div>
+    <ul><li>"Do you have ESA / school-choice funds?" (teens) · "What education benefits do you have?" (Heroes)</li></ul>
+    <div class="cat">Decision</div>
+    <ul><li>"Who else is part of this decision with you?" · "What does the right program have to include for you to say yes?"</li></ul>
+  </div>
+
+  <h3 class="sub">Objection-handling framework</h3>
+  <p style="max-width:70ch">Every objection: <b>Acknowledge → Reframe → Proof → Follow-up question.</b> Validate the concern, flip it to the real need underneath, deliver one specific proof point, then ask a question that moves forward. The per-brand objection cards above are pre-filled examples. Common cross-brand ones:</p>
+  <table class="t">
+    <tr><th>Objection</th><th>The real need</th><th>Lead proof</th></tr>
+    <tr><td>"Is it legit / accredited?"</td><td>Proof of legitimacy</td><td>Accredited partner university grants the degree; name it; 10,000+ students.</td></tr>
+    <tr><td>"How is it so cheap?"</td><td>Find the catch</td><td>Strategy + transfer credit + pay-per-class, not a shortcut.</td></tr>
+    <tr><td>"Are you the school?"</td><td>Understand the model</td><td>Compliance line: we advise; accredited partners grant the degree.</td></tr>
+    <tr><td>"I need to think / talk to my spouse."</td><td>Not enough certainty yet</td><td>Book the free consult / RoadMap so the decision is concrete, and invite the spouse.</td></tr>
+  </table>
+
+  <h3 class="sub">Cross-sell &amp; step-up paths</h3>
+  <ul>
+    <li><b>Compass ⇄ Smarter by 1 Degree:</b> if a teen family loves the outcome but wants a lighter, pay-per-class approach, step them <i>down</i> to Smarter by 1 Degree; if they want more structure and hand-holding, step them <i>up</i> to Compass.</li>
+    <li><b>Parent → SB1D (Adults):</b> a homeschool parent who mentions their own stalled degree is a warm SB1D lead. Ask.</li>
+    <li><b>Graduate → grad school:</b> Crestpoint grads have on-ramps (e.g., SNHU discount, UMGC), a natural next conversation.</li>
+  </ul>
+</div></section>
+
+<!-- CHEAT SHEET -->
+<section id="cheat"><div class="wrap">
+  <span class="seclabel">06 · Cheat sheet</span>
+  <h2 class="sec">One glance before any call</h2>
+  <div class="cheat">
+    <div class="cheatcard">
+      <div class="cn">Smarter by 1 Degree</div><div class="cprice">$349 start · $249/class</div>
+      <div class="cline"><b>Who:</b> Homeschool parent of a teen, budget-first.</div>
+      <div class="cline"><b>Win:</b> Diploma + bachelor's, ~80% off, no SAT/ACT, ESA.</div>
+      <div class="cline"><b>Top objection:</b> "Is it legit?" → accredited partner grants the degree.</div>
+      <div class="cline"><b>CTA:</b> Free consult → RoadMap.</div>
+    </div>
+    <div class="cheatcard">
+      <div class="cn">Compass Virtual Academy</div><div class="cprice">$7,000/yr (4 × $1,750)</div>
+      <div class="cline"><b>Who:</b> Parent who wants a structured private school.</div>
+      <div class="cline"><b>Win:</b> WASC private school + BBA, advisor-led, all-inclusive.</div>
+      <div class="cline"><b>Top objection:</b> "Not cheaper" → sell the done-for-you experience.</div>
+      <div class="cline"><b>CTA:</b> Free 15-min advisor consult.</div>
+    </div>
+    <div class="cheatcard">
+      <div class="cn">SB1D · Adults &amp; Heroes</div><div class="cprice">$7,995 flat · ~1 year</div>
+      <div class="cline"><b>Who:</b> Working adult / first responder needing a degree.</div>
+      <div class="cline"><b>Win:</b> Fast, benefits-funded, academy/JST credit, $0 out of pocket.</div>
+      <div class="cline"><b>Top objection:</b> "Too late" → 25 yrs out → 14 months.</div>
+      <div class="cline"><b>CTA:</b> Free consult + transcript eval.</div>
+    </div>
+  </div>
+
+  <div class="callout warn" style="margin-top:26px"><div class="lbl">Data caveats — keep us honest &amp; compliant</div>
+    Savings figures vary across our sites (70–80%). <b>Pick one number per asset</b>, default to <b>~80%</b> with the "$7,995 vs ~$39K" and "under $10K vs up to $141K" anchors. Never promise a specific credit transfers, a job, or a salary. Always use the "not a college" compliance line. This playbook is <b>internal</b>; confirm any new stat before putting it in front of a prospect.</div>
+</div></section>
+
+<footer class="foot"><div class="wrap">
+  Smarter by 1 Degree Ecosystem — Team &amp; Sales Playbook · Version 1.0 · Internal use only. · <a href="02-momentum.html">Momentum brand guide</a> · <a href="index.html">Brand hub →</a><br>
+  <span style="color:var(--mute)">Owner: [assign] · Review quarterly · Built on research of smarterby1degree.com, sb1d.com, compassvirtualacademy.com. Verify pricing &amp; accreditation details before external use.</span>
+</div></footer>
+
+</body>
+</html>
